@@ -40,3 +40,7 @@ Verified on 30 September 2026 against ETS, Jolly and Otelz: private bathroom, to
 ## Calendar repair
 
 The date fields now open a Turkish in-page native modal dialog via full-field buttons, independent of browser date-picker support. Original ISO dates and Istanbul minimum dates are retained; check-out is at least the next day. Automated DOM tests exercised field/icon opening, date selection, automatic departure, formatted labels, keyboard navigation, focus restoration and the stay summary. Pure date tests cover leap years and month/year boundaries. Managed browser preview is unavailable for this plain static project; no visual browser QA claim.
+
+## Destination guide and design iteration
+
+30 September 2026: Four Erdek/Kapıdağ destination cards are grounded in Balıkesir Tourism Directorate, Erdek Kaymakamlığı and Türkiye Kültür Portalı pages. No fixed journey times, ticket prices or access guarantees. Destination images are native official originals; see DESTINATION-SOURCES.json. Watermarks and visible attribution retained. Design rationale, official reference websites and reversible baseline recorded in DESIGN-DECISIONS.md.
