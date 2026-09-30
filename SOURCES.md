@@ -4,7 +4,9 @@ Checked 30 September 2026.
 
 ## Photographs
 
-The 13 gallery photographs are attributed to Gülplaj Hotel, hotel ID sx5vbhpxurvx, in the primary ETS hotel gallery, not recommendation cards. ASSET-MANIFEST.json records exact source URLs, dimensions and hashes. Six room photos are 2400 × 1800; five property photos are 2048 pixels wide. Two exterior originals are limited to 1024 pixels. No local enlargement or synthetic photos. No explicit reuse licence is provided by the listing.
+The expanded gallery uses 36 visually distinct original photographs: 9 room/balcony views, 6 bathroom/shower views, 14 common-area views and 7 exterior/beach views. 28 originals have a long edge of at least 3535 pixels (up to 4032); 8 are native 2048 pixels. Three source-limited 1024-pixel legacy exteriors were excluded to keep every displayed photograph high-resolution. Sources retain original downloaded bytes; no synthetic photos or local enlargement.
+
+ASSET-MANIFEST.json records exact source URLs, native dimensions and SHA-256 hashes. jolly-attribution-evidence.json ties original image UUIDs to this property's Hotel JSON-LD image array. ets-attribution-evidence.json ties ETS photographs to Gülplaj Hotel sx5vbhpxurvx. Images are not taken from recommendation cards. Public listings do not establish an explicit reuse licence.
 
 Source: https://www.etstur.com/Gulplaj-Hotel
 
@@ -30,3 +32,11 @@ https://support.hotelrunner.com/tr/sanal-pos-ile-online-odeme-nasil-alinir/
 ## Identity
 
 Custom typographic wordmark; no claim to the historic official logo.
+
+## Expanded facilities
+
+Verified on 30 September 2026 against ETS, Jolly and Otelz: private bathroom, towels, hair dryer, satellite TV and wardrobe; lobby/lounge, prayer room, sun loungers and umbrellas; laundry and room service (charges to be confirmed); reception luggage storage and safe. Arrival14:00 and departure11:00 agree between ETS and Otelz. Source descriptions do not justify promising complimentary extras, accessible rooms, a private car park or child discounts. Meal inclusion remains package-dependent.
+
+## Calendar repair
+
+The date fields now open a Turkish in-page native modal dialog via full-field buttons, independent of browser date-picker support. Original ISO dates and Istanbul minimum dates are retained; check-out is at least the next day. Automated DOM tests exercised field/icon opening, date selection, automatic departure, formatted labels, keyboard navigation, focus restoration and the stay summary. Pure date tests cover leap years and month/year boundaries. Managed browser preview is unavailable for this plain static project; no visual browser QA claim.
