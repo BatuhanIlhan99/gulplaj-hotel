@@ -44,3 +44,7 @@ The date fields now open a Turkish in-page native modal dialog via full-field bu
 ## Destination guide and design iteration
 
 30 September 2026: Four Erdek/Kapıdağ destination cards are grounded in Balıkesir Tourism Directorate, Erdek Kaymakamlığı and Türkiye Kültür Portalı pages. No fixed journey times, ticket prices or access guarantees. Destination images are native official originals; see DESTINATION-SOURCES.json. Watermarks and visible attribution retained. Design rationale, official reference websites and reversible baseline recorded in DESIGN-DECISIONS.md.
+
+## Expanded local guide and courtyard presentation
+
+30 September2026: Added Erdek Limanı, listed in the official Balıkesir Tourism Directorate page https://balikesir.ktb.gov.tr/TR-184547/erdek-limani.html , and Erdek Kirazlı Yayla, identified in the official photo document https://www.kulturportali.gov.tr/medya/fotograf/fotodokuman/5874/balikesir-erdek-kirazli-yayla . Descriptions do not claim a ferry timetable, an open trail, travel times or ticket prices. Map search links are supplied and Kirazlı access is conditional. Courtyard image dimensions/bytes remain unchanged; only its display area is larger. Header reservation link remains a stay-planning section link.
