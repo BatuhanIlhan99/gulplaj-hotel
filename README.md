@@ -5,6 +5,9 @@ Website: https://batuhanilhan99.github.io/gulplaj-hotel/
 The current website source is in `dist/`. Edit `index.html` for content,
 `styles.css` for appearance, and the JavaScript files for calendar, gallery
 and navigation behavior. Original hotel photographs are in `dist/assets/`.
+Mobile-friendly JPEG previews are in `dist/assets/previews/`. Gallery cards
+use previews and open their original photograph when selected. New images
+can be prepared with `python scripts/prepare-images.py` (Pillow required).
 
 Every push to `main` runs the validation script and publishes `dist/` to
 GitHub Pages. Changes can be made and published from the Codex chat using

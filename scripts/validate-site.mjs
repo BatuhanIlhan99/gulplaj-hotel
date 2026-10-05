@@ -9,7 +9,7 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(ids.length, new Set(ids).size, 'Duplicate HTML IDs');
 let assets = 0;
-for (const [, reference] of html.matchAll(/\b(?:src|href)="([^"]+)"/g)) {
+for (const [, reference] of html.matchAll(/\b(?:src|href|data-original)="([^"]+)"/g)) {
   if (reference.startsWith('#')) {
     if (reference.length > 1) assert(ids.includes(reference.slice(1)), `Missing section: ${reference}`);
     continue;
