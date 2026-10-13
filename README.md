@@ -1,6 +1,6 @@
 # Gülplaj Hotel
 
-Website: https://batuhanilhan99.github.io/gulplaj-hotel/
+Website: http://www.gulplajhotel.com/ (custom-domain HTTPS is pending).
 
 The current website source is in `dist/`. Edit `index.html` for content,
 `styles.css` for appearance, and the JavaScript files for calendar, gallery
@@ -11,13 +11,16 @@ can be prepared with `python scripts/prepare-images.py` (Pillow required).
 
 Every push to `main` runs the validation script and publishes `dist/` to
 GitHub Pages. Changes can be made and published from the Codex chat using
-this checkout. A custom domain can be connected later in GitHub Pages settings.
+this checkout. The custom domain is configured in GitHub Pages settings.
 
 Run `node scripts/validate-site.mjs` before committing changes.
 
-Online card payment is not active. `dist/booking-config.js` accepts a verified
-external booking provider URL; it must never contain merchant credentials.
-See `PAYMENT-SETUP.md` for integration requirements.
+The official property-specific HotelRunner search widget is installed in
+`dist/hotelrunner-search.html`. The bridge handles loading, resize and a direct
+HTTPS booking fallback. Live sales parameters and confirmation belong to
+HotelRunner. `dist/booking-config.js` contains public URLs only. Payment and
+inventory/channel synchronization have not been tested. See `PAYMENT-SETUP.md`
+for the recorded handoff and remaining acceptance checks.
 
 The source was imported from the existing Gülplaj Sites project, preserving
 its original photos and history. GitHub Pages is the publishing destination

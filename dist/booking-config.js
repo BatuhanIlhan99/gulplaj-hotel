@@ -1,7 +1,8 @@
-// Public configuration only. Never put merchant API credentials in this file.
-// Replace bookingUrl only with the hotel's verified guest booking URL.
-// paymentReady may be enabled only after a successful provider test booking.
+// Public guest URLs only. HotelRunner manages inventory, policies and payments.
+// Do not put App Manager tokens or payment-provider secrets in this file.
 window.GULPLAJ_BOOKING_CONFIG = Object.freeze({
-  bookingUrl: '',
+  provider: 'hotelrunner',
+  bookingUrl: 'https://gulplaj-hotel.hotelrunner.com/bv3?locale=tr&currency=TRY',
+  widgetPage: './hotelrunner-search.html?v=hotelrunner-1',
   paymentReady: false
 });
