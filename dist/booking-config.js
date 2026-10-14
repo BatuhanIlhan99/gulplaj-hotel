@@ -3,6 +3,6 @@
 window.GULPLAJ_BOOKING_CONFIG = Object.freeze({
   provider: 'hotelrunner',
   bookingUrl: 'https://gulplaj-hotel.hotelrunner.com/bv3?locale=tr&currency=TRY',
-  widgetPage: './hotelrunner-search.html?v=booking-design-2',
+  widgetPage: './hotelrunner-search.html?v=booking-design-3',
   paymentReady: false
 });

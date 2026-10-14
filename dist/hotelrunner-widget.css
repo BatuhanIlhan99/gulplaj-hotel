@@ -30,3 +30,32 @@ body{padding:8px 5px 18px;overflow-x:hidden}
  .hr_container .datepicker__months{display:block!important}
 }
 @media(prefers-reduced-motion:reduce){.hr_container .hr_button{transition:none}}
+/* Give room controls their own full-width rows and keep both months compact. */
+.hr_container .dropdown-menu{width:340px!important;max-width:calc(100vw - 10px);left:auto;right:0;padding:18px!important;background:#fff}
+.hr_container .inner_dd{display:grid!important;grid-template-columns:1fr!important;gap:12px;margin:0 0 14px!important;padding:0 0 14px!important;background:#fff!important;border:0!important;border-bottom:1px solid #e3ebed!important}
+.hr_container .inner_dd>[class*="col-"]{width:100%!important;float:none!important;padding:0!important;min-width:0}
+.hr_container .inner_dd>[class*="col-"]:last-child{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.hr_container .inner_dd>[class*="col-"]>[class*="col-"]{width:100%!important;float:none!important;padding:0!important;min-width:0}
+.hr_container .dropdown-menu label{display:block;line-height:20px!important;margin-bottom:6px!important;color:#45616d!important}
+.hr_container .dropdown-menu select.hr_input{height:48px!important;min-height:48px!important;padding:0 28px 0 12px!important;line-height:normal!important;font-size:16px!important;min-width:0}
+.hr_container [id^="child_age_output"]{grid-column:1/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hr_container [id^="child_age_output"]>[class*="col-"]{width:100%!important;padding:0!important;float:none!important}
+.hr_container .dropdown-menu .btn-group{padding:0!important;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hr_container #hr_add-room{font-size:14px!important;margin:0!important;min-height:44px;display:inline-flex;align-items:center}
+.hr_container .datepicker{width:calc(100vw - 10px)!important;max-width:none!important;height:auto!important;transition:none!important;background:#fff;z-index:1000}
+.hr_container .datepicker__inner{padding:16px!important}
+.hr_container .datepicker__months{display:flex!important;gap:18px;align-items:start;clear:both}
+.hr_container .datepicker__month{float:none!important;width:calc(50% - 9px)!important;margin:0!important;table-layout:fixed;border-collapse:separate;border-spacing:0 3px}
+.hr_container .datepicker__month-day{height:36px!important;padding:0!important;border-radius:7px;font-size:14px}
+.hr_container .datepicker__month-name{font-size:15px;font-weight:600}
+.hr_container .datepicker__topbar{padding:0 0 12px!important;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.hr_container .datepicker__info--selected{flex:1;font-size:12px;line-height:1.7}
+.hr_container .datepicker__close-button{float:none!important;margin:0!important}
+@media(max-width:480px){
+ .hr_container .dropdown-menu{width:100%!important;max-width:100%}
+ .hr_container .datepicker__months{display:block!important}
+ .hr_container .datepicker__month{width:100%!important}
+ .hr_container .datepicker__month--month2{display:none!important}
+ .hr_container .datepicker__month-day{height:40px!important}
+ .hr_container .datepicker__inner{padding:12px!important}
+}
