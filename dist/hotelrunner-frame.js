@@ -5,7 +5,9 @@
   const notice = document.getElementById('widget-loading');
   function send(state) {
     if (window.parent === window) return;
-    let height = Math.max(260, document.body.scrollHeight);
+    // Measure normal content rather than viewport scrollHeight, so the frame
+    // shrinks again after closing a calendar or guest menu.
+    let height = Math.max(150, document.body.getBoundingClientRect().height);
     document.querySelectorAll('.datepicker,.dropdown-menu').forEach(element => {
       const style = getComputedStyle(element);
       if (style.display !== 'none' && style.visibility !== 'hidden') {
@@ -24,6 +26,22 @@
       // Leave the isolated search frame for the secure, full-page booking flow.
       window.open_how = '_top';
       window.HotelRunnerWidget = secureTransport;
+      const dateInput = document.getElementById('check_in_out');
+      const guestButton = document.getElementById('dropdown_toggle');
+      for (const [control, text] of [[dateInput,'Giriş · Çıkış tarihi'],[guestButton,'Oda ve misafirler']]) {
+        if (!control) continue;
+        const label = document.createElement('label');
+        label.className = 'search-field-label';
+        label.htmlFor = control.id;
+        label.textContent = text;
+        control.closest('.outer_input').prepend(label);
+      }
+      if (dateInput) dateInput.addEventListener('keydown',event=>{
+        if (event.key === 'Enter' || event.key === ' ') {event.preventDefault();dateInput.click();}
+      });
+      const searchButton = document.getElementById('hr_booking_button');
+      searchButton.textContent = 'Fiyat ve müsaitlik ara  →';
+      searchButton.setAttribute('aria-label','Seçilen tarihler ve misafirler için fiyat ve müsaitlik ara');
     }
     send(ready ? 'ready' : 'loading');
   }

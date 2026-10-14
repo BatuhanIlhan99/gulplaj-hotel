@@ -14,7 +14,7 @@
     window.addEventListener('message', event => {
       if (event.source !== frame.contentWindow || event.origin !== location.origin || event.data?.type !== 'gulplaj:hotelrunner') return;
       const height = Number(event.data.height);
-      if (Number.isFinite(height)) frame.style.height = `${Math.min(1800, Math.max(260, height))}px`;
+      if (Number.isFinite(height)) frame.style.height = `${Math.min(1800, Math.max(150, height))}px`;
       if (event.data.state === 'ready') status.hidden = true;
       if (event.data.state === 'unavailable') {
         status.hidden = false;

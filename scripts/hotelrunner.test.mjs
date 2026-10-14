@@ -49,7 +49,7 @@ test('Expands for calendars, bounds frame size and keeps failure recovery visibl
   app.send({type:'gulplaj:hotelrunner',state:'ready',height:100000});
   assert.equal(app.frame.style.height,'1800px');
   app.send({type:'gulplaj:hotelrunner',state:'unavailable',height:0});
-  assert.equal(app.frame.style.height,'260px');
+  assert.equal(app.frame.style.height,'150px');
   assert.equal(app.status.hidden,false);
   assert.equal(app.link.hidden,false);
 });

@@ -1,0 +1,30 @@
+#rezervasyon{background:#edf3f3;color:var(--ink);text-align:left}
+.reservation-heading{max-width:760px;margin:0 auto 40px;text-align:center}
+#rezervasyon .eyebrow{color:#4c717e;margin-bottom:18px}
+#rezervasyon h2{font-size:clamp(2.5rem,4.3vw,4.3rem);letter-spacing:-.04em;line-height:1.12}
+.reservation-heading>p:last-child{font-size:1.0625rem;color:var(--muted);margin-top:20px;line-height:1.7}
+.reservation-layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.45fr);gap:24px;max-width:1140px;margin:auto;align-items:stretch}
+.reservation-photo{position:relative;min-height:390px;overflow:hidden;border-radius:22px;background:#28546a}
+.reservation-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% center}
+.reservation-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#072c3ddb,transparent 70%)}
+.reservation-photo figcaption{position:absolute;z-index:1;bottom:30px;left:28px;right:20px;color:#fff}
+.reservation-photo figcaption>span{display:block;font-size:.6875rem;letter-spacing:.16em;margin-bottom:15px}
+.reservation-photo strong{font-family:var(--serif);font-size:2rem;line-height:1.25;font-weight:400;letter-spacing:-.025em}
+#rezervasyon .hotelrunner-card{max-width:none;margin:0;border:1px solid #dfe8e9;border-radius:22px;padding:32px;background:#fff;box-shadow:0 12px 35px #143b4a08;min-width:0}
+.booking-card-kicker{font-size:.6875rem;font-weight:600;letter-spacing:.14em;color:#5c7c88}
+.booking-card-heading h3{font-size:1.875rem;line-height:1.2;letter-spacing:-.025em;margin-top:10px}
+.booking-card-heading p{font-size:.9375rem;color:var(--muted);line-height:1.6;margin-top:10px}
+#rezervasyon .hotelrunner-frame{height:195px;margin:24px 0 6px;background:#fff;display:block;width:100%;border:0}
+#rezervasyon .hotelrunner-status{font-size:.875rem;padding:12px 0 0;color:var(--muted)}
+#rezervasyon .hotelrunner-help{display:flex;align-items:start;gap:9px;font-size:.8125rem;line-height:1.65;color:#637a84;margin:10px 0 0}
+.hotelrunner-help svg{flex-shrink:0;margin-top:3px}
+#rezervasyon .hotelrunner-actions{border-top:1px solid #e6eded;padding-top:15px;margin-top:19px;display:block}
+.hotelrunner-direct{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;color:#3f6575;font-size:.8125rem;text-decoration:underline;text-underline-offset:4px}
+.hotelrunner-direct:hover{color:#143b4a}
+.hotelrunner-direct span{font-size:1.1rem}
+.reservation-contact{display:flex;justify-content:center;align-items:center;gap:12px 20px;flex-wrap:wrap;max-width:1140px;margin:28px auto 0;font-size:.875rem;color:var(--muted)}
+.reservation-contact a{color:var(--ink);font-weight:600;min-height:44px;display:inline-flex;align-items:center;gap:12px}
+.reservation-contact a:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1000px){.reservation-layout{grid-template-columns:minmax(0,.7fr) minmax(0,1.5fr);gap:18px}#rezervasyon .hotelrunner-card{padding:25px}.reservation-photo figcaption{left:22px}.reservation-photo strong{font-size:1.75rem}}
+@media(max-width:760px){.reservation-layout{grid-template-columns:1fr;max-width:610px}.reservation-photo{display:none}.reservation-heading{margin-bottom:26px}#rezervasyon .hotelrunner-card{padding:26px 22px}.reservation-contact{gap:4px;flex-direction:column;margin-top:18px}.booking-card-heading h3{font-size:1.7rem}}
+@media(max-width:480px){#rezervasyon{padding:58px 5%}.reservation-heading{text-align:left}#rezervasyon h2{font-size:2.65rem}.reservation-heading>p:last-child{font-size:1rem;max-width:300px}.booking-card-kicker{font-size:.625rem}#rezervasyon .hotelrunner-card{padding:24px 17px;border-radius:18px}.booking-card-heading h3{font-size:1.65rem}#rezervasyon .hotelrunner-frame{height:280px;margin-top:20px}.reservation-contact{align-items:start;font-size:.8125rem}.hotelrunner-direct{font-size:.8125rem}}
