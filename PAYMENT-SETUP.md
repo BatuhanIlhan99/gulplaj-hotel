@@ -10,7 +10,9 @@ Dates, room counts, per-room adults, children and child ages belong to the offic
 
 The Turkish/TRY widget loads, dates can be selected, child age selection appears and adding a second room preserves the first room's selections. Selected dates and guests reach the actual Gülplaj Booking Engine. A mobile-width test opens the provider's HTTPS search as a full page. The initial test dates returned “Uygun oda bulunmamaktadır”, so prices/policies could not be verified. Validation and four recovery/origin/destination tests pass.
 
-The owner explicitly postponed date-specific acceptance testing because they needed to leave. Resume the checklist below when they return; do not request the widget again. No test reservation, payment, cancellation or OTA inventory write was made. `paymentReady` remains false. Custom-domain GitHub HTTPS is a separate pending task.
+The owner explicitly postponed date-specific acceptance testing because they needed to leave. Resume the checklist below when they return; do not request the widget again. No test reservation, payment, cancellation or OTA inventory write was made. `paymentReady` remains false.
+
+14 October 2026: commit 12e628b was pushed and GitHub Pages deployment 38531421749 succeeded. The live HotelRunner widget loaded on the custom domain. After the new deployment and domain re-registration, GitHub approved a certificate covering both www.gulplajhotel.com and gulplajhotel.com, and HTTPS enforcement was enabled. Live HTTPS returned HTTP 200 with certificate validation enabled.
 
 ## Remaining acceptance checks
 

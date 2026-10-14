@@ -1,6 +1,6 @@
 # Gülplaj Hotel
 
-Website: http://www.gulplajhotel.com/ (custom-domain HTTPS is pending).
+Website: https://www.gulplajhotel.com/ (HTTPS enforced; apex redirects to www).
 
 The current website source is in `dist/`. Edit `index.html` for content,
 `styles.css` for appearance, and the JavaScript files for calendar, gallery
