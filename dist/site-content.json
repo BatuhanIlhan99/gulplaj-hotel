@@ -35,5 +35,333 @@
       "question": "Odaları ve banyoları nereden görebilirim?",
       "answer": "Galeride odalar ve balkonlar, banyolar, ortak alanlar ve dış cephe ayrı gruplardadır. Fotoğrafa dokunarak özgün çözünürlükte görüntüleyebilirsiniz."
     }
-  ]
+  ],
+  "gallery": [
+    {
+      "src": "assets/previews/rooms/room-interior-08.jpg",
+      "original": "assets/rooms/room-interior-08.jpg",
+      "alt": "Çift kişilik yatak, televizyon ve balkon kapısı bulunan oda.",
+      "title": "Çift Kişilik Oda",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/room-interior-05.jpg",
+      "original": "assets/rooms/room-interior-05.jpg",
+      "alt": "Çift kişilik yatak, televizyon ve dolap bulunan oda.",
+      "title": "Oda İçi",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/room-sea-view-07.jpg",
+      "original": "assets/rooms/room-sea-view-07.jpg",
+      "alt": "Açık balkon kapısından deniz görünen oda.",
+      "title": "Deniz Manzaralı Oda",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/rooms-bedroom-jolly-27.jpg",
+      "original": "assets/rooms/rooms-bedroom-jolly-27.jpg",
+      "alt": "Balkon kapısı ve deniz manzarası yönündeki oda görünümü.",
+      "title": "Oda Manzarası",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/rooms-bedroom-jolly-24.jpg",
+      "original": "assets/rooms/rooms-bedroom-jolly-24.jpg",
+      "alt": "Balkon ve deniz manzaralı yatak bölümü.",
+      "title": "Yatak Alanı",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/room-bed-06.jpg",
+      "original": "assets/rooms/room-bed-06.jpg",
+      "alt": "Yatak üzerindeki havlular ve pencere önü.",
+      "title": "Oda Detayı",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/room-balcony-09.jpg",
+      "original": "assets/rooms/room-balcony-09.jpg",
+      "alt": "Denize bakan balkonda iki hasır sandalye.",
+      "title": "Deniz Manzaralı Balkon",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/rooms-balcony-jolly-28.jpg",
+      "original": "assets/rooms/rooms-balcony-jolly-28.jpg",
+      "alt": "Deniz manzaralı balkonda hasır sandalyeler.",
+      "title": "Balkon Manzarası",
+      "width": 3024,
+      "height": 4032,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/rooms/rooms-balcony-jolly-08.jpg",
+      "original": "assets/rooms/rooms-balcony-jolly-08.jpg",
+      "alt": "Oda önünde sarı koltuk ve masa bulunan oturma alanı.",
+      "title": "Balkon Oturma Alanı",
+      "width": 4032,
+      "height": 3024,
+      "category": "rooms"
+    },
+    {
+      "src": "assets/previews/bathrooms/rooms-bathroom-jolly-02.jpg",
+      "original": "assets/bathrooms/rooms-bathroom-jolly-02.jpg",
+      "alt": "Banyoda kapı, lavabo, ayna ve saç kurutma makinesi.",
+      "title": "Banyo",
+      "width": 4032,
+      "height": 3024,
+      "category": "bathrooms"
+    },
+    {
+      "src": "assets/previews/bathrooms/rooms-bathroom-jolly-06.jpg",
+      "original": "assets/bathrooms/rooms-bathroom-jolly-06.jpg",
+      "alt": "Lavabo, tuvalet ve duş kabininin geniş görünümü.",
+      "title": "Banyo Genel Görünüm",
+      "width": 3535,
+      "height": 3024,
+      "category": "bathrooms"
+    },
+    {
+      "src": "assets/previews/bathrooms/rooms-bathroom-jolly-18.jpg",
+      "original": "assets/bathrooms/rooms-bathroom-jolly-18.jpg",
+      "alt": "Mermer desenli banyoda tuvalet ve cam duş bölümü.",
+      "title": "Duş Alanı",
+      "width": 4032,
+      "height": 3024,
+      "category": "bathrooms"
+    },
+    {
+      "src": "assets/previews/bathrooms/rooms-bathroom-jolly-19.jpg",
+      "original": "assets/bathrooms/rooms-bathroom-jolly-19.jpg",
+      "alt": "Banyodaki yağmur duşu ve el duşu.",
+      "title": "Duş Donanımı",
+      "width": 4032,
+      "height": 3024,
+      "category": "bathrooms"
+    },
+    {
+      "src": "assets/previews/bathrooms/room-bathroom-01.jpg",
+      "original": "assets/bathrooms/room-bathroom-01.jpg",
+      "alt": "Banyoda lavabo, ayna ve saç kurutma makinesi.",
+      "title": "Lavabo Alanı",
+      "width": 4032,
+      "height": 3024,
+      "category": "bathrooms"
+    },
+    {
+      "src": "assets/previews/bathrooms/rooms-bathroom-jolly-30.jpg",
+      "original": "assets/bathrooms/rooms-bathroom-jolly-30.jpg",
+      "alt": "Cam duş kabini ve mermer desenli duş duvarları.",
+      "title": "Duş Kabini",
+      "width": 4032,
+      "height": 3024,
+      "category": "bathrooms"
+    },
+    {
+      "src": "assets/previews/general/general-courtyard-jolly-00.jpg",
+      "original": "assets/general/general-courtyard-jolly-00.jpg",
+      "alt": "Saksı çiçekleriyle süslü oda önü koridoru.",
+      "title": "Avlu",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-terrace-jolly-01.jpg",
+      "original": "assets/general/general-terrace-jolly-01.jpg",
+      "alt": "Açık havada masalar ve sandalyeler bulunan teras.",
+      "title": "Açık Teras",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-courtyard-jolly-04.jpg",
+      "original": "assets/general/general-courtyard-jolly-04.jpg",
+      "alt": "Desenli zeminli avlu ve yeşil merdiven.",
+      "title": "Bahçe Avlusu",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-outdoor-seating-jolly-12.jpg",
+      "original": "assets/general/general-outdoor-seating-jolly-12.jpg",
+      "alt": "Ağaçlar altında sarı koltuk ve küçük masa.",
+      "title": "Bahçede Oturma Alanı",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-courtyard-jolly-13.jpg",
+      "original": "assets/general/general-courtyard-jolly-13.jpg",
+      "alt": "Çiçekli saksılar arasında yan yana oda kapıları.",
+      "title": "Oda Önleri",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-terrace-jolly-20.jpg",
+      "original": "assets/general/general-terrace-jolly-20.jpg",
+      "alt": "Teras oturma alanından balkonlu otel cephesi.",
+      "title": "Teras",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-restaurant-jolly-21.jpg",
+      "original": "assets/general/general-restaurant-jolly-21.jpg",
+      "alt": "Denize bakan restoran terasında hazırlanmış masalar.",
+      "title": "Restoran Terası",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-garden-jolly-25.jpg",
+      "original": "assets/general/general-garden-jolly-25.jpg",
+      "alt": "Ağaç gölgesindeki bahçe masaları ve sandalyeleri.",
+      "title": "Bahçe",
+      "width": 4032,
+      "height": 3024,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-sea-view-23.jpg",
+      "original": "assets/general/general-sea-view-23.jpg",
+      "alt": "Otel terasından ağaçlar, plaj şemsiyeleri ve deniz görünümü.",
+      "title": "Deniz Manzarası",
+      "width": 2048,
+      "height": 1365,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-restaurant-22.jpg",
+      "original": "assets/general/general-restaurant-22.jpg",
+      "alt": "Denize bakan üstü kapalı restoran terası.",
+      "title": "Restoran",
+      "width": 2048,
+      "height": 1365,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-dining-21.jpg",
+      "original": "assets/general/general-dining-21.jpg",
+      "alt": "Deniz ve palmiye manzarası önünde hazırlanmış restoran masası.",
+      "title": "Deniz Kıyısında Sofralar",
+      "width": 2048,
+      "height": 1365,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-courtyard-24.jpg",
+      "original": "assets/general/general-courtyard-24.jpg",
+      "alt": "Bitkiler ve odaların önünden geçen açık koridor.",
+      "title": "Bahçe Koridoru",
+      "width": 2048,
+      "height": 1365,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-reception-ets-28.jpg",
+      "original": "assets/general/general-reception-ets-28.jpg",
+      "alt": "Ahşap resepsiyon bankosu ve lobi oturma alanı.",
+      "title": "Resepsiyon",
+      "width": 2048,
+      "height": 1367,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/general/general-stairs-ets-38.jpg",
+      "original": "assets/general/general-stairs-ets-38.jpg",
+      "alt": "Kafe yazılarıyla renkli basamaklar ve merdiven.",
+      "title": "Kafe Girişi",
+      "width": 2048,
+      "height": 1367,
+      "category": "general"
+    },
+    {
+      "src": "assets/previews/exterior/general-entrance-jolly-09.jpg",
+      "original": "assets/exterior/general-entrance-jolly-09.jpg",
+      "alt": "Sarmaşıklar arasındaki Hotel Gülplaj tabelası.",
+      "title": "Otel Tabelası",
+      "width": 4032,
+      "height": 3024,
+      "category": "exterior"
+    },
+    {
+      "src": "assets/previews/exterior/general-beach-jolly-11.jpg",
+      "original": "assets/exterior/general-beach-jolly-11.jpg",
+      "alt": "Deniz kıyısında şemsiyeler ve şezlonglar.",
+      "title": "Sahil",
+      "width": 4032,
+      "height": 3024,
+      "category": "exterior"
+    },
+    {
+      "src": "assets/previews/exterior/general-exterior-jolly-14.jpg",
+      "original": "assets/exterior/general-exterior-jolly-14.jpg",
+      "alt": "Otelin balkonlu cephesi ve önündeki ağaçlar.",
+      "title": "Dış Cephe",
+      "width": 4032,
+      "height": 3024,
+      "category": "exterior"
+    },
+    {
+      "src": "assets/previews/exterior/general-beach-jolly-15.jpg",
+      "original": "assets/exterior/general-beach-jolly-15.jpg",
+      "alt": "Deniz ve plajdaki hasır şemsiyeler.",
+      "title": "Plaj",
+      "width": 4032,
+      "height": 3024,
+      "category": "exterior"
+    },
+    {
+      "src": "assets/previews/exterior/general-entrance-jolly-17.jpg",
+      "original": "assets/exterior/general-entrance-jolly-17.jpg",
+      "alt": "Türk bayrağı ve sarmaşıklarla otel giriş cephesi.",
+      "title": "Otel Girişi",
+      "width": 4032,
+      "height": 3024,
+      "category": "exterior"
+    },
+    {
+      "src": "assets/previews/exterior/general-entrance-37.jpg",
+      "original": "assets/exterior/general-entrance-37.jpg",
+      "alt": "Sarmaşıklarla kaplı Hotel Gülplaj tabelası ve otel girişi.",
+      "title": "Giriş Cephesi",
+      "width": 2048,
+      "height": 1367,
+      "category": "exterior"
+    },
+    {
+      "src": "assets/previews/exterior/general-exterior-ets-17.jpg",
+      "original": "assets/exterior/general-exterior-ets-17.jpg",
+      "alt": "Otelin ağaçlı ön cephesi ve kafe girişi.",
+      "title": "Otel ve Kafe",
+      "width": 2048,
+      "height": 1365,
+      "category": "exterior"
+    }
+  ],
+  "storyPhoto": "assets/previews/general/general-courtyard-jolly-00.jpg",
+  "experiencePhoto": "assets/previews/general/general-restaurant-22.jpg"
 }

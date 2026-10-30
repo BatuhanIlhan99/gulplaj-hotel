@@ -27,7 +27,8 @@ for (const filename of fs.readdirSync(root).filter(name => name.endsWith('.js'))
 const require = createRequire(import.meta.url);
 const contentModel = require('../dist/content-model.js');
 const catalog = JSON.parse(fs.readFileSync(path.join(root,'photo-catalog.json'),'utf8'));
-contentModel.validate(JSON.parse(fs.readFileSync(path.join(root,'site-content.json'),'utf8')),catalog);
+const content=contentModel.validate(JSON.parse(fs.readFileSync(path.join(root,'site-content.json'),'utf8')),catalog);
+for(const photo of content.gallery)for(const key of ['src','original'])assert(fs.statSync(path.join(root,photo[key])).isFile(),`Missing gallery asset: ${photo[key]}`);
 assert.equal(catalog.length,36);
 for(const photo of catalog){
   for(const key of ['src','original']){
@@ -49,7 +50,7 @@ assert.equal(booking.parseDate('2026-02-29'), null);
 assert.equal(booking.validateStay('2026-10-05', '2026-10-05', '2026-10-05').ok, false);
 assert.equal(booking.validateStay('2026-10-04', '2026-10-06', '2026-10-05').ok, false);
 assert.equal(booking.validateStay('2026-12-31', '2027-01-02', '2026-10-05').nights, 2);
-assert.equal((html.match(/class="photo-open"/g) || []).length, 36);
+assert.equal((html.match(/class="photo-open"/g) || []).length, content.gallery.length);
 const widget=fs.readFileSync(path.join(root,'hotelrunner-search.html'),'utf8');
 assert(widget.includes('https://gulplaj-hotel.hotelrunner.com/widgets/0b30149edec93d3fa336/search_widget.js?v=1.0.0'));
 assert(widget.includes('id="hr_search_widget"'));
