@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "heroTitle": "Denizin kıyısında,",
+  "heroAccent": "kendinize bir mola.",
+  "heroDescription": "Erdek sahilinde bir aile işletmesi.\nDeniz, manzara ve size kalan zaman.",
+  "metaDescription": "Erdek sahilinde Gülplaj Hotel. Deniz manzaralı odalar, sahil konumu ve denizin yanı başında bir tatil. Oteli keşfedin, rezervasyon için bize ulaşın.",
+  "aboutText": "Gülplaj, Erdek’in sahilinde bir aile işletmesi. Deniz manzaralı odalarımız, bahçemiz ve restoranımızla konuklarımızı Marmara’nın kıyısında ağırlıyoruz.",
+  "aboutSecond": "Sabah sahilde bir yürüyüş, gün içinde Kapıdağ’da bir keşif, dönüşte denize bakan bir masa. Tatilinizi kendi ritminizde yaşayın.",
+  "roomTitle": "Deniz manzaralı çift kişilik oda",
+  "roomDescription": "Pencerenizin ardında Marmara, gününüzde tatilin hafifliği. Erdek’te denizin yakınında dinlenmek için bir yeriniz var.",
+  "phone": "0266 835 23 07",
+  "address": "Sahil Mahallesi, Şehit Mehmet Sokak\n10500 Erdek, Balıkesir",
+  "checkIn": "14:00",
+  "checkOut": "11:00",
+  "bookingTitle": "Erdek’te",
+  "bookingAccent": "yerinizi ayırın.",
+  "bookingIntro": "Tarihlerinizi seçin. Size uygun odayı birlikte bulalım.",
+  "heroPhoto": "assets/previews/general/general-sea-view-23.jpg",
+  "roomPhoto": "assets/previews/rooms/room-sea-view-07.jpg",
+  "bookingPhoto": "assets/previews/general/general-sea-view-23.jpg",
+  "faq": [
+    {
+      "question": "Giriş ve çıkış saatleri nedir?",
+      "answer": "Odaya giriş 14.00’ten itibaren, odadan çıkış en geç 11.00’dir. Erken giriş ve geç çıkış taleplerini müsaitlik için otelle görüşebilirsiniz."
+    },
+    {
+      "question": "Kahvaltı ve yemekler konaklamaya dahil mi?",
+      "answer": "Kahvaltı ve yemek hizmetleri seçilen konaklama paketine göre değişir. Rezervasyon sırasında paket kapsamını ve toplam tutarı otelden teyit edin."
+    },
+    {
+      "question": "Rezervasyonumu nasıl kesinleştirebilirim?",
+      "answer": "Rezervasyon bölümündeki arama modülünde tarih ve misafir bilgilerini seçin. HotelRunner sayfasında oda, fiyat ve iptal koşullarını inceleyerek rezervasyonunuzu tamamlayın. Rezervasyonunuz, HotelRunner onayını aldığınızda kesinleşir. Yardım için 0266 835 23 07 numarasından bize ulaşabilirsiniz."
+    },
+    {
+      "question": "Odaları ve banyoları nereden görebilirim?",
+      "answer": "Galeride odalar ve balkonlar, banyolar, ortak alanlar ve dış cephe ayrı gruplardadır. Fotoğrafa dokunarak özgün çözünürlükte görüntüleyebilirsiniz."
+    }
+  ]
+}

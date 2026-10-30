@@ -29,6 +29,8 @@ jobs:
         run: node scripts/validate-site.mjs
       - name: Verify HotelRunner integration
         run: node --test scripts/hotelrunner.test.mjs
+      - name: Verify admin content and publishing safeguards
+        run: node --test scripts/admin.test.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

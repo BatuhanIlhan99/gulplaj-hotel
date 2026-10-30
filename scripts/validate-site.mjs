@@ -25,6 +25,24 @@ for (const filename of fs.readdirSync(root).filter(name => name.endsWith('.js'))
   new vm.Script(fs.readFileSync(path.join(root, filename), 'utf8'), { filename });
 }
 const require = createRequire(import.meta.url);
+const contentModel = require('../dist/content-model.js');
+const catalog = JSON.parse(fs.readFileSync(path.join(root,'photo-catalog.json'),'utf8'));
+contentModel.validate(JSON.parse(fs.readFileSync(path.join(root,'site-content.json'),'utf8')),catalog);
+assert.equal(catalog.length,36);
+for(const photo of catalog){
+  for(const key of ['src','original']){
+    assert(/^assets\/[a-zA-Z0-9/_.-]+\.jpg$/.test(photo[key]),'Invalid photo path');
+    assert(!photo[key].includes('..'),'Photo path traversal');
+    assert(fs.statSync(path.join(root,photo[key])).isFile());
+  }
+}
+const adminRoot=path.join(root,'admin');
+const adminHtml=fs.readFileSync(path.join(adminRoot,'index.html'),'utf8');
+for(const [,reference] of adminHtml.matchAll(/\b(?:src|href)="([^\"]+)"/g)){
+  if(reference.startsWith('#')||/^[a-z]+:/i.test(reference))continue;
+  assert(fs.existsSync(path.resolve(adminRoot,reference.split('?')[0])),`Missing admin asset: ${reference}`);
+}
+for(const file of fs.readdirSync(adminRoot).filter(name=>name.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(adminRoot,file),'utf8'),{filename:file});
 const booking = require('../dist/booking-core.js');
 assert.equal(booking.hotelToday(new Date('2026-10-04T22:30:00Z')), '2026-10-05');
 assert.equal(booking.parseDate('2026-02-29'), null);

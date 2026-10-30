@@ -4,6 +4,12 @@
   const status = document.getElementById('hotelrunner-status');
   const link = document.getElementById('provider-booking');
   const config = window.GULPLAJ_BOOKING_CONFIG;
+  // Keep third-party booking code out of the admin's same-origin draft preview.
+  if (new URL(location.href).searchParams.get('admin-preview') === '1') {
+    frame.hidden = true;
+    status.textContent = 'Taslak önizlemesi · Canlı rezervasyon seçenekleri sitenizde açılır.';
+    return;
+  }
   try {
     const url = new URL(config.bookingUrl);
     if (config.provider !== 'hotelrunner' || url.protocol !== 'https:' || url.hostname !== 'gulplaj-hotel.hotelrunner.com' || url.username || url.password) throw new Error('Invalid booking destination');
