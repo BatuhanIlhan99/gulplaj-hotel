@@ -48,3 +48,14 @@ The date fields now open a Turkish in-page native modal dialog via full-field bu
 ## Expanded local guide and courtyard presentation
 
 30 September2026: Added Erdek Limanı, listed in the official Balıkesir Tourism Directorate page https://balikesir.ktb.gov.tr/TR-184547/erdek-limani.html , and Erdek Kirazlı Yayla, identified in the official photo document https://www.kulturportali.gov.tr/medya/fotograf/fotodokuman/5874/balikesir-erdek-kirazli-yayla . Descriptions do not claim a ferry timetable, an open trail, travel times or ticket prices. Map search links are supplied and Kirazlı access is conditional. Courtyard image dimensions/bytes remain unchanged; only its display area is larger. Header reservation link remains a stay-planning section link.
+
+## Photograph clarity update — 13 November 2026
+
+Featured images and gallery thumbnails now use responsive srcset candidates from original files and measured preview dimensions in dist/photo-renditions.json. No photograph content was synthesized, enlarged or retouched. Original source bytes remain intact. The courtyard feature now uses general-courtyard-24.jpg, the property's existing green courtyard corridor photograph. New admin uploads target 2400 pixels at quality 92/88/84; if needed they fall back to 1920 pixels at quality 88, rather than the former low-quality fallback.
+
+## Selected Google review excerpts — 13 November 2026
+
+Source observed directly in Google Maps, Gülplaj Otel, Sahil / Şht. Mehmet Sk., Erdek; matching telephone 0266 835 23 07.
+https://www.google.com/maps/place/G%C3%BClplaj+Otel/@40.4036239,27.7881534,17z/data=!4m11!3m10!1s0x14b42ee395e39181:0xa2b85e5f35809c47!5m2!4m1!1i2!8m2!3d40.4036239!4d27.7881534!9m1!1b1!16s%2Fg%2F11fy1dcvkp
+
+Google displayed 4.1/5 from 442 reviews on the check date. Selected short excerpts: Yağmur Torgut (5/5, displayed as 2 months ago), özkan gedikli (5/5, displayed as 3 months ago). Text, author names, individual review IDs and check date are retained in dist/reviews.json. No precise publication dates were inferred. The excerpts total 21 words, remain close to their authors' text, and link to the source review list. They are labelled as a curated selection, with the complete reviews accessible on Google. This is a dated selection, not a live Google API feed; no guest identities or reviews were fabricated.

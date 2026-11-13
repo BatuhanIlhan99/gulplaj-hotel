@@ -27,6 +27,8 @@ jobs:
           node-version: 22
       - name: Build gallery from managed content
         run: node scripts/materialize-gallery.mjs
+      - name: Build verified guest review section
+        run: node scripts/materialize-reviews.mjs
       - name: Validate website
         run: node scripts/validate-site.mjs
       - name: Verify HotelRunner integration

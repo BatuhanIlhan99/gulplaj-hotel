@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-13",
+  "sourceUrl": "https://www.google.com/maps/place/G%C3%BClplaj+Otel/@40.4036239,27.7881534,17z/data=!4m11!3m10!1s0x14b42ee395e39181:0xa2b85e5f35809c47!5m2!4m1!1i2!8m2!3d40.4036239!4d27.7881534!9m1!1b1!16s%2Fg%2F11fy1dcvkp",
+  "rating": 4.1,
+  "reviewCount": 442,
+  "selection": "Google yorumlarından seçilmiş kısa alıntılar",
+  "reviews": [
+    {
+      "author": "Yağmur Torgut",
+      "rating": 5,
+      "topic": "İçten bir teşekkür",
+      "excerpt": "Herşey için tekrar ne kadar teşekkür etsek az kalır.",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21STGJuWTVZVTF4YjFscVVVZDRUWFl4UTFkZmEzYxAB"
+    },
+    {
+      "author": "özkan gedikli",
+      "rating": 5,
+      "topic": "Ev sıcaklığında",
+      "excerpt": "Hiç bir yerde böyle samimi aile evinde gibi hissettiren, lezzetli yemekleri olan…",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pWdFVtNXJhbE5uVFZsU2RDMWxOWGxrTmpkdVYxRRAB"
+    }
+  ]
+}

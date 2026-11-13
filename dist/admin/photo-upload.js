@@ -7,10 +7,11 @@
     try{bitmap=await createImageBitmap(file,{imageOrientation:'from-image'});}catch{throw new Error('Fotoğraf açılamadı; başka bir JPEG, PNG veya WebP dosyası seçin.');}
     try{
       if(bitmap.width*bitmap.height>50000000)throw new Error('Fotoğraf çözünürlüğü çok yüksek. Daha küçük bir kopyasını seçin.');
-      const scale=Math.min(1,1600/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+      const scale=Math.min(1,2400/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
       canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
       const context=canvas.getContext('2d');if(!context)throw new Error('Tarayıcınız fotoğraf işleyemiyor.');context.drawImage(bitmap,0,0,canvas.width,canvas.height);
-      let blob;for(const quality of [.84,.72,.6]){blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',quality));if(blob&&blob.size<=900000)break;}
+      let blob;for(const quality of [.92,.88,.84]){blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',quality));if(blob&&blob.size<=900000)break;}
+      if(blob?.size>900000){const ratio=Math.min(1,1920/Math.max(canvas.width,canvas.height));canvas.width=Math.round(canvas.width*ratio);canvas.height=Math.round(canvas.height*ratio);context.drawImage(bitmap,0,0,canvas.width,canvas.height);blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',.88));}
       if(!blob||blob.type!=='image/webp'||blob.size>900000)throw new Error('Fotoğraf küçültülemedi. Daha küçük bir dosya seçin.');
       const dataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=()=>reject(new Error('Fotoğraf okunamadı.'));reader.readAsDataURL(blob);});
       const src='assets/uploads/'+crypto.randomUUID()+'.webp',title=file.name.replace(/\.[^.]+$/,'').replace(/[_-]+/g,' ').trim().slice(0,100)||'Otel fotoğrafı';

@@ -24,6 +24,20 @@ for (const [, reference] of html.matchAll(/\b(?:src|href|data-original)="([^"]+)
 for (const filename of fs.readdirSync(root).filter(name => name.endsWith('.js'))) {
   new vm.Script(fs.readFileSync(path.join(root, filename), 'utf8'), { filename });
 }
+for(const [,set] of html.matchAll(/\bsrcset="([^"]+)"/g)){
+  const widths=new Set();
+  for(const candidate of set.split(',')){
+    const match=candidate.trim().match(/^\.\/([^\s]+) (\d+)w$/);
+    assert(match,'Invalid responsive image candidate');
+    assert(!widths.has(match[2]),'Duplicate responsive image widths');widths.add(match[2]);
+    assert(fs.statSync(path.join(root,match[1])).isFile(),'Missing responsive image');
+  }
+}
+const reviews=JSON.parse(fs.readFileSync(path.join(root,'reviews.json'),'utf8'));
+assert(html.includes('id="yorumlar"'));
+assert.equal((html.match(/class="guest-review"/g)||[]).length,reviews.reviews.length);
+assert(html.includes('Seçilmiş kısa alıntılardır.'),'Review selection disclosure missing');
+assert(html.includes('13 Kasım 2026')||html.includes('tarihinde'),'Review date disclosure missing');
 const require = createRequire(import.meta.url);
 const contentModel = require('../dist/content-model.js');
 const catalog = JSON.parse(fs.readFileSync(path.join(root,'photo-catalog.json'),'utf8'));
