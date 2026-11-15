@@ -1,5 +1,21 @@
 # HotelRunner integration — 13 October 2026 handoff
 
+## Updated owner decision — 15 November 2026
+
+The owner is registering a corporate iyzico account. The intended replacement
+is own-site booking and iyzico payment, with HotelRunner receiving reservations,
+updating inventory and sending property email. Own-site payment is not installed
+or active. Keep the current working HotelRunner guest flow until the replacement
+passes acceptance tests. The older HotelRunner payment steps below are historical,
+not the implementation plan for the replacement.
+
+The replacement needs a secure backend and confirmed HotelRunner permission/API
+for creating bookings and synchronizing availability; the public integration
+must not be assumed to support inbound bookings. Store PSP and HotelRunner secrets
+only on the backend. Verify payment results server-side, calculate totals from
+trusted rates, protect against duplicate callbacks/bookings, and handle inventory
+failures, cancellations and refunds. See SECURITY-NOTES.md for current boundaries.
+
 The owner supplied the official Gülplaj widget:
 `https://gulplaj-hotel.hotelrunner.com/widgets/0b30149edec93d3fa336/search_widget.js?v=1.0.0`.
 It is installed in `dist/hotelrunner-search.html`, isolated from the marketing page's CSS and JavaScript. Stylesheets use explicit HTTPS. The frame reports readiness and expands for calendars and room controls. The parent validates message origin/source and retains a direct HTTPS Booking Engine link if the widget cannot load.

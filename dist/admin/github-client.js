@@ -8,23 +8,35 @@
   function encode(value){return btoa(Array.from(new TextEncoder().encode(value),b=>String.fromCharCode(b)).join(''));}
   function decode(value){return new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\s/g,'')),c=>c.charCodeAt(0)));}
   function create(token='',transport=fetch){
-    let credential=token;
+    let credential=token,closed=false;
+    token='';
+    const pending=new Set();
+    const closedError=()=>Object.assign(new Error('Oturum kapatıldı. Devam etmek için yeniden bağlanın.'),{code:'SESSION_CLOSED'});
+    function logout(){credential='';closed=true;for(const controller of pending)controller.abort();pending.clear();}
     async function request(path,method='GET',body){
       // Only these fixed GitHub endpoints may ever receive the in-memory credential.
       const photoEndpoint=path.startsWith(repo+'/contents/dist/')&&uploadPath.test(path.slice((repo+'/contents/dist/').length).split('?')[0]);
       const allowed=(method==='GET'&&([repo,contentPath+'?ref=main',runsPath,headPath].includes(path)||new RegExp('^'+contentPath+'\\?ref=[a-f0-9]{40}$').test(path)||photoEndpoint))||(method==='PUT'&&(path===contentPath||photoEndpoint));
       if(!allowed) throw new Error('Bu işlem desteklenmiyor.');
       if(method!=='GET'&&!credential) throw new Error('Önce GitHub hesabınızı bağlayın.');
+      if(closed)throw closedError();
       const headers={Accept:'application/vnd.github+json'};
       if(credential)headers.Authorization='Bearer '+credential;
       if(body)headers['Content-Type']='application/json';
+      const controller=new AbortController();pending.add(controller);
+      const timeout=setTimeout(()=>controller.abort(),20000);
+      try{
       let response;
-      try{response=await transport('https://api.github.com'+path,{method,headers,body:body?JSON.stringify(body):undefined,credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',cache:'no-store',signal:AbortSignal.timeout(20000)});}catch{throw new Error('GitHub’a ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin.');}
-      if(response.status===401){credential='';throw Object.assign(new Error('Erişim anahtarınız geçersiz veya süresi dolmuş. Yeniden bağlanın.'),{status:401});}
+      try{response=await transport('https://api.github.com'+path,{method,headers,body:body?JSON.stringify(body):undefined,credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',cache:'no-store',signal:controller.signal});}catch{if(closed)throw closedError();throw new Error('GitHub’a ulaşılamadı. Bağlantınızı kontrol edip yeniden deneyin.');}
+      if(closed)throw closedError();
+      if(response.status===401){logout();throw Object.assign(new Error('Erişim anahtarınız geçersiz veya süresi dolmuş. Yeniden bağlanın.'),{status:401});}
       if(response.status===403)throw Object.assign(new Error('Bu işlem için yetki yok veya GitHub istek sınırına ulaşıldı. Anahtarın proje izinlerini kontrol edin.'),{status:403});
       if(response.status===409||response.status===422)throw Object.assign(new Error('İçerik başka bir yerden değiştirildi veya yayın engellendi. Üzerine yazılmadı; sayfayı yenileyip güncel sürümle devam edin.'),{status:response.status});
       if(!response.ok)throw Object.assign(new Error('GitHub işlemi tamamlanamadı ('+response.status+'). Proje erişimini kontrol edin.'),{status:response.status});
-      return response.json();
+      const result=await response.json();
+      if(closed)throw closedError();
+      return result;
+      }finally{clearTimeout(timeout);pending.delete(controller);}
     }
     return Object.freeze({
       async verify(){const data=await request(repo);if(data.full_name?.toLowerCase()!=='batuhanilhan99/gulplaj-hotel'||!data.permissions?.push)throw new Error('Bu hesabın Gülplaj sitesi için düzenleme yetkisi yok.');return true;},
@@ -53,7 +65,7 @@
         return {sha:result.content.sha,commit:result.commit.sha};
       },
       async runs(){return (await request(runsPath)).workflow_runs||[];},
-      logout(){credential='';}
+      logout
     });
   }
   const api={create,encode,decode};
