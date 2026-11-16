@@ -1,0 +1,107 @@
+{
+  "observedDate": "2026-11-16",
+  "origin": "https://www.gulplajhotel.com",
+  "measurementNote": "Single HTTP requests; response time is not a Core Web Vitals or ranking measurement.",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 48888,
+      "responseMilliseconds": 1021,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/robots.txt",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 334,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 355,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/odalar/",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 325,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/konum-ulasim/",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 341,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/erdek-gezi-rehberi/",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 318,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/sik-sorulan-sorular/",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 294,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    },
+    {
+      "path": "/admin/",
+      "status": 200,
+      "bytes": 13439,
+      "responseMilliseconds": 353,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": true,
+      "h1Count": 1
+    },
+    {
+      "path": "/hotelrunner-search.html",
+      "status": 200,
+      "bytes": 1035,
+      "responseMilliseconds": 285,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 0
+    },
+    {
+      "path": "/seo-test-olmayan-sayfa/",
+      "status": 404,
+      "bytes": 9379,
+      "responseMilliseconds": 323,
+      "hasCanonical": false,
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 1
+    }
+  ]
+}

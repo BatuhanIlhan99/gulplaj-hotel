@@ -16,8 +16,9 @@ for (const [, reference] of html.matchAll(/\b(?:src|href|data-original)="([^"]+)
   }
   if (/^(?:[a-z]+:|\/\/)/i.test(reference)) continue;
   assert(!reference.startsWith('/'), `Root-relative URL breaks GitHub project hosting: ${reference}`);
-  const target = path.resolve(root, reference.split(/[?#]/)[0]);
+  let target = path.resolve(root, reference.split(/[?#]/)[0]);
   assert(target.startsWith(root + path.sep), `Asset outside dist: ${reference}`);
+  if(fs.statSync(target).isDirectory())target=path.join(target,'index.html');
   assert(fs.statSync(target).isFile(), `Missing asset: ${reference}`);
   assets++;
 }

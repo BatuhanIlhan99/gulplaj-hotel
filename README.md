@@ -13,7 +13,21 @@ Every push to `main` runs the validation script and publishes `dist/` to
 GitHub Pages. Changes can be made and published from the Codex chat using
 this checkout. The custom domain is configured in GitHub Pages settings.
 
-Run `node scripts/validate-site.mjs` before committing changes.
+Managed content comes from `dist/site-content.json`; detail-page editorial
+content comes from `content/seo-pages.json`. Build generated HTML before checks:
+
+```text
+node scripts/materialize-gallery.mjs
+node scripts/materialize-reviews.mjs
+node scripts/build-seo.mjs
+node scripts/validate-site.mjs
+node --test scripts/admin.test.mjs scripts/hotelrunner.test.mjs scripts/security.test.mjs scripts/seo.test.mjs
+```
+
+The same ordered steps run in GitHub Actions for every publication, including
+admin content updates. Generated HTML contains current text without requiring
+JavaScript. See `SEO-PLAN.md` for the search-intent map, Google ownership setup,
+measurement boundaries and 30/60/90-day maintenance plan.
 
 The official property-specific HotelRunner search widget is installed in
 `dist/hotelrunner-search.html`. The bridge handles loading, resize and a direct

@@ -63,6 +63,7 @@ test('Main and admin pages restrict injected code without allowing inline script
     assert(!/unsafe-inline|unsafe-eval|frame-ancestors/.test(policy));
     assert(html.indexOf('Content-Security-Policy')<html.indexOf('<script'));
     for(const tag of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){
+      if(/\btype="application\/ld\+json"/.test(tag[1])){assert(!/\bsrc=/.test(tag[1]));assert(!/[<>]/.test(tag[2]));JSON.parse(tag[2]);continue;}
       assert(!tag[2].trim(),'Inline executable scripts are blocked');
       const src=tag[1].match(/src="([^"]+)"/)?.[1];
       assert(src&&!/^(?:[a-z]+:|\/\/)/i.test(src),'Only local scripts are permitted');
