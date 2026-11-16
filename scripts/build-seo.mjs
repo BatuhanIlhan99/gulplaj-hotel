@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {renderBookingPage} from './booking-page.mjs';
 import {createRequire} from 'node:module';
 import {origin,policy,escapeHtml as e,absolute,applyMetadata,renderStaticContent,renderDetailPage,roomPhotos} from './seo-core.mjs';
 const require=createRequire(import.meta.url);
@@ -27,6 +28,7 @@ html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.cs
 if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=2">\n</head>');
 fs.writeFileSync('dist/index.html',html);
 for(const page of pages){fs.mkdirSync(path.join('dist',page.slug),{recursive:true});fs.writeFileSync(path.join('dist',page.slug,'index.html'),renderDetailPage(data,page,pages,mapsUrl,renditions));}
+fs.mkdirSync('dist/rezervasyon',{recursive:true});fs.writeFileSync('dist/rezervasyon/index.html',renderBookingPage(data));
 const locations=[{url:origin+'/',images:data.gallery.map(p=>p.original)},...pages.map(page=>({url:absolute(page.slug+'/'),images:page.slug==='odalar'?roomPhotos(data).map(p=>p.original):[data.gallery.find(p=>p.src===data[page.photoKey]).original]}))];
 fs.writeFileSync('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'+locations.map(({url,images})=>`  <url><loc>${e(url)}</loc>${[...new Set(images)].map(src=>`<image:image><image:loc>${e(absolute(src))}</image:loc></image:image>`).join('')}</url>`).join('\n')+'\n</urlset>\n');
 fs.writeFileSync('dist/robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);

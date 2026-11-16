@@ -37,6 +37,13 @@ HotelRunner. `dist/booking-config.js` contains public URLs only. Payment and
 inventory/channel synchronization have not been tested. See `PAYMENT-SETUP.md`
 for the recorded handoff and remaining acceptance checks.
 
+Booking stays on our domain: official search targets its current frame, then
+opens a native dialog around that same frame. `/rezervasyon/` is an additional
+first-party view, generated from `scripts/booking-page.mjs`. The official
+HotelRunner engine performs reservation creation; we do not generate local
+confirmations or collect card details. See `ONSITE-BOOKING.md` for current
+payment settings, closed-rate limitations and remaining stock/email tests.
+
 The source was imported from the existing Gülplaj Sites project, preserving
 its original photos and history. GitHub Pages is the publishing destination
 for this checkout. `.openai/hosting.json` retains the original Site identity

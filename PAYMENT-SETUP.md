@@ -1,5 +1,19 @@
 # HotelRunner integration — 13 October 2026 handoff
 
+## On-site booking update — 16 November 2026
+
+The official engine now opens in the existing iframe on our own website, with
+a viewport-sized native dialog after searching. `/rezervasyon/` provides an
+additional same-domain view. Guest top-window navigation and booking popups
+are disabled. See ONSITE-BOOKING.md for the architecture, safeguards and checks.
+
+The owner chose instant HotelRunner booking rather than a manual enquiry form.
+Seasonal rates are not ready and dates are closed. Existing Cash, bank transfer
+and mail order methods were observed active and were not modified. No live
+reservation, inventory decrement, confirmation email or payment was tested.
+Those acceptance checks require an owner-approved available stay once rates
+are open. Own iyzico payment remains inactive.
+
 ## Updated owner decision — 15 November 2026
 
 The owner is registering a corporate iyzico account. The intended replacement

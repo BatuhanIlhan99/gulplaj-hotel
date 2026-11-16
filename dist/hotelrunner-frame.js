@@ -23,8 +23,8 @@
       ready = true;
       notice.hidden = true;
       document.documentElement.style.setProperty('--widget-color','#143b4a');
-      // Leave the isolated search frame for the secure, full-page booking flow.
-      window.open_how = '_top';
+      // HotelRunner supports _self: every step stays in the embedded frame.
+      window.open_how = '_self';
       window.HotelRunnerWidget = secureTransport;
       const dateInput = document.getElementById('check_in_out');
       const guestButton = document.getElementById('dropdown_toggle');
@@ -62,7 +62,7 @@
     try {
       const url = new URL(value);
       if (url.protocol !== 'https:' || url.hostname !== propertyHost || url.username || url.password) return;
-      window.top.location.assign(url.href);
+      window.location.assign(url.href);
     } catch { /* Keep the direct booking link available in the parent. */ }
   }});
   window.HotelRunnerWidget = secureTransport;
