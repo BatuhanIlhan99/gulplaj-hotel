@@ -35,13 +35,24 @@ test('All public pages have unique titles, canonicals, descriptions, H1s and con
 test('Sitemap includes exactly the canonical public routes and only existing images',()=>{
   const xml=fs.readFileSync('dist/sitemap.xml','utf8');
   const locations=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>decode(m[1]));
-  assert.deepEqual(locations,documents.map(d=>d.url));assert.equal(new Set(locations).size,5);
+  assert.deepEqual(locations,documents.map(d=>d.url));assert.equal(new Set(locations).size,documents.length);
   assert(!xml.includes('<lastmod>'),'Do not manufacture freshness timestamps');
   for(const [,src] of xml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)){
     const url=new URL(decode(src));assert.equal(url.origin,origin);assert(fs.statSync(path.join('dist',decodeURIComponent(url.pathname))).isFile());
   }
   const robots=fs.readFileSync('dist/robots.txt','utf8');assert(robots.includes('Sitemap: '+origin+'/sitemap.xml'));
   assert(!robots.includes('Disallow: /admin'),'Allow crawlers to read the admin noindex directive');
+});
+
+test('Search intent targets resolve to indexable information pages with useful navigation',()=>{
+  const intent=read('content/search-intent.json');
+  const known=new Set(documents.map(d=>new URL(d.url).pathname));
+  for(const group of intent.groups){assert(known.has(group.target));assert(group.queries.length>0);}
+  const guide=fs.readFileSync('dist/erdek-konaklama/index.html','utf8');
+  assert(guide.includes('Erdek otelleri arasında seçim yaparken'));
+  assert(guide.includes('Gülplaj Otel’de konaklamayı'));
+  for(const route of ['odalar','konum-ulasim','erdek-gezi-rehberi'])assert(guide.includes(`href="../${route}/"`));
+  assert(main.includes('href="./erdek-konaklama/"'));
 });
 
 test('Every local public link, fragment, stylesheet and image resolves within dist',()=>{
@@ -69,8 +80,8 @@ test('Admin updates reach static HTML, schema and detail pages without JavaScrip
   assert(html.includes('Güncel soru?')&&html.includes('Güncel yanıt.'));assert(html.includes('15.30’ten itibaren'));assert(html.includes('tel:+902668351234'));
   const json=structuredData(updated,null,mapsUrl);assert.equal(json['@graph'][0].telephone,'+902668351234');assert.equal(json['@graph'][0].checkinTime,'15:30:00');
   assert(metadata(updated,null,mapsUrl).includes(updated.metaDescription));
-  assert(renderDetailPage(updated,pages[1],pages,mapsUrl,renditions).includes('Güncel adres<br>Erdek, Balıkesir'));
-  assert(renderDetailPage(updated,pages[3],pages,mapsUrl,renditions).includes('Güncel yanıt.'));
+  assert(renderDetailPage(updated,pages.find(p=>p.slug==='konum-ulasim'),pages,mapsUrl,renditions).includes('Güncel adres<br>Erdek, Balıkesir'));
+  assert(renderDetailPage(updated,pages.find(p=>p.slug==='sik-sorulan-sorular'),pages,mapsUrl,renditions).includes('Güncel yanıt.'));
 });
 
 test('HTML and JSON-LD escape malicious editor text without weakening CSP',()=>{

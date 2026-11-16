@@ -21,7 +21,7 @@ let html=renderStaticContent(fs.readFileSync('dist/index.html','utf8'),data);
 html=applyMetadata(html,data,mapsUrl);
 html=html.replace('GÜLPLAJ’A HOŞ GELDİNİZ','ERDEK’TE DENİZE SIFIR GÜLPLAJ HOTEL');
 const links=pages.map(page=>`<a href="./${page.slug}/">${e(page.label)} <span aria-hidden="true">↗</span></a>`).join('');
-const planning=`<!-- PLANNING:START --><section class="planning-links section-pad" aria-labelledby="planning-title"><div><p class="eyebrow">KONAKLAMADAN ÖNCE</p><h2 id="planning-title">Tatilinizin <em>ayrıntıları.</em></h2><p>Odaları tanıyın, yolculuğunuzu planlayın ve Erdek’i keşfedin.</p></div><nav aria-label="Konaklama rehberi">${links}</nav></section><!-- PLANNING:END -->`;
+const planning=`<!-- PLANNING:START --><section class="planning-links section-pad" aria-labelledby="planning-title"><div><p class="eyebrow">KONAKLAMADAN ÖNCE</p><h2 id="planning-title">Erdek’te <em>konaklama rehberiniz.</em></h2><p>Oda, konum ve konaklama paketi seçimini kolaylaştıran rehberlerimizi inceleyin.</p></div><nav aria-label="Konaklama rehberi">${links}</nav></section><!-- PLANNING:END -->`;
 if(html.includes('<!-- PLANNING:START -->'))html=html.replace(/<!-- PLANNING:START -->[\s\S]*?<!-- PLANNING:END -->/,()=>planning);
 else html=html.replace('  </main>',()=> '    '+planning+'\n  </main>');
 html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.css?v=2"');
