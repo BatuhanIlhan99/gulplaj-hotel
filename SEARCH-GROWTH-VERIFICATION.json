@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-16",
+  "runtimeCommit": "bada5f3643a7818104145d93563880c5e6a63e85",
+  "deployment": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/43869026655",
+  "deploymentConclusion": "success",
+  "tests": {"passed": 33, "failed": 0},
+  "livePublicInformationPages": {"count": 6, "allHttp200": true},
+  "sitemap": {"url": "https://www.gulplajhotel.com/sitemap.xml", "liveUrlCount": 6, "searchConsoleStatus": "Basarili", "searchConsoleDiscoveredPages": 6, "resubmissionAccepted": true},
+  "newPage": {
+    "url": "https://www.gulplajhotel.com/erdek-konaklama/",
+    "canonicalVerified": true,
+    "imageLoaded": true,
+    "mobileViewportWidth": 390,
+    "mobileLayoutChecked": true,
+    "inspectionBeforeRequest": "Discovered - currently not indexed",
+    "indexingRequestAccepted": true,
+    "indexingGuaranteed": false
+  },
+  "homepage": {"updatedErdekHeadingVerified": true, "guideLinkVerified": true, "reviewLinkVerified": true, "googleVerificationPreserved": true},
+  "googleBusinessProfile": {"websiteChange": "Still pending Google review when checked this session", "categoriesChanged": false},
+  "measurement": {"searchConsolePerformance": "Processing data; no performance data available this session", "rankIncreaseMeasured": false},
+  "adSpendStarted": false,
+  "messagesSentToGuests": false,
+  "bookingAcceptanceWithAvailableRates": "Still pending; seasonal rates not yet set by owner"
+}
