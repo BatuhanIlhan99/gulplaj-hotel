@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import {origin,homeTitle,escapeHtml,renderStaticContent,structuredData,metadata,renderDetailPage,applyMetadata} from './seo-core.mjs';
+import {origin,homeTitle,escapeHtml,renderStaticContent,structuredData,metadata,renderDetailPage,applyMetadata,validateSeoPages,directionsUrl} from './seo-core.mjs';
 const read=file=>JSON.parse(fs.readFileSync(file,'utf8'));
 const data=read('dist/site-content.json'),pages=read('content/seo-pages.json'),renditions=read('dist/photo-renditions.json'),mapsUrl=read('dist/reviews.json').sourceUrl;
 const main=fs.readFileSync('dist/index.html','utf8');
@@ -53,6 +53,51 @@ test('Search intent targets resolve to indexable information pages with useful n
   assert(guide.includes('Gülplaj Otel’de konaklamayı'));
   for(const route of ['odalar','konum-ulasim','erdek-gezi-rehberi'])assert(guide.includes(`href="../${route}/"`));
   assert(main.includes('href="./erdek-konaklama/"'));
+});
+
+test('Information pages expose working section navigation and contextual next steps without JavaScript',()=>{
+  for(const page of pages){
+    const html=fs.readFileSync('dist/'+page.slug+'/index.html','utf8');
+    const contents=html.match(/<nav id="page-contents"[\s\S]*?<\/nav>/)?.[0];assert(contents);
+    for(const section of page.sections){
+      assert(contents.includes(`href="#${section.id}"`));
+      assert(html.includes(`id="${section.id}"`));
+      for(const link of section.links||[])assert(html.includes(`href="..${link.target}"`));
+    }
+    assert(!html.includes('<script src='),'Information navigation must work without client scripts');
+  }
+});
+
+test('Editorial validation rejects duplicate anchors, malformed text and unexpected link destinations',()=>{
+  const photoKeys=['roomPhoto','storyPhoto','experiencePhoto','bookingPhoto'];
+  assert.equal(validateSeoPages(pages,photoKeys),pages);
+  for(const change of [
+    p=>p[0].sections[0].id='room-summary',
+    p=>p[0].sections[1].id=p[0].sections[0].id,
+    p=>p[0].sections[0].id='x" onclick="alert(1)',
+    p=>p[0].sections[0].paragraphs=[null],
+    p=>p[0].sections[0].links=[{label:'Oda',target:'javascript:alert(1)'}],
+    p=>p[0].sections[0].links=[{label:'Oda',target:'/missing/'}],
+    p=>p[0].sources=[{label:'Kaynak',url:'https://www.balikesirulasim.com.tr.evil.example/'}],
+    p=>p[0].sources=[{label:'Kaynak',url:'https://secret@www.balikesirulasim.com.tr/'}]
+  ]){const changed=structuredClone(pages);change(changed);assert.throws(()=>validateSeoPages(changed,photoKeys));}
+  const attack='<img src=x onerror=alert(1)>';
+  const changed=structuredClone(pages[0]);changed.sections[0].heading=attack;changed.sections[0].links=[{target:'/odalar/',label:attack}];
+  const html=renderDetailPage(data,changed,pages,mapsUrl,renditions);
+  assert(!html.includes(attack));assert(html.includes(escapeHtml(attack)));
+});
+
+test('Directions use the current hotel address and room facts and answers follow managed content',()=>{
+  const updated={...data,address:'Yeni Sokak & Sahil\nErdek, Balıkesir',checkIn:'15:30',checkOut:'10:30'};
+  const destination=new URL(directionsUrl(updated));
+  assert.equal(destination.origin,'https://www.google.com');assert.equal(destination.pathname,'/maps/dir/');
+  assert.equal(destination.searchParams.get('api'),'1');assert.equal(destination.searchParams.get('destination'),'Gülplaj Hotel, Yeni Sokak & Sahil, Erdek, Balıkesir');
+  const contact=renderDetailPage(updated,pages.find(p=>p.slug==='konum-ulasim'),pages,mapsUrl,renditions);
+  assert(contact.includes(escapeHtml(directionsUrl(updated))));
+  const rooms=renderDetailPage(updated,pages.find(p=>p.slug==='odalar'),pages,mapsUrl,renditions);
+  assert(rooms.includes('15:30’ten itibaren')&&rooms.includes('En geç 10:30'));
+  const faq=fs.readFileSync('dist/sik-sorulan-sorular/index.html','utf8');
+  for(const item of data.faq)for(const html of [main,faq])assert(html.includes(escapeHtml(item.question))&&html.includes(escapeHtml(item.answer)));
 });
 
 test('Every local public link, fragment, stylesheet and image resolves within dist',()=>{

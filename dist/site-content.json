@@ -34,6 +34,18 @@
     {
       "question": "Odaları ve banyoları nereden görebilirim?",
       "answer": "Galeride odalar ve balkonlar, banyolar, ortak alanlar ve dış cephe ayrı gruplardadır. Fotoğrafa dokunarak özgün çözünürlükte görüntüleyebilirsiniz."
+    },
+    {
+      "question": "Çocukla konaklama için aramaya hangi bilgileri girmeliyim?",
+      "answer": "Yetişkin sayısını ve konaklayacak her çocuğun yaşını doğru seçin. Çocuk ücreti, ek yatak veya bebek yatağı koşullarını seçtiğiniz oda ve planda kontrol edin; özel ihtiyacınızı rezervasyon öncesinde otelle teyit edin."
+    },
+    {
+      "question": "Tarihlerimde oda veya fiyat görünmüyorsa ne yapmalıyım?",
+      "answer": "Seçtiğiniz tarihler için satışa açık oda veya fiyat olmayabilir; misafir sayısı da sunulan seçenekleri etkileyebilir. Tarih ve kişi bilgilerini kontrol edin, farklı bir tarih deneyin veya oteli arayın. Sonuç bulunmaması tek başına bütün otelin dolu olduğu anlamına gelmez."
+    },
+    {
+      "question": "Rezervasyonumu nasıl değiştirebilir veya iptal edebilirim?",
+      "answer": "İşlemden önce rezervasyon onayınızdaki iptal ve değişiklik koşullarını okuyun. Yardım için rezervasyon numaranız ve konaklama tarihlerinizle otele ulaşın. İptal, değişiklik ve varsa iade koşulları seçtiğiniz rezervasyon planına bağlıdır."
     }
   ],
   "gallery": [

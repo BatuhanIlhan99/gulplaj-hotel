@@ -2,21 +2,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {renderBookingPage} from './booking-page.mjs';
 import {createRequire} from 'node:module';
-import {origin,policy,escapeHtml as e,absolute,applyMetadata,renderStaticContent,renderDetailPage,roomPhotos} from './seo-core.mjs';
+import {origin,policy,escapeHtml as e,absolute,applyMetadata,renderStaticContent,renderDetailPage,roomPhotos,validateSeoPages} from './seo-core.mjs';
 const require=createRequire(import.meta.url);
 const model=require('../dist/content-model.js');
 const read=file=>JSON.parse(fs.readFileSync(file,'utf8'));
 const data=model.validate(read('dist/site-content.json'),read('dist/photo-catalog.json'));
 const pages=read('content/seo-pages.json'),renditions=read('dist/photo-renditions.json');
 const mapsUrl=read('dist/reviews.json').sourceUrl;
-const used=new Set();
-for(const page of pages){
-  if(!/^[a-z]+(?:-[a-z]+)*$/.test(page.slug)||used.has(page.slug))throw Error('Invalid or duplicate page slug');
-  used.add(page.slug);
-  for(const key of ['title','description','heading','intro','label','eyebrow'])if(typeof page[key]!=='string'||!page[key].trim())throw Error('Missing page field: '+key);
-  if(!model.photoKeys.includes(page.photoKey)||!Array.isArray(page.sections)||!page.sections.length)throw Error('Invalid detail page');
-  for(const source of page.sources||[]){const url=new URL(source.url);if(url.protocol!=='https:'||!['balikesir.ktb.gov.tr','www.kulturportali.gov.tr'].includes(url.hostname))throw Error('Unverified source URL');}
-}
+validateSeoPages(pages,model.photoKeys);
 let html=renderStaticContent(fs.readFileSync('dist/index.html','utf8'),data);
 html=applyMetadata(html,data,mapsUrl);
 html=html.replace('GÜLPLAJ’A HOŞ GELDİNİZ','ERDEK’TE DENİZE SIFIR GÜLPLAJ HOTEL');
@@ -24,8 +17,8 @@ const links=pages.map(page=>`<a href="./${page.slug}/">${e(page.label)} <span ar
 const planning=`<!-- PLANNING:START --><section class="planning-links section-pad" aria-labelledby="planning-title"><div><p class="eyebrow">KONAKLAMADAN ÖNCE</p><h2 id="planning-title">Erdek’te <em>konaklama rehberiniz.</em></h2><p>Oda, konum ve konaklama paketi seçimini kolaylaştıran rehberlerimizi inceleyin.</p></div><nav aria-label="Konaklama rehberi">${links}</nav></section><!-- PLANNING:END -->`;
 if(html.includes('<!-- PLANNING:START -->'))html=html.replace(/<!-- PLANNING:START -->[\s\S]*?<!-- PLANNING:END -->/,()=>planning);
 else html=html.replace('  </main>',()=> '    '+planning+'\n  </main>');
-html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.css?v=2"');
-if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=2">\n</head>');
+html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.css?v=3"');
+if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=3">\n</head>');
 fs.writeFileSync('dist/index.html',html);
 for(const page of pages){fs.mkdirSync(path.join('dist',page.slug),{recursive:true});fs.writeFileSync(path.join('dist',page.slug,'index.html'),renderDetailPage(data,page,pages,mapsUrl,renditions));}
 fs.mkdirSync('dist/rezervasyon',{recursive:true});fs.writeFileSync('dist/rezervasyon/index.html',renderBookingPage(data));

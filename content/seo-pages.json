@@ -14,6 +14,13 @@
         "paragraphs": [
           "Deniz manzarası sizin için öncelikliyse rezervasyon sırasında seçtiğiniz odanın özelliklerini kontrol edin. Galeride farklı odaları ve alanları görebilir, manzara ve yerleşim tercihlerinizi otelle paylaşabilirsiniz.",
           "Tarih ve misafir bilgilerinizi ana sayfadaki rezervasyon bölümünde seçerek o tarihe açık seçeneklere ulaşabilirsiniz. Oda adı, kişi kapasitesi ve varsa çocuk yaşına ilişkin koşulları satın alma adımından önce okuyun."
+        ],
+        "id": "oda-secimi",
+        "links": [
+          {
+            "label": "Tarihlerinize açık odaları inceleyin",
+            "target": "/#rezervasyon"
+          }
         ]
       },
       {
@@ -21,6 +28,13 @@
         "paragraphs": [
           "Otelin oda donanımında klima, televizyon, eşya dolabı ve özel banyo bulunur. Banyo olanakları arasında havlu ve saç kurutma makinesi yer alır. Belirli bir oda düzeni veya özel bir ihtiyacınız varsa rezervasyon öncesinde otelle görüşün.",
           "Balkon, yatak düzeni veya belirli bir katta konaklama gibi tercihlerinizin karşılanıp karşılanamayacağını ayrıca sorun. Tercihlerinizi önceden paylaşmanız, size uygun odayı birlikte değerlendirmenizi kolaylaştırır."
+        ],
+        "id": "oda-olanaklari",
+        "links": [
+          {
+            "label": "Oda, balkon ve banyo fotoğrafları",
+            "target": "/#galeri"
+          }
         ]
       },
       {
@@ -28,6 +42,27 @@
         "paragraphs": [
           "Oda fiyatını değerlendirirken yalnızca gece tutarını değil, seçtiğiniz tarihler için toplam konaklama bedelini ve paketin kapsamını inceleyin. Kahvaltı ve diğer yemek hizmetleri seçilen pakete göre değişebilir.",
           "Ödeme koşulları, iptal veya değişiklik hakkı ve varsa ek hizmet ücretleri seçilen rezervasyon seçeneğinde belirtilir. Güncel fiyat ve müsaitlik için konaklama tarihlerinizi seçin."
+        ],
+        "id": "konaklama-paketi",
+        "links": [
+          {
+            "label": "Ödeme ve iptal için rezervasyon soruları",
+            "target": "/sik-sorulan-sorular/"
+          }
+        ]
+      },
+      {
+        "id": "cocukla-konaklama",
+        "heading": "Çocukla veya birden fazla kişiyle konaklama",
+        "paragraphs": [
+          "Aramada yetişkin sayısını ve konaklayacak çocukların yaşlarını eksiksiz seçin. Çocukların hangi yaşta nasıl ücretlendirildiği, ek yatak veya bebek yatağı sağlanıp sağlanamadığı seçilen oda ve planın koşullarıyla birlikte değerlendirilmelidir.",
+          "Birden fazla oda arıyorsanız her oda için kalacak kişi sayısını kontrol edin. Yan yana oda veya belirli bir yatak düzeni ihtiyacınızı otele önceden iletin ve rezervasyon öncesinde teyit alın."
+        ],
+        "links": [
+          {
+            "label": "Oda ve paket seçimi rehberi",
+            "target": "/erdek-konaklama/"
+          }
         ]
       }
     ]
@@ -47,13 +82,21 @@
         "paragraphs": [
           "Önce konaklama tarihlerinizi, gece sayısını ve tüm misafirlerin sayısını belirleyin. Aynı otelin farklı tarih ve oda seçenekleri için koşulları değişebilir. Otelleri karşılaştırırken aramayı aynı tarihler ve aynı misafir bilgileriyle yapmak, seçenekleri daha anlaşılır hale getirir.",
           "Ardından sizin için öncelikli üç özelliği seçin: sahile yakın olmak, belirli bir oda düzeninde kalmak veya yemek hizmetlerini konaklama paketiyle birlikte almak gibi. Bu öncelikleri baştan belirlemek, yalnızca fotoğraf ya da ilk görünen fiyat üzerinden karar vermenizi önler."
-        ]
+        ],
+        "id": "otel-secimi"
       },
       {
         "heading": "Sahil konumu ve oda manzarasını birlikte değerlendirin",
         "paragraphs": [
           "Denize ulaşımı otelin harita konumundan ve sahil fotoğraflarından inceleyebilirsiniz. Oda manzarasını ise seçtiğiniz oda tipinin açıklamasından kontrol edin. Otelin denize sıfır konumu, farklı odaların yerleşimini ve manzara özelliklerini tek başına açıklamaz.",
           "Gülplaj Hotel, Erdek sahilinde denize sıfır konumdaki bir aile işletmesidir. Otelin gerçek sahil, balkon, oda ve ortak alan fotoğrafları galeride bulunur. Manzara veya balkon tercihinizi, müsait olan oda seçeneğiyle birlikte değerlendirebilirsiniz."
+        ],
+        "id": "sahil-ve-manzara",
+        "links": [
+          {
+            "label": "Sahil ve deniz manzarası fotoğrafları",
+            "target": "/#galeri"
+          }
         ]
       },
       {
@@ -61,6 +104,13 @@
         "paragraphs": [
           "Gülplaj’da oda olanakları arasında klima, televizyon, eşya dolabı ve özel banyo yer alır. Ortak alanlarda Wi-Fi, restoran ve avlu bulunur. Deniz manzaralı çift kişilik oda tanıtımını ve farklı oda fotoğraflarını odalar sayfasında inceleyebilirsiniz.",
           "Geliş planınızı yaparken güncel giriş ve çıkış saatlerini kontrol edin. Telefon ve adres bilgileri konum sayfasında, konaklama öncesi temel sorular ise sık sorulan sorular bölümünde yer alır. Belirli bir yatak düzeni, oda konumu veya özel ihtiyacınız varsa rezervasyon öncesinde otelle görüşün."
+        ],
+        "id": "gulplajda-konaklama",
+        "links": [
+          {
+            "label": "Gülplaj Hotel oda özellikleri",
+            "target": "/odalar/"
+          }
         ]
       },
       {
@@ -68,6 +118,13 @@
         "paragraphs": [
           "Oda seçerken yetişkin sayısını, çocukların yaşlarını ve ihtiyacınız olan oda sayısını birlikte değerlendirin. Rezervasyon aramasındaki kişi bilgileriyle gerçekten konaklayacak kişilerin bilgilerinin uyuşması, doğru oda seçeneklerini ve koşulları görmenizi sağlar.",
           "Aynı fotoğraftaki yatak düzeninin bütün odalarda bulunacağını varsaymak yerine, seçtiğiniz oda tipinin açıklamasını okuyun. Birden fazla oda istiyorsanız odaların yakınlığı gibi tercihlerinizi önceden iletin; tesisin bu talebi karşılayıp karşılayamayacağını teyit edin."
+        ],
+        "id": "misafirler-ve-oda",
+        "links": [
+          {
+            "label": "Çocuk ve özel talepler için bilgiler",
+            "target": "/sik-sorulan-sorular/"
+          }
         ]
       },
       {
@@ -75,13 +132,21 @@
         "paragraphs": [
           "Erdek’te otel seçeneklerini değerlendirirken yemek kapsamını ve toplam konaklama bedelini birlikte karşılaştırın. Kahvaltı ve diğer yemek hizmetleri seçilen pakete göre değişebilir. Aynı tarih için sunulan iki seçeneğin yemek, ödeme veya iptal koşulları farklı olabilir.",
           "Gülplaj Hotel’de rezervasyon öncesinde seçtiğiniz oda ve plana ait toplam tutarı, yemek kapsamını ve iptal koşullarını ekranda inceleyebilirsiniz. Özel hizmet veya ek ihtiyaçlarınız varsa bunların kapsamını ve varsa ücretini otelle ayrıca görüşün."
-        ]
+        ],
+        "id": "paket-kapsami"
       },
       {
         "heading": "Rezervasyonunuzu bu sitede tamamlayın",
         "paragraphs": [
           "Tarih ve misafir bilgilerinizi rezervasyon bölümünde seçtiğinizde oda seçenekleri yine bu sitenin içinde açılır. Size uygun odayı ve planı seçip misafir bilgilerinizi girerek rezervasyon adımlarını takip edebilirsiniz.",
           "Rezervasyonunuzun kesinleştiğini sistemin onayından ve rezervasyon numaranızdan kontrol edin. Seçtiğiniz tarihlerde sonuç çıkmazsa başka tarihleri değerlendirebilir veya oteli arayabilirsiniz. Ödeme ve değişiklik koşullarını son onaydan önce okuyun."
+        ],
+        "id": "siteden-rezervasyon",
+        "links": [
+          {
+            "label": "Sitemizden tarih ve müsaitlik arayın",
+            "target": "/#rezervasyon"
+          }
         ]
       },
       {
@@ -89,6 +154,13 @@
         "paragraphs": [
           "Sahil dinlenmesini çevre gezileriyle birleştirmek istiyorsanız günlerinizi buna göre paylaşabilirsiniz. Erdek ve Kapıdağ gezi rehberinde sahil, doğa ve tarih odaklı planlama notları bulunur.",
           "Yolculuk gününüzde varış ve dönüş saatlerini, gezilerinizde ise güncel hava ve ulaşım koşullarını kontrol edin. Böylece konaklama sürenizi kendi temponuza uygun biçimde değerlendirebilirsiniz."
+        ],
+        "id": "gezi-plani",
+        "links": [
+          {
+            "label": "Erdek ve Kapıdağ gezi notları",
+            "target": "/erdek-gezi-rehberi/"
+          }
         ]
       }
     ]
@@ -97,7 +169,7 @@
     "slug": "konum-ulasim",
     "label": "Konum & ulaşım",
     "title": "Gülplaj Hotel Nerede? Erdek Konum ve Ulaşım",
-    "description": "Gülplaj Hotel’in Erdek, Balıkesir adresi, telefon numarası ve harita bağlantısı. Varışınızı planlayın, giriş saatini ve özel ihtiyaçlarınızı otelle görüşün.",
+    "description": "Gülplaj Otel Erdek adresi, telefonu ve yol tarifi. Bandırma üzerinden ulaşımınızı, aktarmalarınızı ve otele varışınızı planlamak için pratik bilgiler.",
     "heading": "Yolunuz Erdek sahiline çıksın.",
     "eyebrow": "GÜLPLAJ HOTEL · KONUM & ULAŞIM",
     "intro": "Gülplaj Hotel, Balıkesir’in Erdek ilçesinde sahilde yer alır. Yola çıkmadan önce adresi haritada açabilir, varış saatinizi ve konaklamayla ilgili ihtiyaçlarınızı otelle görüşebilirsiniz.",
@@ -108,21 +180,37 @@
         "paragraphs": [
           "Bu sayfadaki harita bağlantısı Gülplaj Hotel için yol tarifi aramasını açar. Başlangıç noktanızı ve ulaşım tercihinizi harita uygulamasında seçerek yolculuğunuzu planlayın. Aynı veya benzer isimli işletmelerle karıştırmamak için Erdek, Balıkesir konumunu kontrol edin.",
           "Yolculuk süresi başlangıç noktanıza, güzergâha ve trafik durumuna göre değişir. Güncel yol ve hava koşullarını çıkıştan önce kontrol etmeniz, özellikle yoğun dönemlerde varışınızı daha rahat planlamanıza yardımcı olur."
-        ]
+        ],
+        "id": "haritayla-ulasim"
       },
       {
-        "heading": "Toplu taşıma veya deniz yoluyla gelecekseniz",
+        "heading": "Bandırma üzerinden Erdek’e ulaşımı planlayın",
         "paragraphs": [
-          "Seyahat tarihiniz için güncel seferleri doğrudan ilgili ulaşım işletmesinden kontrol edin. Mevsime, güne ve hava koşullarına bağlı sefer değişiklikleri olabileceği için geçmiş bir tarifeyi esas almayın.",
-          "Aktarma noktanızdan otele yapacağınız son ulaşımı da yolculuk planınıza ekleyin. Bilet almadan önce geliş ve dönüş saatlerini birlikte değerlendirerek aktarmalar için yeterli süre ayırın."
-        ]
+          "Yolculuğunuz Bandırma üzerinden geçiyorsa, Bandırma’ya varışınız ile Erdek’e devam edeceğiniz ulaşımı iki ayrı adım olarak planlayın. Deniz yoluyla geliyorsanız seyahat gününüze uygun seferin açık olup olmadığını ilgili işletmeden kontrol edin; varış saatiyle sonraki aktarma arasında pay bırakın.",
+          "Balıkesir Toplu Taşıma’nın resmî sitesinde ulaşım ve ilçeler arası ulaşım bağlantıları bulunur. Güncel hat, kalkış noktası ve dönüş seçeneklerini seyahatinizden önce resmî kaynaktan inceleyin. Bu sayfada değişebilen sefer saati veya bilet ücreti yayımlamıyoruz.",
+          "Erdek’e ulaştığınızda otelin tam adresini haritada açarak son bölümü planlayın. Terminal veya iskeleden otele transfer beklentiniz varsa hizmetin sağlanıp sağlanamadığını ve varsa ücretini önceden otelle görüşün."
+        ],
+        "id": "toplu-tasima"
       },
       {
         "heading": "Varıştan önce otelle görüşün",
         "paragraphs": [
           "Planlanan varış saatiniz oda giriş saatinden erkense, erken giriş veya bagaj muhafazası seçeneklerini otelle görüşün. Erken giriş ve geç çıkış, ilgili günün koşullarına ve müsaitliğe bağlıdır.",
           "Araçla geliş, otopark, hareket kısıtlılığı, merdiven kullanımı veya özel oda ihtiyacı gibi konuları rezervasyon öncesinde teyit edin. Böylece yolculuğunuzu tesisin sağlayabildiği hizmetlere göre planlayabilirsiniz."
+        ],
+        "id": "varis-plani",
+        "links": [
+          {
+            "label": "Oda giriş saati ve konaklama soruları",
+            "target": "/sik-sorulan-sorular/"
+          }
         ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "Balıkesir Toplu Taşıma · ulaşım ve ilçeler arası bağlantılar",
+        "url": "https://www.balikesirulasim.com.tr/"
       }
     ]
   },
@@ -141,13 +229,21 @@
         "paragraphs": [
           "Tatilin ilk gününü ayrıntılı bir programa ayırmak zorunda değilsiniz. Sahilde bir yürüyüş, deniz kenarında bir mola ve çevreyi tanımaya ayırdığınız zaman, Erdek’teki günlerinize rahat bir başlangıç olabilir.",
           "Gününüzü hava durumuna ve kendi temponuza göre düzenleyin. Deniz için ayırdığınız zamanı güncel hava koşullarına göre esnek tutabilirsiniz."
-        ]
+        ],
+        "id": "erdek-sahili"
       },
       {
         "heading": "Kapıdağ için zaman ayırın",
         "paragraphs": [
           "Erdek tatilini çevre gezileriyle birleştirmek isteyenler için Kapıdağ Yarımadası ayrı bir keşif alanıdır. Kıyı ve iç kesimlerde farklı duraklar seçerek tek bir uzun tur yerine daha kısa günlük planlar oluşturabilirsiniz.",
           "Bir günde çok sayıda noktaya yetişmeye çalışmak yerine ulaşım biçiminize uygun birkaç durak belirleyin. Güzergâhı, dönüş saatini ve mevsim koşullarını önceden kontrol edin. Kırsal yollarda ulaşım koşulları değişebileceği için yalnızca haritadaki süreye güvenmeyin."
+        ],
+        "id": "kapidag-plani",
+        "links": [
+          {
+            "label": "Geliş ve dönüş ulaşımını planlayın",
+            "target": "/konum-ulasim/"
+          }
         ]
       },
       {
@@ -155,13 +251,25 @@
         "paragraphs": [
           "Kültür Portalı, Kirazlı Manastırı’nı Yukarıyapıcı ile Ballıpınar arasındaki tarihî yapı kalıntıları olarak tanıtır. Tarihî alanları gezmekten hoşlanıyorsanız bu durağı Kapıdağ planınıza eklemeyi değerlendirebilirsiniz.",
           "Ziyaret öncesinde güncel yol ve erişim durumunu araştırın. Uygun ayakkabı, su ve dönüş için yeterli zaman ayırın. Tarihî kalıntıların korunmasına özen gösterin ve dönüş yolculuğunuzu gün ışığından yararlanacak şekilde planlayın."
-        ]
+        ],
+        "id": "kirazli-manastiri"
       },
       {
         "heading": "Gezi ile konaklamayı birlikte planlayın",
         "paragraphs": [
           "Kısa bir konaklamada bir sahil günü ve bir çevre gezisi arasında seçim yapmak gerekebilir. Daha uzun bir tatilde ise dinlenme günlerini gezi günlerinin arasına koymak, programınızı daha esnek tutar.",
           "Oda seçiminizi ve konaklama tarihlerinizi netleştirirken dönüş yolculuğunuzu da düşünün. Otelden çıkış sonrası planınız varsa bagaj ve diğer ihtiyaçlarınızı önceden sorun. Gezi için güncel resmî bilgileri aşağıdaki kaynaklardan kontrol edebilirsiniz."
+        ],
+        "id": "gezi-ve-konaklama",
+        "links": [
+          {
+            "label": "Erdek konaklama ve otel seçimi",
+            "target": "/erdek-konaklama/"
+          },
+          {
+            "label": "Oda ve banyo fotoğraflarını inceleyin",
+            "target": "/odalar/"
+          }
         ]
       }
     ],
@@ -191,6 +299,13 @@
         "paragraphs": [
           "Giriş ve çıkış tarihleri, toplam gece sayısı ve tüm misafirlerin bilgileri rezervasyonunuzla aynı olmalıdır. Çocukla seyahat ediyorsanız yaş bilgisini doğru girin; oda kapasitesi ve koşullar seçtiğiniz seçeneğe göre değerlendirilir.",
           "Toplam bedeli, para birimini, yemek kapsamını, ödeme ve iptal koşullarını son adımdan önce okuyun. Tanıtım sayfaları belirli bir tarihte fiyat veya müsaitlik garantisi vermez. Rezervasyonunuzun kesinleştiğini ilgili onay üzerinden kontrol edin."
+        ],
+        "id": "rezervasyon-kontrolu",
+        "links": [
+          {
+            "label": "Tarih ve müsaitliği sitemizden arayın",
+            "target": "/#rezervasyon"
+          }
         ]
       },
       {
@@ -198,6 +313,27 @@
         "paragraphs": [
           "Erken giriş, geç çıkış, oda konumu, yatak düzeni veya diğer özel ihtiyaçlarınızı konaklama öncesinde otelle görüşün. İletilmiş bir talep, otelden teyit alınmadıkça sağlanacağına ilişkin kesin onay sayılmaz.",
           "Güncel telefon ve adres bilgileri konum sayfasında yer alır. Yolculuk gününüzü ve oda ihtiyacınızı konuşurken rezervasyonunuzun tarihlerini hazır bulundurmanız yardımcı olur."
+        ],
+        "id": "ozel-talepler",
+        "links": [
+          {
+            "label": "Otelin adresi, telefonu ve yol tarifi",
+            "target": "/konum-ulasim/"
+          }
+        ]
+      },
+      {
+        "id": "fiyat-musatlik",
+        "heading": "Seçtiğim tarihlerde neden oda veya fiyat çıkmıyor?",
+        "paragraphs": [
+          "Aramada sonuç bulunmaması, o tarih için satışa açık oda veya fiyat olmamasından ya da seçilen misafir bilgilerine uygun seçenek bulunmamasından kaynaklanabilir. Sezon fiyatlarının henüz açılmadığı dönemler de olabilir. Sonuç ekranı tek başına bütün otelin dolu olduğunu göstermez.",
+          "Tarihleri ve misafir bilgilerini yeniden kontrol edin. Farklı bir tarih arayabilir veya otele telefonla ulaşarak konaklama planınızı görüşebilirsiniz."
+        ],
+        "links": [
+          {
+            "label": "Gülplaj Hotel iletişim bilgileri",
+            "target": "/konum-ulasim/"
+          }
         ]
       }
     ]
