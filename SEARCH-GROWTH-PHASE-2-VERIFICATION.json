@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-16",
+  "runtimeCommit": "02d178fc5eff3a43911dc68e9eb26f232fd2e804",
+  "deployment": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/43870672926",
+  "deploymentConclusion": "success",
+  "tests": {"passed": 36, "failed": 0},
+  "livePages": {"count": 6, "allHttp200": true, "allCanonicalsVerified": true, "detailPagesWithContentsNavigation": 5},
+  "directions": {"liveMapsDirectionsLinkVerified": true, "destinationUsesManagedAddress": true},
+  "faq": {"publishedQuestions": 7, "sharedWithHomepage": true, "mobileExpansionVerified": true},
+  "browser": {"desktopViewportWidth": 1280, "desktopDocumentWidth": 1265, "mobileViewportWidth": 390, "mobileDocumentWidth": 375, "roomImagesLoaded": 7, "temporaryViewportReset": true},
+  "google": {
+    "performanceReport": "Processing data; no metrics available",
+    "indexCoverageReport": "Processing data; no aggregate counts available",
+    "roomsInspectionBeforeRequest": "URL unknown to Google; not indexed",
+    "roomsIndexingRequestAccepted": true,
+    "roomsIndexingConfirmed": false,
+    "sitemapStructure": "Same six canonical information pages; not resubmitted this phase",
+    "measuredRankingImprovement": false
+  },
+  "adsStarted": false,
+  "businessCategoriesChanged": false,
+  "bookingOrPaymentBehaviorChanged": false
+}
