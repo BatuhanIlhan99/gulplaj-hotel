@@ -17,7 +17,7 @@ const panels=Object.keys(model.categories).map(category=>{
 }).join('');
 // Re-find the start after count replacements, which may change string length.
 const updatedStart=html.indexOf('<div id="rooms-gallery"'),updatedEnd=html.indexOf('\n    </section>',updatedStart);
-html=html.slice(0,updatedStart)+panels+html.slice(updatedEnd);
+html=html.slice(0,updatedStart)+panels+'<a class="gallery-index-link" href="./fotograflar/">Tüm fotoğrafları açıklamalarıyla inceleyin ↗</a>'+html.slice(updatedEnd);
 html=html.replace(/(<p class="gallery-note">)[\s\S]*?<\/p>/,`$1${content.gallery.length} otel fotoğrafı · tam boy görüntülemek için seçin</p>`);
 const selectors={roomPhoto:'room-photo',bookingPhoto:'reservation-photo',storyPhoto:'story-photo',experiencePhoto:'experience-photo'};
 for(const [key,figure] of Object.entries(selectors)){const photo=content.gallery.find(p=>p.src===content[key]);html=html.replace(new RegExp(`(<figure class="${figure}">)<img[^>]*>`),(_all,prefix)=>prefix+image(photo,true,key==='storyPhoto'?'(max-width: 800px) 90vw, 86vw':key==='bookingPhoto'?'(max-width: 760px) 90vw, 35vw':'(max-width: 800px) 90vw, 50vw'));}

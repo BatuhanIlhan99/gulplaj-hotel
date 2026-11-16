@@ -32,8 +32,8 @@
         "id": "oda-olanaklari",
         "links": [
           {
-            "label": "Oda, balkon ve banyo fotoğrafları",
-            "target": "/#galeri"
+            "label": "Tüm oda, balkon ve otel fotoğrafları",
+            "target": "/fotograflar/"
           }
         ]
       },
@@ -61,6 +61,54 @@
         "links": [
           {
             "label": "Oda ve paket seçimi rehberi",
+            "target": "/erdek-konaklama/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "fotograflar",
+    "label": "Fotoğraflar",
+    "title": "Gülplaj Otel Fotoğrafları | Erdek Oda, Avlu ve Sahil",
+    "description": "Gülplaj Hotel’in Erdek’teki oda, balkon, banyo, avlu ve sahil fotoğraflarını inceleyin. Görselleri tam boy açın, konaklamanızı gerçek otel görüntüleriyle planlayın.",
+    "heading": "Gülplaj’ı fotoğraflarla keşfedin.",
+    "eyebrow": "GÜLPLAJ HOTEL · FOTOĞRAFLAR",
+    "intro": "Odaları, balkonları, banyoları ve otelin sahille buluştuğu alanları bir arada görün. Aşağıdan ilgilendiğiniz bölüme geçebilir, her fotoğrafı özgün çözünürlüğünde açabilirsiniz.",
+    "photoKey": "heroPhoto",
+    "sections": [
+      {
+        "id": "fotograftan-oda-secimine",
+        "heading": "Fotoğraflardan oda seçimine",
+        "paragraphs": [
+          "Bu sayfada otelin farklı oda ve ortak alan görünümleri bulunur. Her fotoğrafın başlığı ve kısa açıklaması, görüntüdeki alanı tanımanıza yardımcı olur. Aynı yatak düzeni, balkon veya manzara bütün odalarda bulunmayabilir.",
+          "Oda seçmeden önce tarihlerinize açık oda tipinin açıklamasını okuyun. Belirli bir manzara, kat veya yatak düzeni istiyorsanız tercihinizi rezervasyon öncesinde otelle teyit edin."
+        ],
+        "links": [
+          {
+            "label": "Oda özellikleri ve konaklama saatleri",
+            "target": "/odalar/"
+          },
+          {
+            "label": "Tarihlerinize uygun oda arayın",
+            "target": "/#rezervasyon"
+          }
+        ]
+      },
+      {
+        "id": "sahil-ve-konum",
+        "heading": "Sahil, avlu ve Erdek’te konum",
+        "paragraphs": [
+          "Sahil ve dış cephe görselleri otelin çevresini, avlu ve ortak alan fotoğrafları ise konaklamanız sırasında karşılaşacağınız farklı alanları gösterir. Fotoğrafı tam boy açarak ayrıntıları daha yakından inceleyebilirsiniz.",
+          "Varışınızı planlamak için güncel adresi ve yol tarifi bağlantısını konum sayfasından açın. Konaklama kapsamındaki hizmetleri ve yemek paketini seçtiğiniz rezervasyon planıyla birlikte değerlendirin."
+        ],
+        "links": [
+          {
+            "label": "Gülplaj Hotel adresi ve yol tarifi",
+            "target": "/konum-ulasim/"
+          },
+          {
+            "label": "Erdek konaklama rehberi",
             "target": "/erdek-konaklama/"
           }
         ]

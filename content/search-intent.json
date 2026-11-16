@@ -2,12 +2,97 @@
   "reviewedAt": "2026-11-16",
   "measurementStatus": "Initial intent mapping; search volumes and rank positions have not been measured.",
   "groups": [
-    {"id":"brand","target":"/","intent":"Otelin resmi sitesini bulma","queries":["gülplaj otel","gülplaj hotel","gülplaj otel erdek","gül plaj otel"],"priority":"high"},
-    {"id":"hotel","target":"/","intent":"Erdek'te otel ve sahil konaklaması seçme","queries":["erdek otelleri","erdek otel","erdek denize sıfır otel","erdek sahil oteli"],"priority":"high"},
-    {"id":"accommodation","target":"/erdek-konaklama/","intent":"Konum, oda ve paket üzerinden konaklama kararı verme","queries":["erdek konaklama","erdek'te nerede kalınır","erdek oteli seçerken","erdek sahilde konaklama"],"priority":"high"},
-    {"id":"rooms","target":"/odalar/","intent":"Oda ve manzara özelliklerini inceleme","queries":["gülplaj otel odaları","gülplaj otel fotoğrafları","erdek deniz manzaralı oda"],"priority":"high"},
-    {"id":"location","target":"/konum-ulasim/","intent":"Doğru adres, telefon ve yol tarifine ulaşma","queries":["gülplaj otel adres","gülplaj otel telefon","gülplaj otel nerede","gülplaj otel ulaşım"],"priority":"high"},
-    {"id":"travel","target":"/erdek-gezi-rehberi/","intent":"Konaklamayla birlikte çevre gezisini planlama","queries":["erdek gezi rehberi","erdek gezilecek yerler","kapıdağ gezi planı"],"priority":"supporting"},
-    {"id":"questions","target":"/sik-sorulan-sorular/","intent":"Konaklama öncesi sorulara yanıt bulma","queries":["gülplaj otel giriş saati","gülplaj otel kahvaltı","gülplaj otel rezervasyon"],"priority":"supporting"}
+    {
+      "id": "brand",
+      "target": "/",
+      "intent": "Otelin resmi sitesini bulma",
+      "queries": [
+        "gülplaj otel",
+        "gülplaj hotel",
+        "gülplaj otel erdek",
+        "gül plaj otel"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "hotel",
+      "target": "/",
+      "intent": "Erdek'te otel ve sahil konaklaması seçme",
+      "queries": [
+        "erdek otelleri",
+        "erdek otel",
+        "erdek denize sıfır otel",
+        "erdek sahil oteli"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "accommodation",
+      "target": "/erdek-konaklama/",
+      "intent": "Konum, oda ve paket üzerinden konaklama kararı verme",
+      "queries": [
+        "erdek konaklama",
+        "erdek'te nerede kalınır",
+        "erdek oteli seçerken",
+        "erdek sahilde konaklama"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "rooms",
+      "target": "/odalar/",
+      "intent": "Oda ve manzara özelliklerini inceleme",
+      "queries": [
+        "gülplaj otel odaları",
+        "erdek deniz manzaralı oda"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "location",
+      "target": "/konum-ulasim/",
+      "intent": "Doğru adres, telefon ve yol tarifine ulaşma",
+      "queries": [
+        "gülplaj otel adres",
+        "gülplaj otel telefon",
+        "gülplaj otel nerede",
+        "gülplaj otel ulaşım"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "travel",
+      "target": "/erdek-gezi-rehberi/",
+      "intent": "Konaklamayla birlikte çevre gezisini planlama",
+      "queries": [
+        "erdek gezi rehberi",
+        "erdek gezilecek yerler",
+        "kapıdağ gezi planı"
+      ],
+      "priority": "supporting"
+    },
+    {
+      "id": "questions",
+      "target": "/sik-sorulan-sorular/",
+      "intent": "Konaklama öncesi sorulara yanıt bulma",
+      "queries": [
+        "gülplaj otel giriş saati",
+        "gülplaj otel kahvaltı",
+        "gülplaj otel rezervasyon"
+      ],
+      "priority": "supporting"
+    },
+    {
+      "id": "photos",
+      "target": "/fotograflar/",
+      "intent": "Gerçek oda, avlu ve sahil görsellerini karşılaştırma",
+      "queries": [
+        "gülplaj otel fotoğrafları",
+        "gülplaj hotel fotoğraflar",
+        "gülplaj otel odaları fotoğraf",
+        "gülplaj otel sahil"
+      ],
+      "priority": "high"
+    }
   ]
 }

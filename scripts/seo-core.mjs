@@ -7,6 +7,8 @@ export const absolute=path=>new URL(path,origin+'/').href;
 export const phoneHref=phone=>{const digits=phone.replace(/\D/g,'');return 'tel:'+(digits.startsWith('0')?'+90'+digits.slice(1):'+'+digits);};
 export const directionsUrl=data=>'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent('Gülplaj Hotel, '+data.address.replace(/\n/g,', '));
 const sourceHosts=new Set(['balikesir.ktb.gov.tr','www.kulturportali.gov.tr','www.balikesirulasim.com.tr']);
+const photoCategories={rooms:'Odalar ve balkonlar',bathrooms:'Banyolar',general:'Avlu ve ortak alanlar',exterior:'Dış cephe ve sahil'};
+export const galleryGroups=data=>Object.entries(photoCategories).map(([key,label])=>({key,label,photos:data.gallery.filter(p=>p.category===key)})).filter(group=>group.photos.length);
 export function validateSeoPages(pages,photoKeys){
   if(!Array.isArray(pages)||!pages.length)throw Error('Missing information pages');
   const slugs=new Set();
@@ -19,7 +21,7 @@ export function validateSeoPages(pages,photoKeys){
   for(const page of pages){
     for(const key of ['title','description','heading','intro','label','eyebrow'])if(!text(page[key]))throw Error('Missing page field: '+key);
     if(!photoKeys.includes(page.photoKey)||!Array.isArray(page.sections)||!page.sections.length)throw Error('Invalid detail page');
-    const ids=new Set(['icerik','page-contents','contact','room-gallery','guest-questions','official-sources','room-summary']);
+    const ids=new Set(['icerik','page-contents','contact','room-gallery','guest-questions','official-sources','room-summary',...Object.keys(photoCategories).map(key=>'photos-'+key)]);
     for(const section of page.sections){
       if(!/^[a-z]+(?:-[a-z]+)*$/.test(section.id)||ids.has(section.id))throw Error('Invalid or duplicate section ID');
       ids.add(section.id);
@@ -70,9 +72,13 @@ export function structuredData(data,page,mapsUrl){
     image:[...new Set(['heroPhoto','roomPhoto','storyPhoto'].map(key=>absolute(imageFor(data,key).original)))],
     checkinTime:data.checkIn+':00',checkoutTime:data.checkOut+':00',hasMap:mapsUrl,
     amenityFeature:['Klima','Özel banyo','Restoran','Wi-Fi'].map(name=>({'@type':'LocationFeatureSpecification',name,value:true}))
-  },{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'Gülplaj Hotel',inLanguage:'tr-TR',publisher:{'@id':origin+'/#hotel'}},
+  },{'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'Gülplaj Hotel',alternateName:['Gülplaj Otel','Gulplaj Hotel'],inLanguage:'tr-TR',publisher:{'@id':origin+'/#hotel'}},
   {'@type':'WebPage','@id':url+'#webpage',url,name:page?.title||homeTitle,description:page?.description||data.metaDescription,inLanguage:'tr-TR',isPartOf:{'@id':origin+'/#website'},about:{'@id':origin+'/#hotel'},primaryImageOfPage:{'@type':'ImageObject',url:absolute(photo.original),width:photo.width,height:photo.height},...(page?{breadcrumb:{'@id':url+'#breadcrumb'}}:{mainEntity:{'@id':origin+'/#hotel'}})}];
   if(page)graph.push({'@type':'BreadcrumbList','@id':url+'#breadcrumb',itemListElement:[{'@type':'ListItem',position:1,name:'Ana sayfa',item:origin+'/'},{'@type':'ListItem',position:2,name:page.label,item:url}]});
+  if(page?.slug==='fotograflar')graph.find(item=>item['@type']==='WebPage').mainEntity={
+    '@type':'ItemList',name:'Gülplaj Hotel fotoğrafları',numberOfItems:data.gallery.length,
+    itemListElement:galleryGroups(data).flatMap(group=>group.photos).map((p,index)=>({'@type':'ListItem',position:index+1,item:{'@type':'ImageObject',contentUrl:absolute(p.original),name:p.title,caption:p.alt,width:p.width,height:p.height}}))
+  };
   return {'@context':'https://schema.org','@graph':graph};
 }
 
@@ -101,9 +107,9 @@ export function applyMetadata(html,data,mapsUrl){
   return html.replace('</head>',()=> '  <!-- SEO:START -->\n  '+metadata(data,null,mapsUrl)+'\n  <!-- SEO:END -->\n</head>');
 }
 
-export function imageHtml(photo,prefix,renditions,{hero=false}={}){
+export function imageHtml(photo,prefix,renditions,{hero=false,sizes='(max-width:760px) 92vw, 60vw'}={}){
   const e=escapeHtml,pair=renditions[photo.src];
-  return `<img src="${prefix}${e(hero?photo.original:photo.src)}"${pair&&photo.src!==photo.original?` srcset="${prefix}${e(photo.src)} ${pair.previewWidth}w, ${prefix}${e(photo.original)} ${pair.originalWidth}w" sizes="(max-width:760px) 92vw, 60vw"`:''} alt="${e(photo.alt)}" width="${photo.width}" height="${photo.height}" ${hero?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
+  return `<img src="${prefix}${e(hero?photo.original:photo.src)}"${pair&&photo.src!==photo.original?` srcset="${prefix}${e(photo.src)} ${pair.previewWidth}w, ${prefix}${e(photo.original)} ${pair.originalWidth}w" sizes="${e(sizes)}"`:''} alt="${e(photo.alt)}" width="${photo.width}" height="${photo.height}" ${hero?'fetchpriority="high"':'loading="lazy"'} decoding="async">`;
 }
 
 export function renderDetailPage(data,page,pages,mapsUrl,renditions){
@@ -115,18 +121,20 @@ export function renderDetailPage(data,page,pages,mapsUrl,renditions){
   const faq=page.slug==='sik-sorulan-sorular'?`<section id="guest-questions" class="guide-section guide-faq"><h2>Konaklamayla ilgili temel bilgiler</h2>${faqHtml(data)}</section>`:'';
   const contact=page.slug==='konum-ulasim'?`<section id="contact" class="guide-section guide-contact"><h2>Gülplaj Hotel iletişim bilgileri</h2><address><strong>Gülplaj Hotel</strong><p>${e(data.address).replace(/\n/g,'<br>')}</p><a href="${e(phoneHref(data.phone))}">${e(data.phone)}</a></address><a class="button" href="${e(directionsUrl(data))}" target="_blank" rel="noopener noreferrer">Haritada yol tarifi alın ↗</a><p class="guide-note">Harita uygulamasında başlangıç noktanızı ve ulaşım biçiminizi seçin.</p></section>`:'';
   const sources=page.sources?`<section id="official-sources" class="guide-section guide-sources"><h2>Resmî kaynaklar ve güncel bilgiler</h2><ul>${page.sources.map(s=>`<li><a href="${e(s.url)}" target="_blank" rel="noopener noreferrer">${e(s.label)} ↗</a></li>`).join('')}</ul></section>`:'';
-  const contents=[...(contact?[{id:'contact',label:'Adres, telefon ve yol tarifi'}]:[]),...(roomSummary?[{id:'room-summary',label:'Oda ve konaklama saatleri'}]:[]),...(roomExtras?[{id:'room-gallery',label:'Gerçek oda fotoğrafları'}]:[]),...(faq?[{id:'guest-questions',label:'Konaklama soruları ve yanıtları'}]:[]),...page.sections.map(s=>({id:s.id,label:s.heading})),...(sources?[{id:'official-sources',label:'Resmî kaynaklar'}]:[])];
+  const groups=page.slug==='fotograflar'?galleryGroups(data):[];
+  const photoGallery=groups.map(group=>`<section id="photos-${group.key}" class="guide-section"><p class="eyebrow">GÜLPLAJ HOTEL · ${group.photos.length} FOTOĞRAF</p><h2>${e(group.label)}</h2><div class="guide-photo-collection">${group.photos.map(p=>`<figure><a href="../${e(p.original)}" target="_blank" rel="noopener noreferrer" aria-label="${e(p.title)}: tam boy fotoğrafı aç">${imageHtml(p,'../',renditions,{sizes:'(max-width:600px) 92vw, (max-width:1000px) 44vw, 28vw'})}</a><figcaption><h3>${e(p.title)}</h3><p>${e(p.alt)}</p><a href="../${e(p.original)}" target="_blank" rel="noopener noreferrer" aria-label="${e(p.title)}: özgün çözünürlükte görüntüle">Tam boy görüntüle <span aria-hidden="true">↗</span></a></figcaption></figure>`).join('')}</div></section>`).join('');
+  const contents=[...(contact?[{id:'contact',label:'Adres, telefon ve yol tarifi'}]:[]),...(roomSummary?[{id:'room-summary',label:'Oda ve konaklama saatleri'}]:[]),...(roomExtras?[{id:'room-gallery',label:'Gerçek oda fotoğrafları'}]:[]),...(faq?[{id:'guest-questions',label:'Konaklama soruları ve yanıtları'}]:[]),...groups.map(g=>({id:'photos-'+g.key,label:g.label+' · '+g.photos.length+' fotoğraf'})),...page.sections.map(s=>({id:s.id,label:s.heading})),...(sources?[{id:'official-sources',label:'Resmî kaynaklar'}]:[])];
   const contentsNav=`<nav id="page-contents" class="guide-contents" aria-label="Bu sayfada"><p class="eyebrow">BU SAYFADA</p><ul>${contents.map(item=>`<li><a href="#${item.id}">${e(item.label)}</a></li>`).join('')}</ul></nav>`;
   return `<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#143b4a">
 ${metadata(data,page,mapsUrl)}
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=3"></head>
-<body class="guide-body"><a class="skip-link" href="#icerik">İçeriğe geç</a>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"></head>
+<body class="guide-body${groups.length?' guide-photos-page':''}"><a class="skip-link" href="#icerik">İçeriğe geç</a>
 <header class="guide-header"><a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><nav aria-label="Ana menü">${nav}</nav><a class="button" href="../#rezervasyon">Rezervasyon</a></header>
 <main id="icerik"><nav class="guide-breadcrumb" aria-label="İçerik yolu"><a href="../">Ana sayfa</a><span aria-hidden="true">/</span><span aria-current="page">${e(page.label)}</span></nav>
 <section class="guide-hero"><div><p class="eyebrow">${e(page.eyebrow)}</p><h1>${e(page.heading)}</h1><p class="guide-intro">${e(page.intro)}</p><a class="text-link" href="../#rezervasyon">Tarih ve müsaitliği inceleyin ↗</a></div><figure>${imageHtml(photo,'../',renditions,{hero:true})}<figcaption>Gülplaj Hotel · Erdek</figcaption></figure></section>
-<div class="guide-layout"><article>${contentsNav}${contact}${roomSummary}${roomExtras}${faq}${sections}${sources}</article><aside class="guide-aside"><p class="eyebrow">KONAKLAMANIZI PLANLAYIN</p><h2>Erdek’te görüşmek üzere.</h2><p>Giriş: <strong>${e(data.checkIn)}</strong><br>Çıkış: <strong>${e(data.checkOut)}</strong></p><p>Tarihlerinize açık oda seçeneklerini ve koşulları rezervasyon bölümünde inceleyebilirsiniz.</p><a class="button" href="../#rezervasyon">Tarihlerinizi seçin</a><a href="${e(phoneHref(data.phone))}">${e(data.phone)}</a></aside></div>
+<div class="guide-layout"><article>${contentsNav}${contact}${roomSummary}${roomExtras}${faq}${photoGallery}${sections}${sources}</article><aside class="guide-aside"><p class="eyebrow">KONAKLAMANIZI PLANLAYIN</p><h2>Erdek’te görüşmek üzere.</h2><p>Giriş: <strong>${e(data.checkIn)}</strong><br>Çıkış: <strong>${e(data.checkOut)}</strong></p><p>Tarihlerinize açık oda seçeneklerini ve koşulları rezervasyon bölümünde inceleyebilirsiniz.</p><a class="button" href="../#rezervasyon">Tarihlerinizi seçin</a><a href="${e(phoneHref(data.phone))}">${e(data.phone)}</a></aside></div>
 <nav class="guide-related" aria-label="Diğer konaklama bilgileri"><h2>Tatilinizin diğer ayrıntıları</h2>${nav}</nav></main>
 <footer class="guide-footer"><a class="wordmark" href="../"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><div><p>${e(data.address).replace(/\n/g,'<br>')}</p><a href="${e(phoneHref(data.phone))}">${e(data.phone)}</a></div><a href="../#rezervasyon">Konaklamanızı planlayın ↗</a></footer>
 <nav class="mobile-contact-bar" aria-label="Hızlı iletişim"><a href="${e(phoneHref(data.phone))}">Oteli ara</a><a href="../#rezervasyon">Tarihlerini seç</a></nav></body></html>\n`;

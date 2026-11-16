@@ -69,7 +69,7 @@ test('Information pages expose working section navigation and contextual next st
 });
 
 test('Editorial validation rejects duplicate anchors, malformed text and unexpected link destinations',()=>{
-  const photoKeys=['roomPhoto','storyPhoto','experiencePhoto','bookingPhoto'];
+  const photoKeys=['roomPhoto','storyPhoto','experiencePhoto','bookingPhoto','heroPhoto'];
   assert.equal(validateSeoPages(pages,photoKeys),pages);
   for(const change of [
     p=>p[0].sections[0].id='room-summary',
@@ -116,6 +116,42 @@ test('Every local public link, fragment, stylesheet and image resolves within di
     }
     for(const [,alt] of html.matchAll(/<img\b[^>]*\balt="([^"]*)"/g))if(file!=='dist/index.html')assert(alt.trim());
   }
+});
+
+test('Photo page renders every managed image with caption, original link and matching structured data and sitemap',()=>{
+  const html=fs.readFileSync('dist/fotograflar/index.html','utf8');
+  const figures=[...html.matchAll(/<figure><a href="([^"]+)"[^>]*>[\s\S]*?<\/figure>/g)];
+  assert.equal(figures.length,data.gallery.length);
+  const graph=blocks(html)[0]['@graph'];
+  const list=graph.find(item=>item['@type']==='WebPage').mainEntity;
+  assert.equal(list.numberOfItems,data.gallery.length);
+  const byUrl=new Map(list.itemListElement.map(entry=>[entry.item.contentUrl,entry.item]));
+  for(const photo of data.gallery){
+    const figure=figures.find(m=>m[1]==='../'+photo.original)?.[0];assert(figure);
+    assert(figure.includes('<h3>'+escapeHtml(photo.title)+'</h3>'));
+    assert(figure.includes('<p>'+escapeHtml(photo.alt)+'</p>'));
+    assert(figure.includes('loading="lazy"'));assert(!figure.includes(' hidden'));
+    assert.equal(byUrl.get(origin+'/'+photo.original).caption,photo.alt);
+  }
+  const xml=fs.readFileSync('dist/sitemap.xml','utf8');
+  const entry=xml.match(/<url><loc>https:\/\/www\.gulplajhotel\.com\/fotograflar\/<\/loc>[\s\S]*?<\/url>/)?.[0];assert(entry);
+  assert.equal([...entry.matchAll(/<image:loc>/g)].length,new Set(data.gallery.map(p=>p.original)).size);
+  assert(main.includes('href="./fotograflar/"'));
+});
+
+test('Managed photo removal and edited captions update the photo page and schema without stale items',()=>{
+  const page=pages.find(p=>p.slug==='fotograflar');
+  const removed=data.gallery.filter(p=>p.category==='bathrooms');
+  const gallery=structuredClone(data.gallery.filter(p=>p.category!=='bathrooms'));
+  gallery[0].title='<img src=x onerror=alert(1)> $&';gallery[0].alt='Yeni açıklama </script> & ayrıntı';
+  const updated={...data,gallery};
+  const html=renderDetailPage(updated,page,pages,mapsUrl,renditions);
+  assert(!html.includes('id="photos-bathrooms"'));assert(!html.includes('href="#photos-bathrooms"'));
+  for(const p of removed)assert(!html.includes(p.original));
+  assert(html.includes(escapeHtml(gallery[0].title)));assert(!html.includes(gallery[0].title));
+  const graph=blocks(html)[0]['@graph'];const list=graph.find(item=>item['@type']==='WebPage').mainEntity;
+  assert.equal(list.numberOfItems,gallery.length);assert.equal(list.itemListElement[0].item.caption,gallery[0].alt);
+  assert.deepEqual(graph.find(item=>item['@type']==='WebSite').alternateName,['Gülplaj Otel','Gulplaj Hotel']);
 });
 
 test('Admin updates reach static HTML, schema and detail pages without JavaScript',()=>{
