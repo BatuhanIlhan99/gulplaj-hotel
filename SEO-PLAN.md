@@ -161,6 +161,22 @@ https://pagespeed.web.dev/analysis/https-www-gulplajhotel-com/i32buojvf5?form_fa
 Doğrudan PageSpeed API denemesi 429 kota cevabı verdi; yukarıdaki skorlar
 API’den değil, başarıyla tamamlanan resmî web raporundan okunmuştur.
 
+Son sürümün yeniden ölçümü (16 Kasım 2026, 13:58 GMT+3):
+https://pagespeed.web.dev/analysis/https-www-gulplajhotel-com/3d2ahdg0u9?form_factor=mobile
+
+Performans 97, erişilebilirlik 100, en iyi uygulamalar 100, teknik SEO 100.
+Görünen metrikler FCP 0,9 sn, LCP 2,0 sn, TBT yaklaşık 100 ms, CLS 0 ve
+Speed Index 3,8 sn. Kontrast uyarıları son ölçümde erişilebilirlik puanını
+100'e taşıdı. Performans verileri tekil laboratuvar ölçümleridir; küçük
+çalıştırma farkları gerçek kullanıcı deneyimi değişikliği olarak yorumlanmaz.
+Gerçek kullanıcı alan verisi hâlâ yok.
+
+Son canlı kod sürümü `5dc157c`; GitHub Actions yayını 43853351024 başarılı.
+28 otomatik test geçti; canlı sayfalar, yönlendirmeler, sitemap ve gerçek
+404 durumu kontrol edildi. Mobil taşma, FAQ açılımı ve HotelRunner arama
+modülünün yüklenmesi tarayıcıda doğrulandı. Kayıtlar SEO-LIVE-VERIFICATION.json,
+SEO-GOOGLE-SETUP.json ve SEO-PERFORMANCE-CHECK.json içindedir.
+
 ## İlk 30 / 60 / 90 gün
 
 **0–30 gün:** Google mülkünü doğrulama, site haritasını gönderme, hedef

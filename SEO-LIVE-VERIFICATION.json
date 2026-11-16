@@ -120,5 +120,24 @@
       "status": 200
     }
   ],
-  "sitemapPageCount": 5
+  "sitemapPageCount": 5,
+  "finalRuntimeCommit": "5dc157c0d4546769374220d57505ade76aeede00",
+  "finalActionsRun": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/43853351024",
+  "finalActionsConclusion": "success",
+  "automatedTestsPassed": 28,
+  "finalRuntimeChecks": {
+    "homepage200": true,
+    "latestStylesVersion2": true,
+    "contrastFixLive": true,
+    "googleOwnershipTagRetained": true,
+    "hotelJsonLdRetained": true,
+    "lazyBookingFrameRetained": true,
+    "officialBookingDestinationRetained": true
+  },
+  "browserChecks": {
+    "mobile390pxNoHorizontalOverflow": true,
+    "faqExpansionWorks": true,
+    "detailPageReservationLinkWorks": true,
+    "hotelRunnerSearchButtonLoaded": true
+  }
 }

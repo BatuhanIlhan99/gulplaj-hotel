@@ -28,5 +28,26 @@
     },
     "realUserFieldDataAvailable": false,
     "limitations": "One laboratory run; these scores do not measure search rank. Contrast fixes were made after this run."
+  },
+  "finalWebReport": {
+    "url": "https://pagespeed.web.dev/analysis/https-www-gulplajhotel-com/3d2ahdg0u9?form_factor=mobile",
+    "testedCommit": "5dc157c0d4546769374220d57505ade76aeede00",
+    "reportedAt": "2026-11-16 13:58 GMT+3",
+    "device": "Mobile emulation, slow 4G",
+    "scores": {
+      "performance": 97,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 100
+    },
+    "displayedMetrics": {
+      "firstContentfulPaint": "0.9 s",
+      "largestContentfulPaint": "2.0 s",
+      "totalBlockingTime": "100 ms (rounded display)",
+      "cumulativeLayoutShift": "0",
+      "speedIndex": "3.8 s"
+    },
+    "realUserFieldDataAvailable": false,
+    "limitations": "One post-fix laboratory run, not a search-rank or real-user measurement."
   }
 }
