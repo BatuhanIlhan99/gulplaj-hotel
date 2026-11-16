@@ -17,9 +17,12 @@ yeni sayfanın adresi 404 dönüyordu. Admin noindex taşıyordu; rezervasyonun
 gömülü arama belgesinde noindex yoktu. Tek istek süreleri Core Web Vitals
 ölçümü değildir. İndeks kapsamı veya mevcut sıralama için kanıt sayılmaz.
 
-Kullanıcıda Google İşletme Profili yönetici erişimi var. Search Console henüz
-kurulu değil. Google oturumu açık olmadığı için doğrulama kullanıcı girişine
-bağlı; erişim olmadan doğrulama veya sitemap gönderimi tamamlandı denmemeli.
+Google İşletme Profili yönetici hesabında oturum açıldı. Search Console için
+`https://www.gulplajhotel.com/` URL ön eki mülkü HTML etiketiyle doğrulandı.
+Sitemap gönderimi başarılı; Google beş sayfa keşfetti. Ana sayfa denetiminde
+URL’nin zaten Google’da mevcut olduğu görüldü ve güncel sürüm için yeniden
+dizine ekleme talebi kabul edildi. Yeni dört sayfanın indekslenmesi henüz
+ayrıca doğrulanmadı. Tüm alan adını kapsayan Domain mülkü kurulmadı.
 
 ## Uygulanan site yapısı
 
@@ -105,8 +108,9 @@ varsayılmadı. Google profilinin şu an yanlış olduğu sonucuna varılmadı.
 6. Site haritasının bulunması veya URL'nin gönderilmesi indekslenme ve
    sıralama garantisi değildir. Google'ın raporuna göre takip et.
 
-Google girişi, şifre ve iki adımlı doğrulama kullanıcı tarafından yapılır.
-Search Console'a giriş yapılmadan gönderim/takip tamamlanmış sayılmaz.
+Google girişi kullanıcı tarafından tamamlandı. Sahiplik doğrulaması ve başarılı
+sitemap gönderimi panelde görüldü; ana sayfanın tekrar taranması talebi kabul
+edildi. Google performans raporları şu an veri işleme durumunda.
 
 ## Ölçüm tanımları
 
@@ -120,10 +124,42 @@ Search Console'a giriş yapılmadan gönderim/takip tamamlanmış sayılmaz.
 | Tamamlanan satış | Doğrulanmış rezervasyon kayıtları; ileride ödeme entegrasyonu | Tıklamayla satışın farklı olduğunu koru |
 | Mobil performans | PageSpeed Insights ve varsa gerçek kullanıcı CWV raporu | Laboratuvar ölçümüyle alan verisini ayır |
 
-Başlangıçta Search Console metrikleri **bilinmiyor**; sıfır diye yazılmaz.
+Başlangıçta Search Console performans metrikleri **bilinmiyor**; sıfır diye
+yazılmaz. Yeni mülkte raporlar veri işleme durumunda.
 Analytics/izleme kimliği verilmedi, çerez veya reklam izleyicisi eklenmedi.
 İleride kullanılacak analitik sistem için izin tercihleri ve veri akışı ayrıca
 ele alınmalı. Şu an kurulmamış olaylar veya satış raporlaması çalışıyor denmez.
+
+## Google İşletme Profili kontrol sonucu
+
+Profildeki telefon ve adres siteyle tutarlı. Web sitesi alanında eski
+`http://www.hotelgulplaj.com/` bulundu; `https://www.gulplajhotel.com/`
+olarak güncelleme gönderildi. Son gözlemde Google incelemesi bekliyordu;
+kamuya açık bağlantının değiştiği henüz doğrulanmadı.
+
+Birincil kategori “Turistik Yer”, ek kategori “Otel”. Kullanıcı kategori
+ayarlarını şimdilik korumamızı istedi; hiçbir kategori değiştirilmedi.
+İleride kullanıcı talep ederse bu madde yeniden değerlendirilebilir.
+
+## Mobil performans ölçümü
+
+İlk resmî PageSpeed Insights web raporu (16 Kasım 2026, 13:49 GMT+3):
+https://pagespeed.web.dev/analysis/https-www-gulplajhotel-com/i32buojvf5?form_factor=mobile
+
+- Performans: 97/100; erişilebilirlik: 97/100.
+- En iyi uygulamalar: 100/100; Lighthouse teknik SEO: 100/100.
+- Görünen laboratuvar metrikleri: FCP 0,9 sn, LCP 2,0 sn, TBT yaklaşık 70 ms,
+  CLS 0, Speed Index 3,9 sn. Emülasyonlu mobil cihaz ve yavaş 4G koşulları.
+- Gerçek kullanıcı alan verisi yok. Bu skorlar Google sıralama ölçümü değildir.
+- Küçük bölüm numaraları, yorum etiketleri ve rezervasyon üst başlığındaki
+  kontrast uyarıları üzerine renkler koyulaştırıldı.
+- Resim aktarımı ve önbellek iyileştirme fırsatları raporda bulunuyor.
+  Fotoğraflar küçültülüp kaliteleri düşürülmedi. GitHub Pages üzerinde özel
+  önbellek başlığı kontrolü olmadığı için sunucu tarafı optimizasyonları
+  barındırma kararıyla birlikte ele alınmalı.
+
+Doğrudan PageSpeed API denemesi 429 kota cevabı verdi; yukarıdaki skorlar
+API’den değil, başarıyla tamamlanan resmî web raporundan okunmuştur.
 
 ## İlk 30 / 60 / 90 gün
 

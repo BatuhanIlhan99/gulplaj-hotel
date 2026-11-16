@@ -1,0 +1,124 @@
+{
+  "observedDate": "2026-11-16",
+  "commit": "496fb38d54821e00ee9adce665e0d2de539292fc",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 53618,
+      "canonical": "https://www.gulplajhotel.com/",
+      "hasJsonLd": true,
+      "hasNoindex": false,
+      "h1Count": 1,
+      "googleVerification": true
+    },
+    {
+      "path": "/odalar/",
+      "status": 200,
+      "bytes": 12918,
+      "canonical": "https://www.gulplajhotel.com/odalar/",
+      "hasJsonLd": true,
+      "hasNoindex": false,
+      "h1Count": 1,
+      "googleVerification": false
+    },
+    {
+      "path": "/konum-ulasim/",
+      "status": 200,
+      "bytes": 10356,
+      "canonical": "https://www.gulplajhotel.com/konum-ulasim/",
+      "hasJsonLd": true,
+      "hasNoindex": false,
+      "h1Count": 1,
+      "googleVerification": false
+    },
+    {
+      "path": "/erdek-gezi-rehberi/",
+      "status": 200,
+      "bytes": 10909,
+      "canonical": "https://www.gulplajhotel.com/erdek-gezi-rehberi/",
+      "hasJsonLd": true,
+      "hasNoindex": false,
+      "h1Count": 1,
+      "googleVerification": false
+    },
+    {
+      "path": "/sik-sorulan-sorular/",
+      "status": 200,
+      "bytes": 10570,
+      "canonical": "https://www.gulplajhotel.com/sik-sorulan-sorular/",
+      "hasJsonLd": true,
+      "hasNoindex": false,
+      "h1Count": 1,
+      "googleVerification": false
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "bytes": 74,
+      "canonical": "",
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 0,
+      "googleVerification": false
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "bytes": 5868,
+      "canonical": "",
+      "hasJsonLd": false,
+      "hasNoindex": false,
+      "h1Count": 0,
+      "googleVerification": false
+    },
+    {
+      "path": "/admin/",
+      "status": 200,
+      "bytes": 13439,
+      "canonical": "",
+      "hasJsonLd": false,
+      "hasNoindex": true,
+      "h1Count": 1,
+      "googleVerification": false
+    },
+    {
+      "path": "/hotelrunner-search.html",
+      "status": 200,
+      "bytes": 1083,
+      "canonical": "",
+      "hasJsonLd": false,
+      "hasNoindex": true,
+      "h1Count": 0,
+      "googleVerification": false
+    },
+    {
+      "path": "/seo-test-olmayan-sayfa/",
+      "status": 404,
+      "bytes": 1337,
+      "canonical": "",
+      "hasJsonLd": false,
+      "hasNoindex": true,
+      "h1Count": 1,
+      "googleVerification": false
+    }
+  ],
+  "redirects": [
+    {
+      "requested": "http://www.gulplajhotel.com/",
+      "final": "https://www.gulplajhotel.com/",
+      "status": 200
+    },
+    {
+      "requested": "https://gulplajhotel.com/",
+      "final": "https://www.gulplajhotel.com/",
+      "status": 200
+    },
+    {
+      "requested": "https://batuhanilhan99.github.io/gulplaj-hotel/",
+      "final": "https://www.gulplajhotel.com/",
+      "status": 200
+    }
+  ],
+  "sitemapPageCount": 5
+}

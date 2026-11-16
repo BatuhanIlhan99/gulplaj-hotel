@@ -23,7 +23,8 @@ const links=pages.map(page=>`<a href="./${page.slug}/">${e(page.label)} <span ar
 const planning=`<!-- PLANNING:START --><section class="planning-links section-pad" aria-labelledby="planning-title"><div><p class="eyebrow">KONAKLAMADAN ÖNCE</p><h2 id="planning-title">Tatilinizin <em>ayrıntıları.</em></h2><p>Odaları tanıyın, yolculuğunuzu planlayın ve Erdek’i keşfedin.</p></div><nav aria-label="Konaklama rehberi">${links}</nav></section><!-- PLANNING:END -->`;
 if(html.includes('<!-- PLANNING:START -->'))html=html.replace(/<!-- PLANNING:START -->[\s\S]*?<!-- PLANNING:END -->/,()=>planning);
 else html=html.replace('  </main>',()=> '    '+planning+'\n  </main>');
-if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=1">\n</head>');
+html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.css?v=2"');
+if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=2">\n</head>');
 fs.writeFileSync('dist/index.html',html);
 for(const page of pages){fs.mkdirSync(path.join('dist',page.slug),{recursive:true});fs.writeFileSync(path.join('dist',page.slug,'index.html'),renderDetailPage(data,page,pages,mapsUrl,renditions));}
 const locations=[{url:origin+'/',images:data.gallery.map(p=>p.original)},...pages.map(page=>({url:absolute(page.slug+'/'),images:page.slug==='odalar'?roomPhotos(data).map(p=>p.original):[data.gallery.find(p=>p.src===data[page.photoKey]).original]}))];

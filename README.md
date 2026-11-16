@@ -2,7 +2,8 @@
 
 Website: https://www.gulplajhotel.com/ (HTTPS enforced; apex redirects to www).
 
-The current website source is in `dist/`. Edit `index.html` for content,
+The current website source is in `dist/`. Edit `site-content.json` for managed
+hotel text and `index.html` for page structure,
 `styles.css` for appearance, and the JavaScript files for calendar, gallery
 and navigation behavior. Original hotel photographs are in `dist/assets/`.
 Mobile-friendly JPEG previews are in `dist/assets/previews/`. Gallery cards

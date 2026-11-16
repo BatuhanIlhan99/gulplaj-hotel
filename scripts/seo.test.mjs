@@ -25,7 +25,8 @@ test('All public pages have unique titles, canonicals, descriptions, H1s and con
     const graph=json[0]['@graph'];
     assert.equal(graph.find(item=>item['@type']==='WebPage').url,url);
     const hotel=graph.find(item=>item['@type']==='Hotel');
-    assert.equal(hotel.telephone,'+902668352307');assert.equal(hotel.address.addressLocality,'Erdek');
+    const sourceDigits=data.phone.replace(/\D/g,'');
+    assert.equal(hotel.telephone,sourceDigits.startsWith('0')?'+90'+sourceDigits.slice(1):'+'+sourceDigits);assert.equal(hotel.address.addressLocality,'Erdek');
     assert(!('aggregateRating' in hotel)&&!('starRating' in hotel)&&!('priceRange' in hotel)&&!('offers' in hotel));
     if(url!==origin+'/')assert.equal(graph.find(item=>item['@type']==='BreadcrumbList').itemListElement[1].item,url);
   }

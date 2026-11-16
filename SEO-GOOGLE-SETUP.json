@@ -1,0 +1,24 @@
+{
+  "observedDate": "2026-11-16",
+  "property": "https://www.gulplajhotel.com/",
+  "propertyType": "URL prefix",
+  "verificationMethod": "HTML meta tag",
+  "ownershipVerified": true,
+  "sitemap": "https://www.gulplajhotel.com/sitemap.xml",
+  "sitemapStatus": "Başarılı",
+  "discoveredPages": 5,
+  "homeIndexStatus": "URL Google’da mevcut (observed before requesting a refresh)",
+  "homeReindexRequest": "Accepted; added to priority crawl queue",
+  "newDetailPageIndexing": "Not yet individually confirmed",
+  "performanceReports": "Processing data; no clicks or impression totals reported",
+  "businessProfile": {
+    "name": "Gülplaj Otel",
+    "addressAndPhoneMatchSite": true,
+    "previousWebsite": "http://www.hotelgulplaj.com/",
+    "requestedWebsite": "https://www.gulplajhotel.com/",
+    "websiteEditStatus": "Pending Google review in last observed state",
+    "primaryCategory": "Turistik Yer",
+    "additionalCategory": "Otel",
+    "categoryChange": "Not made; user explicitly asked to preserve categories"
+  }
+}

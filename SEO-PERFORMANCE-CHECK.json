@@ -1,0 +1,32 @@
+{
+  "observedDate": "2026-11-16",
+  "apiAttempt": {
+    "observedDate": "2026-11-16",
+    "source": "Google PageSpeed Insights API",
+    "status": 429,
+    "reason": "RESOURCE_EXHAUSTED",
+    "measured": false,
+    "note": "The public API did not return a Lighthouse report. No performance or SEO score is asserted."
+  },
+  "webReport": {
+    "url": "https://pagespeed.web.dev/analysis/https-www-gulplajhotel-com/i32buojvf5?form_factor=mobile",
+    "testedCommit": "496fb38d54821e00ee9adce665e0d2de539292fc",
+    "reportedAt": "2026-11-16 13:49 GMT+3",
+    "device": "Mobile emulation, slow 4G, Lighthouse 13.6.0",
+    "scores": {
+      "performance": 97,
+      "accessibility": 97,
+      "bestPractices": 100,
+      "seo": 100
+    },
+    "displayedMetrics": {
+      "firstContentfulPaint": "0.9 s",
+      "largestContentfulPaint": "2.0 s",
+      "totalBlockingTime": "70 ms (rounded display)",
+      "cumulativeLayoutShift": "0",
+      "speedIndex": "3.9 s"
+    },
+    "realUserFieldDataAvailable": false,
+    "limitations": "One laboratory run; these scores do not measure search rank. Contrast fixes were made after this run."
+  }
+}
