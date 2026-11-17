@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-17",
+  "frontendRuntimeCommit": "514fb3dac8eea436f32bdb806c31f9da1da5b6bc",
+  "frontendDeployment": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/44082690282",
+  "frontendDeploymentConclusion": "success",
+  "frontendUrl": "https://www.gulplajhotel.com/admin/#raporlar",
+  "tests": {"passed": 47, "failed": 0},
+  "mobileLayout": {"viewportWidth": 390, "documentWidth": 375, "temporaryViewportReset": true},
+  "database": {"provider": "Cloudflare D1", "name": "gulplaj-reports", "created": true, "migrationsApplied": ["0001_reports.sql", "0002_session_version.sql"], "productionFinancialRecordsImported": false},
+  "backend": {"published": false, "adminPasswordConfigured": false, "reportSecretConfigured": false, "blocker": "Cloudflare Workers Scripts publishing permission still requires user approval; initial generic Workers scope could create D1 but returned No access for script deployment."},
+  "placeholderDeployment": {"attemptBlockedByAutomaticApprovalReview": true, "published": false, "reason": "The dashboard deployment would have published Hello World instead of the prepared reporting code."},
+  "visitorMeasurement": {"enabled": false, "requiresOptIn": true, "pastVisitorCountsAvailable": false},
+  "hotelrunner": {"accountChecked": true, "customAppAvailableOnCurrentPlan": false, "membershipRequirementObserved": true, "paidPlanPurchased": false, "automaticSyncActive": false, "sourceChannelMappingVerified": false},
+  "csvImport": {"implemented": true, "tested": true, "liveBackendReady": false, "personalColumnsDroppedBeforeTransmission": true},
+  "financialDataPubliclyPublished": false,
+  "completionStatus": "Frontend and backend implementation prepared; private database created; live data activation pending Cloudflare permission and owner password setup. Automatic HotelRunner data additionally requires API entitlement."
+}
