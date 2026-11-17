@@ -45,7 +45,8 @@ export async function syncHotelRunner(env){
 async function route(request,env,ctx){
   const url=new URL(request.url),path=url.pathname;
   if(path==='/health'&&request.method==='GET')return {ok:true};
-  if(!env.DB||!env.REPORT_SECRET||!(env.ADMIN_PASSWORD?.length>=16||(env.ADMIN_PASSWORD_SALT&&env.ADMIN_PASSWORD_HASH)))throw new HttpError(503,'Güvenli raporlama kurulumu henüz tamamlanmadı.');
+  if(!env.DB||!env.REPORT_SECRET)throw new HttpError(503,'Güvenli raporlama sunucu bağlantısı henüz tamamlanmadı.');
+  if(!(env.ADMIN_PASSWORD?.length>=16||(env.ADMIN_PASSWORD_SALT&&env.ADMIN_PASSWORD_HASH)))throw new HttpError(503,'Rapor şifresi en az 16 karakter olarak kaydedilmelidir.');
   const origin=request.headers.get('Origin');
   if(origin!==env.SITE_ORIGIN)throw new HttpError(403,'Bu kaynaktan erişim desteklenmiyor.');
   if(request.method==='POST'&&path!=='/v1/logout'&&request.headers.get('Content-Type')?.split(';')[0]!=='application/json')throw new HttpError(415,'JSON isteği gerekiyor.');
