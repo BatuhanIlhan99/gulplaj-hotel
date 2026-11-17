@@ -56,6 +56,9 @@
   }
   async function load(){
     const attempt=generation;$('reports-refresh').disabled=true;error('Raporlar yükleniyor…');
+    lastReport=undefined;$('reports-export').disabled=true;$('reports-quality').textContent='';
+    for(const node of document.querySelectorAll('[data-report-value]'))node.textContent='—';
+    for(const id of ['reports-daily','reports-reservations','reports-channels','reports-paths','reports-referrers'])$(id).replaceChildren();
     try{const query=new URLSearchParams({from:$('reports-from').value,to:$('reports-to').value,channel:$('reports-channel').value,currency:$('reports-currency').value});const result=await request('/v1/report?'+query);if(attempt!==generation)return;render(result);error('');}catch(e){if(attempt===generation)error(e.message);}finally{if(attempt===generation)$('reports-refresh').disabled=false;}
   }
   $('reports-login-form').addEventListener('submit',async event=>{
@@ -66,6 +69,7 @@
   $('reports-lock').addEventListener('click',async()=>{const session=token;lock();if(session&&config.enabled)try{await fetch(endpoint()+'/v1/logout',{method:'POST',headers:{Authorization:'Bearer '+session},credentials:'omit',cache:'no-store',redirect:'error'});}catch{/* Local data was already removed. */}});
   $('reports-refresh').addEventListener('click',load);
   $('reports-filter').addEventListener('submit',event=>{event.preventDefault();load();});
+  for(const id of ['reports-from','reports-to'])$(id).addEventListener('change',()=>{$('reports-period').value='custom';});
   $('reports-period').addEventListener('change',()=>{const now=new Date(),period=$('reports-period').value;let from=new Date(now);if(period==='yesterday'){from.setUTCDate(from.getUTCDate()-1);$('reports-to').value=day(from);}else{$('reports-to').value=today();if(period==='week')from.setUTCDate(from.getUTCDate()-6);if(period==='month')from.setUTCDate(from.getUTCDate()-29);}if(period!=='custom')$('reports-from').value=day(from);});
   $('reports-sync').addEventListener('click',async()=>{$('reports-sync').disabled=true;error('HotelRunner verileri alınıyor…');try{await request('/v1/sync',{method:'POST',data:{}});await load();}catch(e){error(e.message);}finally{$('reports-sync').disabled=false;}});
   $('reports-export').addEventListener('click',()=>{

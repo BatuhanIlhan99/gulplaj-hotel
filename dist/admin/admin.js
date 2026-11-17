@@ -20,7 +20,7 @@
     $('#preview').disabled=!base||busy;$('#publish').disabled=!base||!dirty||busy;$('#confirm-publish').disabled=busy;
     $('#publish').textContent=connected?'Yayımla ↗':'Bağlan ve yayımla ↗';
     $('#connect').hidden=connected||activeView==='reports';$('#logout').hidden=!connected||activeView==='reports';
-    $('#connection-note').hidden=connected||activeView==='reports';$('#draft-status').hidden=activeView==='reports';document.querySelector('.editor-footer').hidden=activeView==='reports';
+    $('#connection-note').hidden=connected||activeView==='reports';$('#draft-status').hidden=activeView==='reports';$('#notice').hidden=activeView==='reports';document.querySelector('.editor-footer').hidden=activeView==='reports';
   }
   function readForm(){if(!draft)return;for(const key of [...Object.keys(window.GulplajContent.limits),'checkIn','checkOut',...window.GulplajContent.photoKeys])draft[key]=form.elements.namedItem(key).value;draft.faq=[...document.querySelectorAll('.faq-item')].map(el=>({question:el.querySelector('[data-question]').value,answer:el.querySelector('[data-answer]').value}));state();}
   function field(label,value,kind,max){const wrapper=document.createElement('label');wrapper.textContent=label;const input=document.createElement(kind==='answer'?'textarea':'input');input.value=value;input.required=true;input.maxLength=max;input.setAttribute('data-'+kind,'');if(kind==='answer')input.rows=3;wrapper.append(input);return wrapper;}
