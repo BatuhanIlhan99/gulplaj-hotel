@@ -1,0 +1,515 @@
+{
+  "checkedAt": "2026-11-17T11:37:08.259Z",
+  "site": "https://www.gulplajhotel.com",
+  "informationPages": 7,
+  "requests": 17,
+  "passed": 98,
+  "failed": 0,
+  "checks": [
+    {
+      "scope": "/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Google ownership verification preserved",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/admin/",
+      "name": "Utility page is reachable and excluded from indexing",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Information navigation rendered in HTML",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-gezi-rehberi/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Information navigation rendered in HTML",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/erdek-konaklama/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Image list matches managed gallery",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Information navigation rendered in HTML",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/fotograflar/",
+      "name": "Visible photo cards match managed gallery",
+      "passed": true
+    },
+    {
+      "scope": "/hotelrunner-search.html",
+      "name": "Utility page is reachable and excluded from indexing",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Information navigation rendered in HTML",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/konum-ulasim/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Information navigation rendered in HTML",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/odalar/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/rezervasyon/",
+      "name": "Utility page is reachable and excluded from indexing",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Address matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Check-in and check-out match published content",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Exactly one H1",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Final address uses canonical HTTPS URL",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Hotel and page structured data resolve",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "HTTP 200",
+      "passed": true,
+      "detail": "200"
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Information navigation rendered in HTML",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "No accidental noindex",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "One matching canonical",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Phone matches published hotel content",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Unique nonempty search description",
+      "passed": true
+    },
+    {
+      "scope": "/sik-sorulan-sorular/",
+      "name": "Unique nonempty title",
+      "passed": true
+    },
+    {
+      "scope": "/site-content.json",
+      "name": "Published managed content is readable",
+      "passed": true
+    },
+    {
+      "scope": "404",
+      "name": "Error page has noindex",
+      "passed": true
+    },
+    {
+      "scope": "404",
+      "name": "Unknown URL returns a real 404",
+      "passed": true,
+      "detail": "404"
+    },
+    {
+      "scope": "http://www.gulplajhotel.com/",
+      "name": "Alternate address redirects to the HTTPS home page",
+      "passed": true,
+      "detail": "https://www.gulplajhotel.com/"
+    },
+    {
+      "scope": "https://batuhanilhan99.github.io/gulplaj-hotel/",
+      "name": "Alternate address redirects to the HTTPS home page",
+      "passed": true,
+      "detail": "https://www.gulplajhotel.com/"
+    },
+    {
+      "scope": "https://gulplajhotel.com/",
+      "name": "Alternate address redirects to the HTTPS home page",
+      "passed": true,
+      "detail": "https://www.gulplajhotel.com/"
+    },
+    {
+      "scope": "robots",
+      "name": "No site-wide robots exclusion",
+      "passed": true
+    },
+    {
+      "scope": "robots",
+      "name": "Robots references canonical sitemap",
+      "passed": true
+    },
+    {
+      "scope": "sitemap",
+      "name": "Exactly the expected canonical information pages",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "HTTP and HTML checks do not prove Google indexing or ranking.",
+    "This audit does not create reservations or test payment transactions."
+  ]
+}
