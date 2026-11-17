@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-17",
+  "runtimeCommit": "0ad740100df03ac7daf1cf6f135b38ac49aee72f",
+  "deployment": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/43887663797",
+  "deploymentConclusion": "success",
+  "testsBeforeDeployment": {"passed": 38, "failed": 0},
+  "liveInformationPages": {"count": 7, "allHttp200OnCompletion": true},
+  "photoPage": {"url": "https://www.gulplajhotel.com/fotograflar/", "managedPhotoCount": 36, "canonicalVerified": true, "liveBrowserCardCount": 36, "completionViewportWidth": 650, "completionDocumentWidth": 634},
+  "sitemap": {"lastSubmitted": "2026-11-16", "submissionAccepted": true, "searchConsoleStatus": "Basarili", "searchConsoleDiscoveredPagesOnCompletion": 7, "resubmittedOnCompletion": false},
+  "indexing": {"inspectionBeforeRequest": "Discovered - currently not indexed", "requestAcceptedOn": "2026-11-17", "photoPageIndexingRequestAccepted": true, "photoPageIndexingConfirmed": false},
+  "googleBusinessWebsite": {"publicButtonTargetVerifiedOn": "2026-11-16", "target": "https://www.gulplajhotel.com/", "categoriesChanged": false},
+  "rankingImprovementMeasured": false,
+  "adsStarted": false,
+  "bookingAndPaymentBehaviorChanged": false
+}
