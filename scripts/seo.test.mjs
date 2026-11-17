@@ -64,7 +64,8 @@ test('Information pages expose working section navigation and contextual next st
       assert(html.includes(`id="${section.id}"`));
       for(const link of section.links||[])assert(html.includes(`href="..${link.target}"`));
     }
-    assert(!html.includes('<script src='),'Information navigation must work without client scripts');
+    const sources=[...html.matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
+    assert(sources.every(src=>/^\.\.\/(report-config|visitor-metrics)\.js\?v=[a-f0-9]+$/.test(src)),'Information pages only add optional measurement scripts; navigation remains in HTML');
   }
 });
 

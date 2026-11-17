@@ -49,6 +49,7 @@
       if (!external) return;
       // A loaded provider document is not a completed reservation. Only the
       // provider's final confirmation and reference number establish that.
+      if (!bookingView) window.dispatchEvent(new Event('gulplaj:booking-open'));
       bookingView = true;
       layout.classList.add('is-booking');
       section.classList.add('booking-active');

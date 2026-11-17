@@ -1,3 +1,7 @@
 .sites-runtime/
 .env
 .env.*
+.report-runtime/
+.wrangler/
+reporting/.wrangler/
+reporting/.dev.vars

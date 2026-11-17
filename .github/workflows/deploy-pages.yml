@@ -37,6 +37,8 @@ jobs:
         run: node --test scripts/admin.test.mjs
       - name: Verify security protections and public files
         run: node --test scripts/security.test.mjs
+      - name: Verify private reporting and consent safeguards
+        run: node --test scripts/reporting.test.mjs scripts/reporting-ui.test.mjs
       - name: Verify SEO pages and structured data
         run: node --test scripts/seo.test.mjs
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5

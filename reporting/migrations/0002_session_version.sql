@@ -1,0 +1,1 @@
+ALTER TABLE sessions ADD COLUMN auth_version TEXT NOT NULL DEFAULT '';

@@ -1,16 +1,17 @@
 (()=>{
   'use strict';
   const $=s=>document.querySelector(s),form=$('#editor');
-  const views={overview:['Genel bakış','Her şey bir arada.','Sitenizi güncelleyin, misafirlerinize güncel bilgiler sunun.'],content:['Site içerikleri','Hikâyenizi anlatın.','Otelinizin metinlerini düzenleyin; son hâlini önizleyin.'],photos:['Fotoğraflar','Gülplaj’ı en güzel hâliyle gösterin.','Yeni fotoğraf ekleyin, kategorisini seçin ve galerinizi düzenleyin.'],contact:['İletişim & saatler','Doğru bilgi, kolay iletişim.','Konuklarınızın size ulaşmasını kolaylaştırın.'],faq:['Sık sorulan sorular','Sorulara yerinde yanıtlar.','Konaklamadan önce merak edilenleri açıklayın.'],bookings:['Rezervasyonlar','Konaklamaları yönetin.','Rezervasyon işlemleriniz için HotelRunner’a geçin.']};
+  const views={reports:['Raporlar & finans','Otelinizin rakamları.','Ziyaret, rezervasyon ve tutarları tek bir güvenli ekrandan izleyin.'],overview:['Genel bakış','Her şey bir arada.','Sitenizi güncelleyin, misafirlerinize güncel bilgiler sunun.'],content:['Site içerikleri','Hikâyenizi anlatın.','Otelinizin metinlerini düzenleyin; son hâlini önizleyin.'],photos:['Fotoğraflar','Gülplaj’ı en güzel hâliyle gösterin.','Yeni fotoğraf ekleyin, kategorisini seçin ve galerinizi düzenleyin.'],contact:['İletişim & saatler','Doğru bilgi, kolay iletişim.','Konuklarınızın size ulaşmasını kolaylaştırın.'],faq:['Sık sorulan sorular','Sorulara yerinde yanıtlar.','Konaklamadan önce merak edilenleri açıklayın.'],bookings:['Rezervasyonlar','Konaklamaları yönetin.','Rezervasyon işlemleriniz için HotelRunner’a geçin.']};
   const uploads=new Map(),removed=[];let removeTarget,head;
-  let catalog=[],base,draft,sha,client=window.GulplajGitHub.create(),connected=false,busy=false,dirty=false,pollTimer,expectedCommit;
+  let catalog=[],base,draft,sha,client=window.GulplajGitHub.create(),connected=false,busy=false,dirty=false,pollTimer,expectedCommit,activeView='overview';
   const clone=value=>JSON.parse(JSON.stringify(value));
   let pendingLogin,loginAttempt=0;
   function cancelLogin(){loginAttempt++;pendingLogin?.logout();pendingLogin=undefined;$('#token').value='';$('#login-submit').disabled=false;}
   const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
   function notify(text,error=false){$('#notice').textContent=text;$('#notice').classList.toggle('error',error);}
-  function switchView(view){if(!views[view])return;document.querySelectorAll('[data-panel]').forEach(el=>{el.hidden=el.dataset.panel!==view;});document.querySelectorAll('.sidebar [data-view]').forEach(el=>{el.classList.toggle('active',el.dataset.view===view);if(el.dataset.view===view)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});const [label,title,description]=views[view];$('#breadcrumb').textContent=label;$('#page-title').textContent=title;$('#page-subtitle').textContent=description;}
+  function switchView(view){if(!views[view])return;activeView=view;window.history?.replaceState(null,'',view==='reports'?'#raporlar':window.location.pathname);document.querySelectorAll('[data-panel]').forEach(el=>{el.hidden=el.dataset.panel!==view;});document.querySelectorAll('.sidebar [data-view]').forEach(el=>{el.classList.toggle('active',el.dataset.view===view);if(el.dataset.view===view)el.setAttribute('aria-current','page');else el.removeAttribute('aria-current');});const [label,title,description]=views[view];$('#breadcrumb').textContent=label;$('#page-title').textContent=title;$('#page-subtitle').textContent=description;state();}
   document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>switchView(button.dataset.view)));
+  if(window.location?.hash==='#raporlar')switchView('reports');
   document.querySelectorAll('[data-close]').forEach(button=>button.addEventListener('click',()=>$('#'+button.dataset.close).close()));
   function state(){
     dirty=Boolean(base&&!same(draft,base));
@@ -18,8 +19,8 @@
     $('#save-label').textContent=busy?'Yayın isteği gönderiliyor…':dirty?'Taslağınız bu sekmede. Henüz yayımlanmadı.':'Değişikliklerinizi önizleyin.';
     $('#preview').disabled=!base||busy;$('#publish').disabled=!base||!dirty||busy;$('#confirm-publish').disabled=busy;
     $('#publish').textContent=connected?'Yayımla ↗':'Bağlan ve yayımla ↗';
-    $('#connect').hidden=connected;$('#logout').hidden=!connected;
-    $('#connection-note').hidden=connected;
+    $('#connect').hidden=connected||activeView==='reports';$('#logout').hidden=!connected||activeView==='reports';
+    $('#connection-note').hidden=connected||activeView==='reports';$('#draft-status').hidden=activeView==='reports';document.querySelector('.editor-footer').hidden=activeView==='reports';
   }
   function readForm(){if(!draft)return;for(const key of [...Object.keys(window.GulplajContent.limits),'checkIn','checkOut',...window.GulplajContent.photoKeys])draft[key]=form.elements.namedItem(key).value;draft.faq=[...document.querySelectorAll('.faq-item')].map(el=>({question:el.querySelector('[data-question]').value,answer:el.querySelector('[data-answer]').value}));state();}
   function field(label,value,kind,max){const wrapper=document.createElement('label');wrapper.textContent=label;const input=document.createElement(kind==='answer'?'textarea':'input');input.value=value;input.required=true;input.maxLength=max;input.setAttribute('data-'+kind,'');if(kind==='answer')input.rows=3;wrapper.append(input);return wrapper;}

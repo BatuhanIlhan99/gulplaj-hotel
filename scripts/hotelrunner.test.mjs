@@ -14,16 +14,16 @@ function mount(overrides = {},preview=false) {
   const layout={classList:{add:value=>classes.add(value),remove:value=>classes.delete(value)},scrollIntoView(){}};
   const section={classList:{add:value=>classes.add(value),remove:value=>classes.delete(value)}};
   const shell={open:true,classList:{add:value=>classes.add(value),remove:value=>classes.delete(value)},close(){this.open=false;},show(){this.open=true;},showModal(){this.open=true;},addEventListener(){}};
-  const timers = [];
+  const timers = [],measurements=[];
   let listener;
   const context = {
-    URL, location:{href:'https://www.gulplajhotel.com/'+(preview?'?admin-preview=1':''),origin:'https://www.gulplajhotel.com'},
+    URL,Event, location:{href:'https://www.gulplajhotel.com/'+(preview?'?admin-preview=1':''),origin:'https://www.gulplajhotel.com'},
     document:{getElementById:id=>({'hotelrunner-frame':frame,'hotelrunner-status':status,'provider-booking':link,'booking-back':back,'booking-card-title':heading,'booking-card-description':description,'rezervasyon':section,'booking-shell':shell}[id]),querySelector:()=>layout},
-    window:{GULPLAJ_BOOKING_CONFIG:{provider:'hotelrunner',bookingUrl:'https://gulplaj-hotel.hotelrunner.com/bv3?locale=tr&currency=TRY',widgetPage:'./hotelrunner-search.html',...overrides},addEventListener:(_type,fn)=>{listener=fn;}},
+    window:{GULPLAJ_BOOKING_CONFIG:{provider:'hotelrunner',bookingUrl:'https://gulplaj-hotel.hotelrunner.com/bv3?locale=tr&currency=TRY',widgetPage:'./hotelrunner-search.html',...overrides},addEventListener:(_type,fn)=>{listener=fn;},dispatchEvent:event=>measurements.push(event.type)},
     setTimeout:fn=>timers.push(fn)
   };
   vm.runInNewContext(bridge, context);
-  return {frame,status,link,timers,back,heading,description,classes,load:()=>frameEvents.load(),reset:()=>backEvents.click(),send:message=>listener?.({source:frame.contentWindow,origin:context.location.origin,data:message}),raw:event=>listener?.(event)};
+  return {frame,status,link,timers,back,heading,description,classes,measurements,load:()=>frameEvents.load(),reset:()=>backEvents.click(),send:message=>listener?.({source:frame.contentWindow,origin:context.location.origin,data:message}),raw:event=>listener?.(event)};
 }
 test('Loads the official search and keeps the fallback on our own website',()=>{
   const app=mount();
@@ -37,6 +37,7 @@ test('Loads the official search and keeps the fallback on our own website',()=>{
 test('Provider navigation expands the existing frame without claiming confirmation and reset restores search',()=>{
   const app=mount();app.load();assert.equal(app.classes.has('is-booking'),false);
   app.frame.contentDocument=null;app.load();
+  app.load();assert.deepEqual(app.measurements,['gulplaj:booking-open'],'An engine opening is measured once, never as a completed reservation');
   assert.equal(app.classes.has('is-booking'),true);assert.equal(app.classes.has('is-expanded'),true);assert.equal(app.frame.style.height,'100%');assert.equal(app.back.hidden,false);
   assert(!/onaylandı|kesinleşti/i.test(app.heading.textContent+' '+app.description.textContent));
   app.send({type:'gulplaj:hotelrunner',state:'ready',height:195});assert.equal(app.frame.style.height,'100%','Stale search messages must not shrink the checkout');

@@ -1,0 +1,11 @@
+{
+  "name": "gulplaj-reports",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-17",
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": {"enabled": false},
+  "vars": {"SITE_ORIGIN": "https://www.gulplajhotel.com"},
+  "triggers": {"crons": ["*/15 * * * *"]},
+  "d1_databases": [{"binding": "DB", "database_name": "gulplaj-reports", "database_id": "58882931-f6e3-4d40-8523-830e8d200add", "migrations_dir": "migrations"}]
+}
