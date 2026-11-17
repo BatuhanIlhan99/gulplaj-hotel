@@ -1,7 +1,7 @@
 {
   "checkedAt": "2026-11-17",
-  "frontendRuntimeCommit": "514fb3dac8eea436f32bdb806c31f9da1da5b6bc",
-  "frontendDeployment": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/44082690282",
+  "frontendRuntimeCommit": "0e4fa5f89497fbc244f702442be61aa8a29044d7",
+  "frontendDeployment": "https://github.com/BatuhanIlhan99/gulplaj-hotel/actions/runs/44107369267",
   "frontendDeploymentConclusion": "success",
   "frontendUrl": "https://www.gulplajhotel.com/admin/#raporlar",
   "tests": {
