@@ -86,15 +86,6 @@
       "category": "rooms"
     },
     {
-      "src": "assets/previews/rooms/rooms-bedroom-jolly-24.jpg",
-      "original": "assets/rooms/rooms-bedroom-jolly-24.jpg",
-      "alt": "Balkon ve deniz manzaralı yatak bölümü.",
-      "title": "Yatak Alanı",
-      "width": 4032,
-      "height": 3024,
-      "category": "rooms"
-    },
-    {
       "src": "assets/previews/rooms/room-bed-06.jpg",
       "original": "assets/rooms/room-bed-06.jpg",
       "alt": "Yatak üzerindeki havlular ve pencere önü.",
@@ -110,15 +101,6 @@
       "title": "Deniz Manzaralı Balkon",
       "width": 4032,
       "height": 3024,
-      "category": "rooms"
-    },
-    {
-      "src": "assets/previews/rooms/rooms-balcony-jolly-28.jpg",
-      "original": "assets/rooms/rooms-balcony-jolly-28.jpg",
-      "alt": "Deniz manzaralı balkonda hasır sandalyeler.",
-      "title": "Balkon Manzarası",
-      "width": 3024,
-      "height": 4032,
       "category": "rooms"
     },
     {

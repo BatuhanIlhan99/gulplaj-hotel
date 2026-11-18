@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {renderBookingPage} from './booking-page.mjs';
+import {photoViewerMarkup} from './photo-viewer.mjs';
 import {prepareReportConfig,reportConnect,metricsHead} from './report-config.mjs';
 import {createRequire} from 'node:module';
 import {origin,policy,escapeHtml as e,absolute,applyMetadata,renderStaticContent,renderDetailPage,roomPhotos,validateSeoPages,guestAssistantHead,guestAssistant} from './seo-core.mjs';
@@ -26,6 +27,7 @@ else html=html.replace('  </main>',()=> '    '+planning+'\n  </main>');
 html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.css?v=4"');
 if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=4">\n</head>');
 html=html.replace('</body>',()=>`<!-- ASSISTANT:BODY -->${guestAssistant(data)}<!-- ASSISTANT:END -->\n</body>`);
+html=html.replace(/<dialog id="photo-viewer"[\s\S]*?<\/dialog>/,()=>photoViewerMarkup);
 fs.writeFileSync('dist/index.html',html);
 for(const page of pages){fs.mkdirSync(path.join('dist',page.slug),{recursive:true});fs.writeFileSync(path.join('dist',page.slug,'index.html'),renderDetailPage(data,page,pages,mapsUrl,renditions));}
 fs.mkdirSync('dist/rezervasyon',{recursive:true});fs.writeFileSync('dist/rezervasyon/index.html',renderBookingPage(data));
