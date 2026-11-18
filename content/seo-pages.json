@@ -40,7 +40,7 @@
       {
         "heading": "Konaklama paketini birlikte değerlendirin",
         "paragraphs": [
-          "Oda fiyatını değerlendirirken yalnızca gece tutarını değil, seçtiğiniz tarihler için toplam konaklama bedelini ve paketin kapsamını inceleyin. Kahvaltı ve diğer yemek hizmetleri seçilen pakete göre değişebilir.",
+          "Oda Kahvaltı paketine kahvaltı dahildir. Yarım Pansiyon paketine kahvaltı ve akşam yemeği dahildir. Teklif alırken seçtiğiniz paketin toplam bedelini sorun.",
           "Ödeme koşulları, iptal veya değişiklik hakkı ve varsa ek hizmet ücretleri seçilen rezervasyon seçeneğinde belirtilir. Güncel fiyat ve müsaitlik için oteli arayın."
         ],
         "id": "konaklama-paketi",
@@ -178,7 +178,7 @@
       {
         "heading": "Konaklama paketinin toplam kapsamına bakın",
         "paragraphs": [
-          "Erdek’te otel seçeneklerini değerlendirirken yemek kapsamını ve toplam konaklama bedelini birlikte karşılaştırın. Kahvaltı ve diğer yemek hizmetleri seçilen pakete göre değişebilir. Aynı tarih için sunulan iki seçeneğin yemek, ödeme veya iptal koşulları farklı olabilir.",
+          "Oda Kahvaltı paketine kahvaltı dahildir. Yarım Pansiyon paketine kahvaltı ve akşam yemeği dahildir. Teklif alırken toplam konaklama bedelini ve seçtiğiniz paketi kontrol edin.",
           "Gülplaj Hotel’de rezervasyon öncesinde toplam tutarı, yemek kapsamını ve iptal koşullarını otel ekibinden öğrenebilirsiniz."
         ],
         "id": "paket-kapsami"

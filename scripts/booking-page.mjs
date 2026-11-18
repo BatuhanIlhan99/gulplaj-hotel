@@ -21,7 +21,7 @@ export function renderBookingPage(data){
     <dl>
       <div><dt>Giriş ve çıkış</dt><dd>Odalara giriş ${escapeHtml(data.checkIn)} itibarıyla, çıkış en geç ${escapeHtml(data.checkOut)}. Erken giriş ve geç çıkış için otel müsaitliği önceden teyit eder.</dd></div>
       <div><dt>Çocuk tarifesi</dt><dd>${childPricing}</dd></div>
-      <div><dt>Kahvaltı ve konaklama paketi</dt><dd>Kahvaltı ve yemek hizmetleri konaklama paketine göre değişebilir. Teklif alırken fiyata nelerin dahil olduğunu teyit edin.</dd></div>
+      <div><dt>Konaklama ve yemek paketleri</dt><dd><strong>Oda Kahvaltı:</strong> Kahvaltı dahildir.<br><strong>Yarım Pansiyon:</strong> Kahvaltı ve akşam yemeği dahildir.</dd></div>
       <div><dt>Kapora ve ödeme</dt><dd>Rezervasyonu kesinleştirmeden önce toplam tutarı, kapora gerekip gerekmediğini ve geçerli ödeme yöntemlerini otel ekibiyle teyit edin.</dd></div>
       <div><dt>İptal ve tarih değişikliği</dt><dd>Süre, varsa ücret ve iade koşulları rezervasyon planına bağlıdır. İşlem yapmadan önce rezervasyon onayınızdaki koşulları kontrol edin.</dd></div>
     </dl>
