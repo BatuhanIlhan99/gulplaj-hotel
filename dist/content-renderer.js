@@ -18,8 +18,14 @@
     document.querySelectorAll('.intro-copy>p')[1].textContent=d.aboutSecond;
     $('.room-copy h3').textContent=d.roomTitle;$('.room-copy>p').textContent=d.roomDescription;
     $('.address').replaceChildren(...d.address.split('\n').flatMap((line,i)=>i?[document.createElement('br'),document.createTextNode(line)]:[document.createTextNode(line)]));
-    const digits=d.phone.replace(/\D/g,'');const tel=digits.startsWith('0')?'+90'+digits.slice(1):'+'+digits;
-    document.querySelectorAll('a[href^="tel:"]').forEach(a=>{a.href='tel:'+tel;if(a.closest('.reservation-contact'))a.textContent='Bizi arayın · '+d.phone;else if(!a.closest('.mobile-contact-bar'))a.textContent=d.phone;});
+    document.querySelectorAll('a[href^="tel:"], a[data-phone]').forEach(link=>{
+      const phone=d[link.dataset.phone||'phone'];
+      link.hidden=!phone;
+      if(!phone){link.removeAttribute('href');return;}
+      const digits=phone.replace(/\D/g,'');
+      link.href='tel:'+(digits.startsWith('0')?'+90'+digits.slice(1):'+'+digits);
+      if(!link.closest('.mobile-contact-bar'))link.textContent=phone;
+    });
     const hours=document.querySelectorAll('.hotel-hours strong');hours[0].textContent=d.checkIn.replace(':','.')+'’ten itibaren';hours[1].textContent='En geç '+d.checkOut.replace(':','.');
     heading('#booking-title',d.bookingTitle,d.bookingAccent);$('.reservation-heading>p:last-child').textContent=d.bookingIntro;
     for(const [key,selector] of [['heroPhoto','.hero-image'],['roomPhoto','.room-photo img'],['bookingPhoto','.reservation-photo img'],['storyPhoto','.story-photo img'],['experiencePhoto','.experience-photo img']]){

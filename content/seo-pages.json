@@ -13,12 +13,12 @@
         "heading": "Odanızı seçerken",
         "paragraphs": [
           "Deniz manzarası sizin için öncelikliyse rezervasyon sırasında seçtiğiniz odanın özelliklerini kontrol edin. Galeride farklı odaları ve alanları görebilir, manzara ve yerleşim tercihlerinizi otelle paylaşabilirsiniz.",
-          "Tarih ve misafir bilgilerinizi ana sayfadaki rezervasyon bölümünde seçerek o tarihe açık seçeneklere ulaşabilirsiniz. Oda adı, kişi kapasitesi ve varsa çocuk yaşına ilişkin koşulları satın alma adımından önce okuyun."
+          "Giriş ve çıkış tarihlerinizi, yetişkin sayısını ve varsa çocukların yaşlarını telefonla paylaşın. Otel ekibi size uygun oda seçeneklerini ve koşullarını iletir."
         ],
         "id": "oda-secimi",
         "links": [
           {
-            "label": "Tarihlerinize açık odaları inceleyin",
+            "label": "Rezervasyon ve iletişim",
             "target": "/#rezervasyon"
           }
         ]
@@ -41,7 +41,7 @@
         "heading": "Konaklama paketini birlikte değerlendirin",
         "paragraphs": [
           "Oda fiyatını değerlendirirken yalnızca gece tutarını değil, seçtiğiniz tarihler için toplam konaklama bedelini ve paketin kapsamını inceleyin. Kahvaltı ve diğer yemek hizmetleri seçilen pakete göre değişebilir.",
-          "Ödeme koşulları, iptal veya değişiklik hakkı ve varsa ek hizmet ücretleri seçilen rezervasyon seçeneğinde belirtilir. Güncel fiyat ve müsaitlik için konaklama tarihlerinizi seçin."
+          "Ödeme koşulları, iptal veya değişiklik hakkı ve varsa ek hizmet ücretleri seçilen rezervasyon seçeneğinde belirtilir. Güncel fiyat ve müsaitlik için oteli arayın."
         ],
         "id": "konaklama-paketi",
         "links": [
@@ -90,7 +90,7 @@
             "target": "/odalar/"
           },
           {
-            "label": "Tarihlerinize uygun oda arayın",
+            "label": "Rezervasyon ve iletişim",
             "target": "/#rezervasyon"
           }
         ]
@@ -164,7 +164,7 @@
       {
         "heading": "Birlikte seyahat ettiğiniz kişilere uygun oda seçin",
         "paragraphs": [
-          "Oda seçerken yetişkin sayısını, çocukların yaşlarını ve ihtiyacınız olan oda sayısını birlikte değerlendirin. Rezervasyon aramasındaki kişi bilgileriyle gerçekten konaklayacak kişilerin bilgilerinin uyuşması, doğru oda seçeneklerini ve koşulları görmenizi sağlar.",
+          "Rezervasyon için aradığınızda yetişkin sayısını, çocukların yaşlarını ve ihtiyaç duyduğunuz oda sayısını paylaşın.",
           "Aynı fotoğraftaki yatak düzeninin bütün odalarda bulunacağını varsaymak yerine, seçtiğiniz oda tipinin açıklamasını okuyun. Birden fazla oda istiyorsanız odaların yakınlığı gibi tercihlerinizi önceden iletin; tesisin bu talebi karşılayıp karşılayamayacağını teyit edin."
         ],
         "id": "misafirler-ve-oda",
@@ -179,20 +179,20 @@
         "heading": "Konaklama paketinin toplam kapsamına bakın",
         "paragraphs": [
           "Erdek’te otel seçeneklerini değerlendirirken yemek kapsamını ve toplam konaklama bedelini birlikte karşılaştırın. Kahvaltı ve diğer yemek hizmetleri seçilen pakete göre değişebilir. Aynı tarih için sunulan iki seçeneğin yemek, ödeme veya iptal koşulları farklı olabilir.",
-          "Gülplaj Hotel’de rezervasyon öncesinde seçtiğiniz oda ve plana ait toplam tutarı, yemek kapsamını ve iptal koşullarını ekranda inceleyebilirsiniz. Özel hizmet veya ek ihtiyaçlarınız varsa bunların kapsamını ve varsa ücretini otelle ayrıca görüşün."
+          "Gülplaj Hotel’de rezervasyon öncesinde toplam tutarı, yemek kapsamını ve iptal koşullarını otel ekibinden öğrenebilirsiniz."
         ],
         "id": "paket-kapsami"
       },
       {
-        "heading": "Rezervasyonunuzu bu sitede tamamlayın",
+        "heading": "Rezervasyon için oteli arayın",
         "paragraphs": [
-          "Tarih ve misafir bilgilerinizi rezervasyon bölümünde seçtiğinizde oda seçenekleri yine bu sitenin içinde açılır. Size uygun odayı ve planı seçip misafir bilgilerinizi girerek rezervasyon adımlarını takip edebilirsiniz.",
-          "Rezervasyonunuzun kesinleştiğini sistemin onayından ve rezervasyon numaranızdan kontrol edin. Seçtiğiniz tarihlerde sonuç çıkmazsa başka tarihleri değerlendirebilir veya oteli arayabilirsiniz. Ödeme ve değişiklik koşullarını son onaydan önce okuyun."
+          "Rezervasyon bölümündeki telefon numaralarından otel ekibine ulaşabilirsiniz. Giriş ve çıkış tarihlerinizi ve misafir sayınızı paylaşarak müsait oda seçeneklerini öğrenin.",
+          "Rezervasyonu kesinleştirmeden önce toplam fiyatı, ödeme ve iptal koşullarını otelle teyit edin."
         ],
         "id": "siteden-rezervasyon",
         "links": [
           {
-            "label": "Sitemizden tarih ve müsaitlik arayın",
+            "label": "Rezervasyon ve iletişim",
             "target": "/#rezervasyon"
           }
         ]
@@ -339,19 +339,19 @@
     "description": "Gülplaj Hotel için giriş-çıkış, yemek paketleri, oda fotoğrafları ve rezervasyon soruları. Erdek tatilinizi planlamadan önce temel bilgileri inceleyin.",
     "heading": "Tatil öncesi, aklınızdaki sorular.",
     "eyebrow": "GÜLPLAJ HOTEL · KONAKLAMADAN ÖNCE",
-    "intro": "Konaklamanıza karar vermeden önce temel bilgileri bir arada bulabilirsiniz. Tarihinize özel fiyat, oda müsaitliği, iptal koşulu ve özel talepler için rezervasyon seçeneğini inceleyin veya otelle görüşün.",
+    "intro": "Konaklamanıza karar vermeden önce temel bilgileri bir arada bulabilirsiniz. Tarihinize özel fiyat, oda müsaitliği, iptal koşulu ve özel talepler için otel ekibini arayın.",
     "photoKey": "bookingPhoto",
     "sections": [
       {
         "heading": "Rezervasyon öncesi neleri kontrol etmeliyim?",
         "paragraphs": [
-          "Giriş ve çıkış tarihleri, toplam gece sayısı ve tüm misafirlerin bilgileri rezervasyonunuzla aynı olmalıdır. Çocukla seyahat ediyorsanız yaş bilgisini doğru girin; oda kapasitesi ve koşullar seçtiğiniz seçeneğe göre değerlendirilir.",
+          "Giriş ve çıkış tarihlerinizi, gece sayısını ve birlikte konaklayacak misafirleri telefon görüşmesinden önce belirleyin. Çocukla seyahat ediyorsanız yaş bilgilerini de paylaşın.",
           "Toplam bedeli, para birimini, yemek kapsamını, ödeme ve iptal koşullarını son adımdan önce okuyun. Tanıtım sayfaları belirli bir tarihte fiyat veya müsaitlik garantisi vermez. Rezervasyonunuzun kesinleştiğini ilgili onay üzerinden kontrol edin."
         ],
         "id": "rezervasyon-kontrolu",
         "links": [
           {
-            "label": "Tarih ve müsaitliği sitemizden arayın",
+            "label": "Rezervasyon ve iletişim",
             "target": "/#rezervasyon"
           }
         ]
@@ -372,10 +372,9 @@
       },
       {
         "id": "fiyat-musatlik",
-        "heading": "Seçtiğim tarihlerde neden oda veya fiyat çıkmıyor?",
+        "heading": "Oda müsaitliğini ve fiyatı nasıl öğrenebilirim?",
         "paragraphs": [
-          "Aramada sonuç bulunmaması, o tarih için satışa açık oda veya fiyat olmamasından ya da seçilen misafir bilgilerine uygun seçenek bulunmamasından kaynaklanabilir. Sezon fiyatlarının henüz açılmadığı dönemler de olabilir. Sonuç ekranı tek başına bütün otelin dolu olduğunu göstermez.",
-          "Tarihleri ve misafir bilgilerini yeniden kontrol edin. Farklı bir tarih arayabilir veya otele telefonla ulaşarak konaklama planınızı görüşebilirsiniz."
+          "Giriş ve çıkış tarihlerinizi ve kaç kişi konaklayacağınızı otel ekibine telefonla iletin. Size uygun odaları ve güncel fiyatı paylaşalım."
         ],
         "links": [
           {

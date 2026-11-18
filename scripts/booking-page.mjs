@@ -1,13 +1,21 @@
-import {origin,policy,escapeHtml as e,phoneHref} from './seo-core.mjs';
+import {origin,policy,phoneLinks} from './seo-core.mjs';
 import {metricsHead} from './report-config.mjs';
+
 export function renderBookingPage(data){
-  const bookingPolicy=policy.replace("frame-src 'self'", "frame-src 'self' https://gulplaj-hotel.hotelrunner.com");
   return `<!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="${bookingPolicy}"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#143b4a">
-<title>Online Rezervasyon | Gülplaj Hotel</title><meta name="description" content="Gülplaj Hotel rezervasyonunuzu bu sitede tamamlayın. Tarih ve misafir seçin, güncel oda seçeneklerini ve rezervasyon koşullarını inceleyin."><link rel="canonical" href="${origin}/rezervasyon/">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=onsite-1"><link rel="stylesheet" href="../booking-page.css?v=1"><script src="../booking-config.js?v=onsite-1" defer></script><script src="../booking-page.js?v=1" defer></script>${metricsHead('../')}</head>
-<body class="booking-page"><a class="skip-link" href="#booking-content">Rezervasyon ekranına geç</a><header class="booking-page-header"><a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><nav aria-label="Rezervasyon menüsü"><a href="../odalar/">Odalar</a><a href="${e(phoneHref(data.phone))}">${e(data.phone)}</a><a href="../">Otele dön</a></nav></header>
-<main id="booking-content" class="booking-page-main"><div class="booking-page-intro"><div><p>ERDEK · GÜLPLAJ HOTEL</p><h1>Konaklamanızı planlayın.</h1></div><p>Oda seçimi, misafir bilgileri ve rezervasyon onayı.</p></div><p id="booking-page-status" role="status">Rezervasyon seçenekleri yükleniyor…</p><iframe id="booking-engine" title="Gülplaj Hotel — Oda, fiyat ve rezervasyon seçenekleri" sandbox="allow-scripts allow-same-origin allow-forms" referrerpolicy="strict-origin-when-cross-origin"></iframe><noscript><p>Rezervasyon ekranını açmak için JavaScript’i etkinleştirin veya oteli arayın: <a href="${e(phoneHref(data.phone))}">${e(data.phone)}</a>.</p></noscript></main>
-<footer class="booking-page-footer"><span>Rezervasyonunuz, onay ve rezervasyon numarası aldığınızda kesinleşir.</span><a href="${e(phoneHref(data.phone))}">Yardım için oteli arayın</a></footer></body></html>\n`;
+<meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#143b4a">
+<title>Rezervasyon | Gülplaj Hotel</title><meta name="description" content="Gülplaj Hotel’de telefonla rezervasyon yapın. Güncel fiyat ve oda müsaitliği için oteli arayın."><link rel="canonical" href="${origin}/rezervasyon/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=hotelrunner-1"><link rel="stylesheet" href="../booking-section.css?v=phone-1">${metricsHead('../')}</head>
+<body><a class="skip-link" href="#booking-content">Rezervasyona geç</a>
+<main id="booking-content" class="booking-contact-page section-pad">
+  <a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a>
+  <section class="booking-contact-card">
+    <h1>Telefonla rezervasyon</h1>
+    <p>Konaklama tarihlerinizi ve misafir sayınızı paylaşın. Müsait odaları, fiyatı ve rezervasyon koşullarını birlikte netleştirelim.</p>
+    <div class="booking-contact-actions">${phoneLinks(data,'button')}</div>
+  </section>
+  <a class="text-link" href="../odalar/">Odaları inceleyin →</a>
+</main></body></html>
+`;
 }

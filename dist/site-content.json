@@ -14,7 +14,7 @@
   "checkOut": "11:00",
   "bookingTitle": "Erdek’te",
   "bookingAccent": "yerinizi ayırın.",
-  "bookingIntro": "Tarihlerinizi seçin. Size uygun odayı birlikte bulalım.",
+  "bookingIntro": "Konaklama planınızı paylaşmak, fiyat ve müsaitlik öğrenmek için bizi arayın.",
   "heroPhoto": "assets/previews/general/general-sea-view-23.jpg",
   "roomPhoto": "assets/previews/rooms/room-sea-view-07.jpg",
   "bookingPhoto": "assets/previews/general/general-sea-view-23.jpg",
@@ -29,19 +29,19 @@
     },
     {
       "question": "Rezervasyonumu nasıl kesinleştirebilirim?",
-      "answer": "Rezervasyon bölümünde tarih ve misafir bilgilerini seçin. Aynı sayfada açılan rezervasyon ekranında oda, fiyat, ödeme ve iptal koşullarını inceleyerek işleminizi tamamlayın. Rezervasyonunuz, sistemin onayını ve rezervasyon numaranızı aldığınızda kesinleşir. Yardım için 0266 835 23 07 numarasından bize ulaşabilirsiniz."
+      "answer": "Rezervasyon bölümündeki otel numaralarından bizi arayın. Tarihlerinizi ve misafir sayınızı paylaşarak müsaitlik, fiyat ve koşulları öğrenebilir, rezervasyonunuzu otelden teyit edebilirsiniz."
     },
     {
       "question": "Odaları ve banyoları nereden görebilirim?",
       "answer": "Galeride odalar ve balkonlar, banyolar, ortak alanlar ve dış cephe ayrı gruplardadır. Fotoğrafa dokunarak özgün çözünürlükte görüntüleyebilirsiniz."
     },
     {
-      "question": "Çocukla konaklama için aramaya hangi bilgileri girmeliyim?",
-      "answer": "Yetişkin sayısını ve konaklayacak her çocuğun yaşını doğru seçin. Çocuk ücreti, ek yatak veya bebek yatağı koşullarını seçtiğiniz oda ve planda kontrol edin; özel ihtiyacınızı rezervasyon öncesinde otelle teyit edin."
+      "question": "Çocukla konaklama için hangi bilgileri paylaşmalıyım?",
+      "answer": "Rezervasyon için aradığınızda yetişkin sayısını ve çocukların yaşlarını paylaşın. Çocuk ücreti, ek yatak veya bebek yatağı koşullarını otelden öğrenebilirsiniz."
     },
     {
-      "question": "Tarihlerimde oda veya fiyat görünmüyorsa ne yapmalıyım?",
-      "answer": "Seçtiğiniz tarihler için satışa açık oda veya fiyat olmayabilir; misafir sayısı da sunulan seçenekleri etkileyebilir. Tarih ve kişi bilgilerini kontrol edin, farklı bir tarih deneyin veya oteli arayın. Sonuç bulunmaması tek başına bütün otelin dolu olduğu anlamına gelmez."
+      "question": "Oda müsaitliğini ve fiyatı nasıl öğrenebilirim?",
+      "answer": "Giriş ve çıkış tarihlerinizi ve kaç kişi konaklayacağınızı telefonla paylaşın. Otel ekibi size uygun oda seçeneklerini ve güncel fiyatı iletir."
     },
     {
       "question": "Rezervasyonumu nasıl değiştirebilir veya iptal edebilirim?",
@@ -375,5 +375,6 @@
     }
   ],
   "storyPhoto": "assets/previews/general/general-courtyard-24.jpg",
-  "experiencePhoto": "assets/previews/general/general-restaurant-22.jpg"
+  "experiencePhoto": "assets/previews/general/general-restaurant-22.jpg",
+  "phone2": "0537 527 49 59"
 }

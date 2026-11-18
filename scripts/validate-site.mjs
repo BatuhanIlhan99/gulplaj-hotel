@@ -66,10 +66,17 @@ assert.equal(booking.validateStay('2026-10-05', '2026-10-05', '2026-10-05').ok, 
 assert.equal(booking.validateStay('2026-10-04', '2026-10-06', '2026-10-05').ok, false);
 assert.equal(booking.validateStay('2026-12-31', '2027-01-02', '2026-10-05').nights, 2);
 assert.equal((html.match(/class="photo-open"/g) || []).length, content.gallery.length);
-const widget=fs.readFileSync(path.join(root,'hotelrunner-search.html'),'utf8');
-assert(widget.includes('https://gulplaj-hotel.hotelrunner.com/widgets/0b30149edec93d3fa336/search_widget.js?v=1.0.0'));
-assert(widget.includes('id="hr_search_widget"'));
-assert(html.includes('id="hotelrunner-frame"'));
-assert(!html.includes('id="booking-form"'),'Old local summary must not impersonate a reservation');
-for(const [,reference] of widget.matchAll(/\b(?:src|href)="(\.\/[^\"]+)"/g)) assert(fs.statSync(path.join(root,reference.split('?')[0])).isFile());
-console.log(`Validated ${assets} asset references, sections, JavaScript and booking date rules.`);
+const publicPages = fs.readdirSync(root,{recursive:true}).filter(file=>file.endsWith('.html')&&!file.startsWith('admin'));
+for(const file of publicPages){
+  const page=fs.readFileSync(path.join(root,file),'utf8');
+  assert(!/hotelrunner\.com|<iframe\b/i.test(page), `External booking frame in ${file}`);
+  assert(!/href="tel:[+0-9 ()-]*9[ ()-]*9[ ()-]*9[ ()-]*9"/i.test(page), `Personal phone in ${file}`);
+}
+for(const file of ['index.html','rezervasyon/index.html','konum-ulasim/index.html']){
+  const page=fs.readFileSync(path.join(root,file),'utf8');
+  for(const phone of [content.phone,content.phone2].filter(Boolean)){
+    const digits=phone.replace(/\D/g,'');
+    assert(page.includes('tel:'+(digits.startsWith('0')?'+90'+digits.slice(1):'+'+digits)), `Missing contact number in ${file}`);
+  }
+}
+console.log(`Validated ${assets} asset references, sections, JavaScript and reservation contact links.`);

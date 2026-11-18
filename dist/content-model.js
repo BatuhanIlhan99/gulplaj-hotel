@@ -1,7 +1,7 @@
 /* Shared validation for the public renderer, admin editor and deployment checks. */
 (function(root){
   'use strict';
-  const limits={heroTitle:100,heroAccent:100,heroDescription:400,metaDescription:300,aboutText:1500,aboutSecond:1500,roomTitle:120,roomDescription:1000,phone:30,address:250,bookingTitle:100,bookingAccent:100,bookingIntro:350};
+  const limits={heroTitle:100,heroAccent:100,heroDescription:400,metaDescription:300,aboutText:1500,aboutSecond:1500,roomTitle:120,roomDescription:1000,phone:30,phone2:30,address:250,bookingTitle:100,bookingAccent:100,bookingIntro:350};
   const photoKeys=['heroPhoto','roomPhoto','bookingPhoto','storyPhoto','experiencePhoto'];
   const categories={rooms:'Odalar & balkonlar',bathrooms:'Banyolar',general:'Ortak alanlar',exterior:'Dış cephe & sahil'};
   const uploadPath=/^assets\/uploads\/[a-f0-9-]{36}\.webp$/;
@@ -22,10 +22,11 @@
     if(!data||data.version!==1) throw new Error('İçerik dosyasının sürümü desteklenmiyor.');
     const clean={version:1};
     for(const [key,max] of Object.entries(limits)){
+      if(key==='phone2'&&(data[key]==null||data[key]==='')){clean[key]='';continue;}
       if(typeof data[key]!=='string'||!data[key].trim()||data[key].length>max) throw new Error('Lütfen tüm alanları doldurun ve metin uzunluklarını kontrol edin.');
       clean[key]=data[key].trim();
     }
-    if(!/^\+?[\d ()-]{10,30}$/.test(clean.phone)||clean.phone.replace(/\D/g,'').length<10) throw new Error('Geçerli bir telefon numarası girin.');
+    if([clean.phone,clean.phone2].filter(Boolean).some(phone=>!/^\+?[\d ()-]{10,30}$/.test(phone)||phone.replace(/\D/g,'').length<10)) throw new Error('Geçerli bir telefon numarası girin.');
     for(const key of ['checkIn','checkOut']){
       if(typeof data[key]!=='string'||!/^([01]\d|2[0-3]):[0-5]\d$/.test(data[key])) throw new Error('Giriş ve çıkış saatlerini kontrol edin.');
       clean[key]=data[key];

@@ -31,8 +31,6 @@ jobs:
         run: node scripts/build-seo.mjs
       - name: Validate website
         run: node scripts/validate-site.mjs
-      - name: Verify HotelRunner integration
-        run: node --test scripts/hotelrunner.test.mjs
       - name: Verify admin content and publishing safeguards
         run: node --test scripts/admin.test.mjs
       - name: Verify security protections and public files
