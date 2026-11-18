@@ -6,7 +6,7 @@ export function renderGuestAssistant(data, phoneHref, escapeHtml) {
   const canLinkWhatsApp = /^\+905\d{9}$/.test(mobile);
   const topics = [
     ['Otopark', 'Otopark misafirlerimiz için ücretsizdir.'],
-    ['Çocuk yaşı', 'Rezervasyon için çocukların konaklama tarihindeki yaşlarını ve yetişkin sayısını paylaşın. Çocuk ücreti, ek yatak ve bebek yatağı seçeneklerini otel ekibinden öğrenebilirsiniz.'],
+    ['Çocuk yaşı', '0–6 yaş ücretsizdir (6 yaş dahil). 7–12 yaş için yetişkin ücretinin %50’si uygulanır. 13 yaş ve üzeri yetişkin kategorisindedir.'],
     ['Plaj', 'Otel Erdek sahilinde denize sıfır konumdadır. Plajdaki şezlong ve şemsiyeler konaklayan misafirlerimize ücretsizdir.'],
     ['Erken giriş', `Standart giriş saati ${escapeHtml(data.checkIn.replace(':', '.'))}, en geç çıkış saati ${escapeHtml(data.checkOut.replace(':', '.'))}. Erken giriş için varış saatinizi paylaşın. Otel ekibi müsaitliğe göre teyit eder.`]
   ];
