@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {renderBookingPage} from './booking-page.mjs';
 import {photoViewerMarkup} from './photo-viewer.mjs';
+import {musicHead,musicPlayer,musicCredit} from './site-music.mjs';
 import {renderPrivacyPage} from './privacy-page.mjs';
 import {prepareReportConfig,reportConnect,metricsHead} from './report-config.mjs';
 import {createRequire} from 'node:module';
@@ -20,7 +21,7 @@ html=html.replace(/(<a[^>]*data-hotel-directions href=")[^"]*"/,(_all,start)=>st
 html=html.replace(/<a class="hotel-email"[^>]*>[^<]*<\/a>/g,hotelEmailLink);
 html=html.replace(/\s*<!-- METRICS:START -->[\s\S]*?<!-- METRICS:END -->/g,'');
 html=html.replace(/<!-- ASSISTANT:(?:HEAD|BODY) -->[\s\S]*?<!-- ASSISTANT:END -->\n?/g,'');
-html=html.replace('</head>',()=>`<!-- METRICS:START -->${metricsHead('./')}${guestAssistantHead('./')}<!-- METRICS:END -->\n</head>`);
+html=html.replace('</head>',()=>`<!-- METRICS:START -->${metricsHead('./')}${guestAssistantHead('./')}${musicHead('./')}<!-- METRICS:END -->\n</head>`);
 html=html.replace(/connect-src 'self'[^;]*/,"connect-src 'self'"+reportConnect);
 html=html.replace('GÜLPLAJ’A HOŞ GELDİNİZ','ERDEK’TE DENİZE SIFIR GÜLPLAJ HOTEL');
 const links=pages.map(page=>`<a href="./${page.slug}/">${e(page.label)} <span aria-hidden="true">↗</span></a>`).join('');
@@ -31,6 +32,8 @@ html=html.replace(/href="\.\/seo-pages\.css(?:\?[^"]*)?"/, 'href="./seo-pages.cs
 if(!html.includes('seo-pages.css'))html=html.replace('</head>','  <link rel="stylesheet" href="./seo-pages.css?v=4">\n</head>');
 html=html.replace('</body>',()=>`<!-- ASSISTANT:BODY -->${guestAssistant(data)}<!-- ASSISTANT:END -->\n</body>`);
 html=html.replace(/<dialog id="photo-viewer"[\s\S]*?<\/dialog>/,()=>photoViewerMarkup);
+html=html.replace(/<div class="site-music">[\s\S]*?<\/div>/,()=>musicPlayer('./'));
+html=html.replace(/<span class="music-credit">[\s\S]*?<\/span>/,()=>musicCredit);
 fs.writeFileSync('dist/index.html',html);
 for(const page of pages){fs.mkdirSync(path.join('dist',page.slug),{recursive:true});fs.writeFileSync(path.join('dist',page.slug,'index.html'),renderDetailPage(data,page,pages,mapsUrl,renditions));}
 fs.mkdirSync('dist/rezervasyon',{recursive:true});fs.writeFileSync('dist/rezervasyon/index.html',renderBookingPage(data));
