@@ -13,6 +13,19 @@ export function phoneLinks(data,className=''){
   const attrs=className?` class="${className}"`:'';
   return [data.phone,data.phone2].filter(Boolean).map(phone=>`<a${attrs} href="${escapeHtml(phoneHref(phone))}">${escapeHtml(phone)}</a>`).join('');
 }
+export function bookingWhatsAppLink(data) {
+  const whatsApp = data.phone2 ? guestWhatsAppHref(phoneHref(data.phone2).slice(4)) : '';
+  const message = [
+    'Merhaba, Gülplaj Hotel için fiyat ve oda müsaitliği öğrenmek istiyorum.',
+    '',
+    'Giriş tarihi:',
+    'Çıkış tarihi:',
+    'Yetişkin sayısı:',
+    'Çocuk sayısı ve yaşları (varsa):'
+  ].join('\n');
+  const attrs = whatsApp ? ` href="${whatsApp}?text=${encodeURIComponent(message)}" target="_blank" rel="noopener noreferrer"` : ' hidden';
+  return `<a class="button booking-whatsapp"${attrs}>WhatsApp’tan fiyat ve müsaitlik sor</a>`;
+}
 export const directionsUrl=data=>'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent('Gülplaj Hotel, '+data.address.replace(/\n/g,', '));
 const sourceHosts=new Set(['balikesir.ktb.gov.tr','www.kulturportali.gov.tr','www.balikesirulasim.com.tr']);
 const photoCategories={rooms:'Odalar ve balkonlar',bathrooms:'Banyolar',general:'Avlu ve ortak alanlar',exterior:'Dış cephe ve sahil'};
@@ -70,8 +83,7 @@ export function renderStaticContent(html,data){
     const attrs=before.replace(/\s+hidden\b/g,'').trimEnd();
     return `<a${attrs}${phone?'':' hidden'} href="${phone?e(phoneHref(phone)):'tel:'}"${after}>${text==='Oteli ara'?text:e(phone||'')}</a>`;
   });
-  const whatsApp = data.phone2 ? guestWhatsAppHref(phoneHref(data.phone2).slice(4)) : '';
-  html=html.replace(/<a class="button booking-whatsapp"[^>]*>/,()=>`<a class="button booking-whatsapp"${whatsApp?` href="${whatsApp}" target="_blank" rel="noopener noreferrer"`:' hidden'}>`);
+  html=html.replace(/<a class="button booking-whatsapp"[^>]*>[\s\S]*?<\/a>/,()=>bookingWhatsAppLink(data));
   return html;
 }
 
