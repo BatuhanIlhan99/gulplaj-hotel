@@ -130,21 +130,45 @@ body:has(.guest-assistant-launch:not([hidden])) .site-music {
 }
 
 @media (max-width: 800px) {
-  body:has(.mobile-contact-bar) .guest-assistant {
-    --assistant-bottom: calc(76px + env(safe-area-inset-bottom));
+  body {
+    --floating-tools-bottom: calc(12px + env(safe-area-inset-bottom));
+    --floating-tools-edge: 12px;
+    --floating-tools-size: 44px;
+    --floating-tools-gap: 8px;
   }
 
-  body:has(.mobile-contact-bar):has(.guest-assistant-launch:not([hidden])) .site-music {
-    bottom: calc(136px + env(safe-area-inset-bottom));
+  .guest-assistant {
+    --assistant-bottom: var(--floating-tools-bottom);
+    --assistant-right: var(--floating-tools-edge);
   }
 
-  body:has(.mobile-contact-bar):has(.guest-assistant-launch:not([hidden])) .metrics-consent {
-    bottom: calc(136px + env(safe-area-inset-bottom));
+  .guest-assistant-launch {
+    justify-content: center;
+    width: var(--floating-tools-size);
+    min-height: var(--floating-tools-size);
+    padding: 0;
   }
 
-  body:has(.site-music-button:not([hidden])):has(.guest-assistant-launch:not([hidden])) .metrics-consent {
-    bottom: calc(190px + env(safe-area-inset-bottom));
-    max-height: 45dvh;
-    overflow: auto;
+  .guest-assistant-launch > span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .guest-assistant-icon { width: 30px; height: 30px; }
+  .guest-assistant-icon::before { inset: 8px 7px; }
+
+  body:has(.guest-assistant-launch:not([hidden])) .site-music {
+    inset-inline-end: calc(var(--floating-tools-edge) + var(--floating-tools-size) + var(--floating-tools-gap));
+    bottom: var(--floating-tools-bottom);
+  }
+}
+
+@media (max-width: 560px) {
+  body:has(.mobile-contact-bar) {
+    --floating-tools-bottom: calc(76px + env(safe-area-inset-bottom));
   }
 }

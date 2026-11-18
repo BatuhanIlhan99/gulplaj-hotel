@@ -1,5 +1,5 @@
 export const guestAssistantHead = prefix =>
-  `<link rel="stylesheet" href="${prefix}guest-assistant.css?v=1"><script src="${prefix}guest-assistant.js?v=1" defer></script>`;
+  `<link rel="stylesheet" href="${prefix}guest-assistant.css?v=2"><script src="${prefix}guest-assistant.js?v=1" defer></script>`;
 
 export function guestWhatsAppHref(mobile) {
   return /^\+905\d{9}$/.test(mobile) ? 'https://wa.me/' + mobile.slice(1) : '';

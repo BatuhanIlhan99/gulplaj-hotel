@@ -32,9 +32,9 @@
 .music-credit a { text-decoration: underline; text-underline-offset: .15em; }
 
 @media (max-width: 800px) {
-  .site-music { bottom: calc(76px + env(safe-area-inset-bottom)); }
-
-  body:has(.site-music-button:not([hidden])) .metrics-consent {
-    bottom: calc(132px + env(safe-area-inset-bottom));
+  .site-music {
+    inset-inline-end: var(--floating-tools-edge);
+    bottom: var(--floating-tools-bottom);
+    max-width: calc(100% - 5rem);
   }
 }
