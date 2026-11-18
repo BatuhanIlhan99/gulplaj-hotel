@@ -1,5 +1,5 @@
 import {reportConnect,metricsHead} from './report-config.mjs';
-import {guestAssistantHead,renderGuestAssistant} from './guest-assistant.mjs';
+import {guestAssistantHead,renderGuestAssistant,guestWhatsAppHref} from './guest-assistant.mjs';
 export {guestAssistantHead};
 export const guestAssistant = data => renderGuestAssistant(data,phoneHref,escapeHtml);
 export const origin='https://www.gulplajhotel.com';
@@ -70,6 +70,8 @@ export function renderStaticContent(html,data){
     const attrs=before.replace(/\s+hidden\b/g,'').trimEnd();
     return `<a${attrs}${phone?'':' hidden'} href="${phone?e(phoneHref(phone)):'tel:'}"${after}>${text==='Oteli ara'?text:e(phone||'')}</a>`;
   });
+  const whatsApp = data.phone2 ? guestWhatsAppHref(phoneHref(data.phone2).slice(4)) : '';
+  html=html.replace(/<a class="button booking-whatsapp"[^>]*>/,()=>`<a class="button booking-whatsapp"${whatsApp?` href="${whatsApp}" target="_blank" rel="noopener noreferrer"`:' hidden'}>`);
   return html;
 }
 
@@ -143,7 +145,7 @@ export function renderDetailPage(data,page,pages,mapsUrl,renditions){
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#143b4a">
 ${metadata(data,page,mapsUrl)}
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"><link rel="stylesheet" href="../booking-section.css?v=phone-1">${metricsHead('../')}${guestAssistantHead('../')}</head>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"><link rel="stylesheet" href="../booking-section.css?v=phone-2">${metricsHead('../')}${guestAssistantHead('../')}</head>
 <body class="guide-body${groups.length?' guide-photos-page':''}"><a class="skip-link" href="#icerik">İçeriğe geç</a>
 <header class="guide-header"><a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><nav aria-label="Ana menü">${nav}</nav><a class="button" href="../#rezervasyon">Rezervasyon</a></header>
 <main id="icerik"><nav class="guide-breadcrumb" aria-label="İçerik yolu"><a href="../">Ana sayfa</a><span aria-hidden="true">/</span><span aria-current="page">${e(page.label)}</span></nav>

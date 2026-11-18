@@ -5,6 +5,42 @@
   align-items: stretch;
 }
 
+#rezervasyon .reservation-heading { margin-bottom: clamp(1rem, 3vw, 2rem); }
+#rezervasyon .reservation-heading > p:last-child { margin: .6rem auto 0; max-width: 42ch; }
+
+.reservation-layout > .booking-contact-card { grid-column: 2; grid-row: 1; }
+.reservation-photo {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 19rem;
+  margin: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.reservation-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reservation-photo figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: .35rem;
+  padding: 2.5rem 1rem .85rem;
+  background: linear-gradient(transparent, #102f3dec);
+  color: #fff;
+  text-align: start;
+}
+
+.reservation-photo figcaption span { font-size: .68rem; letter-spacing: .08em; }
+.reservation-photo figcaption strong { font: 400 clamp(1.2rem, 2vw, 1.7rem)/1.15 var(--serif); }
+
 .booking-contact-card {
   display: grid;
   align-content: center;
@@ -28,11 +64,32 @@
   align-items: center;
 }
 .booking-contact-actions a { min-height: 48px; white-space: nowrap; }
-.booking-contact-actions a + a { color: var(--ink); background: #fff; border: 1px solid currentColor; }
+.booking-contact-actions a[href^="tel:"] + a[href^="tel:"] { color: var(--ink); background: #fff; border: 1px solid currentColor; }
+.booking-contact-actions .booking-whatsapp { background: #174d43; border-color: #174d43; color: #fff; }
+.booking-contact-actions .booking-whatsapp:hover { background: #206456; }
 .booking-contact-actions [hidden] { display: none; }
 .booking-contact-page { max-width: 840px; margin: 0 auto; display: grid; gap: 2rem; justify-items: start; }
 
 @media (max-width: 760px) {
   #rezervasyon .reservation-layout { grid-template-columns: 1fr; }
   .booking-contact-actions a { flex: 1 0 100%; justify-content: center; }
+  #rezervasyon .reservation-heading h2 { font-size: clamp(2rem, 8vw, 2.75rem); }
+  .reservation-layout > .booking-contact-card {
+    grid-column: 1;
+    gap: .75rem;
+    padding: 1rem;
+  }
+  .reservation-layout .booking-contact-card h3 { font-size: 1.35rem; }
+  .reservation-layout .booking-contact-card p { font-size: .9rem; line-height: 1.45; }
+  .reservation-layout .booking-contact-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .45rem;
+  }
+  .reservation-layout .booking-contact-actions a { margin: 0; padding: .55rem .25rem; font-size: .82rem; }
+  .reservation-layout .booking-whatsapp { grid-column: 1 / -1; }
+  .reservation-photo {
+    grid-row: 2;
+    min-height: clamp(12rem, 57vw, 17rem);
+  }
 }
