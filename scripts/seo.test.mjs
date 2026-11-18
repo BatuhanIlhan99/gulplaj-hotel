@@ -94,7 +94,10 @@ test('Directions use the current hotel address and room facts and answers follow
   assert.equal(destination.origin,'https://www.google.com');assert.equal(destination.pathname,'/maps/dir/');
   assert.equal(destination.searchParams.get('api'),'1');assert.equal(destination.searchParams.get('destination'),'Gülplaj Hotel, Yeni Sokak & Sahil, Erdek, Balıkesir');
   const contact=renderDetailPage(updated,pages.find(p=>p.slug==='konum-ulasim'),pages,mapsUrl,renditions);
-  assert(contact.includes(escapeHtml(directionsUrl(updated))));
+  const pin=new URL(directionsUrl(updated,mapsUrl));
+  assert.equal(pin.searchParams.get('destination'),'40.4036239,27.7881534');
+  assert(contact.includes(escapeHtml(pin.href)));
+  assert(main.includes(escapeHtml(pin.href)));
   const rooms=renderDetailPage(updated,pages.find(p=>p.slug==='odalar'),pages,mapsUrl,renditions);
   assert(rooms.includes('15:30’ten itibaren')&&rooms.includes('En geç 10:30'));
   const faq=fs.readFileSync('dist/sik-sorulan-sorular/index.html','utf8');

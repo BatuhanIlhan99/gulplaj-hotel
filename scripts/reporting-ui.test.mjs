@@ -6,7 +6,7 @@ import vm from 'node:vm';
 function element(){return {textContent:'',value:'',hidden:false,disabled:false,children:[],handlers:{},append(...nodes){this.children.push(...nodes);},replaceChildren(...nodes){this.children=[...nodes];},setAttribute(){},addEventListener(type,fn){this.handlers[type]=fn;}};}
 test('Visitor measurement sends nothing before consent, respects rejection and omits query and personal referrer details',()=>{
   const nodes=[],storage=new Map(),sent=[],events={};
-  const document={body:element(),referrer:'https://www.google.com/search?q=private+question',createElement(){const node=element();nodes.push(node);return node;}};
+  const document={body:element(),getElementById:()=>null,referrer:'https://www.google.com/search?q=private+question',createElement(){const node=element();nodes.push(node);return node;}};
   const window={GULPLAJ_REPORT_CONFIG:{enabled:true,apiOrigin:'https://gulplaj-reports.test.workers.dev'},addEventListener:(name,fn)=>events[name]=fn};
   vm.runInNewContext(fs.readFileSync('dist/visitor-metrics.js','utf8'),{window,document,URL,crypto,Date,navigator:{},location:{href:'https://www.gulplajhotel.com/odalar/?email=private@example.com',pathname:'/odalar/',origin:'https://www.gulplajhotel.com'},localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},fetch:(url,options)=>{sent.push({url,options});return Promise.resolve({});}});
   assert.equal(sent.length,0);const accept=nodes.find(n=>n.textContent==='İzin ver'),reject=nodes.find(n=>n.textContent==='İzin verme');

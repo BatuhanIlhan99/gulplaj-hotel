@@ -70,6 +70,10 @@
 .booking-contact-actions [hidden] { display: none; }
 .booking-contact-page { max-width: 840px; margin: 0 auto; display: grid; gap: 2rem; justify-items: start; }
 .booking-policy-link { color: var(--ink); font-size: .9rem; text-decoration: underline; text-underline-offset: .2em; }
+.hotel-email { display: inline-block; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: .2em; }
+.location-copy .hotel-email, .footer-contact .hotel-email { margin-top: .5rem; }
+.booking-page-links { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
+.booking-page-links a { text-decoration: underline; text-underline-offset: .2em; }
 
 .booking-policies {
   width: 100%;

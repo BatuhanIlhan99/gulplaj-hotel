@@ -40,6 +40,8 @@
   border: 0;
   text-decoration: underline;
 }
+.metrics-preferences[hidden] { display: none; }
+.privacy-page .metrics-preferences { margin: .75rem 0 0; }
 
 .metrics-consent :is(button, summary):focus-visible,
 .metrics-preferences:focus-visible { outline: 3px solid #407aa3; outline-offset: 3px; }

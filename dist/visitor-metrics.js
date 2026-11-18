@@ -15,7 +15,12 @@
   function page(){if(!sent&&accepted){sent=true;event('page_view');if(location.pathname==='/rezervasyon/')event('booking_open');}}
   accept.addEventListener('click',()=>{try{localStorage.setItem(consentKey,'accepted');}catch{}accepted=true;banner.hidden=true;page();});
   reject.addEventListener('click',()=>{try{localStorage.setItem(consentKey,'rejected');localStorage.removeItem(visitorKey);}catch{}accepted=false;banner.hidden=true;});
-  const preferences=document.createElement('button');preferences.className='metrics-preferences';preferences.textContent='Ölçüm tercihleri';preferences.type='button';preferences.addEventListener('click',()=>{banner.hidden=false;});document.body.append(preferences);
+  const inlinePreferences=document.getElementById('measurement-preferences');
+  const preferences=inlinePreferences||document.createElement('button');
+  preferences.className='metrics-preferences';preferences.textContent='Ölçüm tercihleri';preferences.type='button';
+  preferences.addEventListener('click',()=>{banner.hidden=false;});
+  if(inlinePreferences)preferences.hidden=false;
+  else document.body.append(preferences);
   window.addEventListener('gulplaj:booking-open',()=>event('booking_open'));
   read();page();
 })();

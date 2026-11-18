@@ -7,7 +7,7 @@ export function renderBookingPage(data){
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#143b4a">
 <title>Rezervasyon | Gülplaj Hotel</title><meta name="description" content="Gülplaj Hotel rezervasyon koşullarını, çocuk tarifesini ve giriş-çıkış saatlerini inceleyin. Fiyat ve oda müsaitliği için otelle iletişime geçin."><link rel="canonical" href="${origin}/rezervasyon/">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=hotelrunner-1"><link rel="stylesheet" href="../booking-section.css?v=phone-4">${metricsHead('../')}${guestAssistantHead('../')}</head>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=hotelrunner-1"><link rel="stylesheet" href="../booking-section.css?v=phone-5">${metricsHead('../')}${guestAssistantHead('../')}</head>
 <body><a class="skip-link" href="#booking-content">Rezervasyona geç</a>
 <main id="booking-content" class="booking-contact-page section-pad">
   <a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a>
@@ -26,7 +26,7 @@ export function renderBookingPage(data){
       <div><dt>İptal ve tarih değişikliği</dt><dd>Süre, varsa ücret ve iade koşulları rezervasyon planına bağlıdır. İşlem yapmadan önce rezervasyon onayınızdaki koşulları kontrol edin.</dd></div>
     </dl>
   </section>
-  <a class="text-link" href="../odalar/">Odaları inceleyin →</a>
+  <nav class="booking-page-links" aria-label="Diğer bilgiler"><a class="text-link" href="../odalar/">Odaları inceleyin →</a><a href="../gizlilik/">Gizlilik ve ölçüm</a></nav>
 </main>${guestAssistant(data)}</body></html>
 `;
 }

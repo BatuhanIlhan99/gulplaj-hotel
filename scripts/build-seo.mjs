@@ -2,9 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {renderBookingPage} from './booking-page.mjs';
 import {photoViewerMarkup} from './photo-viewer.mjs';
+import {renderPrivacyPage} from './privacy-page.mjs';
 import {prepareReportConfig,reportConnect,metricsHead} from './report-config.mjs';
 import {createRequire} from 'node:module';
-import {origin,policy,escapeHtml as e,absolute,applyMetadata,renderStaticContent,renderDetailPage,roomPhotos,validateSeoPages,guestAssistantHead,guestAssistant} from './seo-core.mjs';
+import {origin,policy,escapeHtml as e,absolute,applyMetadata,renderStaticContent,renderDetailPage,roomPhotos,validateSeoPages,guestAssistantHead,guestAssistant,directionsUrl,hotelEmailLink} from './seo-core.mjs';
 const require=createRequire(import.meta.url);
 const model=require('../dist/content-model.js');
 const read=file=>JSON.parse(fs.readFileSync(file,'utf8'));
@@ -15,6 +16,8 @@ prepareReportConfig();
 validateSeoPages(pages,model.photoKeys);
 let html=renderStaticContent(fs.readFileSync('dist/index.html','utf8'),data);
 html=applyMetadata(html,data,mapsUrl);
+html=html.replace(/(<a[^>]*data-hotel-directions href=")[^"]*"/,(_all,start)=>start+e(directionsUrl(data,mapsUrl))+'"');
+html=html.replace(/<a class="hotel-email"[^>]*>[^<]*<\/a>/g,hotelEmailLink);
 html=html.replace(/\s*<!-- METRICS:START -->[\s\S]*?<!-- METRICS:END -->/g,'');
 html=html.replace(/<!-- ASSISTANT:(?:HEAD|BODY) -->[\s\S]*?<!-- ASSISTANT:END -->\n?/g,'');
 html=html.replace('</head>',()=>`<!-- METRICS:START -->${metricsHead('./')}${guestAssistantHead('./')}<!-- METRICS:END -->\n</head>`);
@@ -31,6 +34,7 @@ html=html.replace(/<dialog id="photo-viewer"[\s\S]*?<\/dialog>/,()=>photoViewerM
 fs.writeFileSync('dist/index.html',html);
 for(const page of pages){fs.mkdirSync(path.join('dist',page.slug),{recursive:true});fs.writeFileSync(path.join('dist',page.slug,'index.html'),renderDetailPage(data,page,pages,mapsUrl,renditions));}
 fs.mkdirSync('dist/rezervasyon',{recursive:true});fs.writeFileSync('dist/rezervasyon/index.html',renderBookingPage(data));
+fs.mkdirSync('dist/gizlilik',{recursive:true});fs.writeFileSync('dist/gizlilik/index.html',renderPrivacyPage());
 const locations=[{url:origin+'/',images:data.gallery.map(p=>p.original)},...pages.map(page=>({url:absolute(page.slug+'/'),images:page.slug==='fotograflar'?data.gallery.map(p=>p.original):page.slug==='odalar'?roomPhotos(data).map(p=>p.original):[data.gallery.find(p=>p.src===data[page.photoKey]).original]}))];
 fs.writeFileSync('dist/sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'+locations.map(({url,images})=>`  <url><loc>${e(url)}</loc>${[...new Set(images)].map(src=>`<image:image><image:loc>${e(absolute(src))}</image:loc></image:image>`).join('')}</url>`).join('\n')+'\n</urlset>\n');
 fs.writeFileSync('dist/robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);

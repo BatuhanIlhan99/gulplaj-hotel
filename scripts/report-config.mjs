@@ -5,7 +5,7 @@ if(reportConfig.apiOrigin){const url=new URL(reportConfig.apiOrigin);if(url.prot
 if(reportConfig.enabled&&!reportConfig.apiOrigin)throw Error('Reporting requires a deployed backend');
 export const reportConnect=reportConfig.apiOrigin?' '+reportConfig.apiOrigin:'';
 export const configVersion=createHash('sha256').update(JSON.stringify(reportConfig)).digest('hex').slice(0,8);
-export const metricsHead=prefix=>`<link rel="stylesheet" href="${prefix}visitor-metrics.css?v=2"><script src="${prefix}report-config.js?v=${configVersion}" defer></script><script src="${prefix}visitor-metrics.js?v=1" defer></script>`;
+export const metricsHead=prefix=>`<link rel="stylesheet" href="${prefix}visitor-metrics.css?v=3"><script src="${prefix}report-config.js?v=${configVersion}" defer></script><script src="${prefix}visitor-metrics.js?v=2" defer></script>`;
 export function prepareReportConfig(){
   fs.writeFileSync('dist/report-config.js','window.GULPLAJ_REPORT_CONFIG=Object.freeze('+JSON.stringify(reportConfig)+');\n');
   let admin=fs.readFileSync('dist/admin/index.html','utf8');

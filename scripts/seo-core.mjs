@@ -4,6 +4,7 @@ import {guestAssistantHead,renderGuestAssistant,guestWhatsAppHref} from './guest
 export {guestAssistantHead};
 export const guestAssistant = data => renderGuestAssistant(data,phoneHref,escapeHtml);
 export const origin='https://www.gulplajhotel.com';
+export const hotelEmail='gulplajhotel@gmail.com';
 export const homeTitle='Gülplaj Hotel | Erdek’te Denize Sıfır Otel';
 export const policy="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'"+reportConnect+"; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests";
 export const escapeHtml=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -27,7 +28,14 @@ export function bookingWhatsAppLink(data) {
   const attrs = whatsApp ? ` href="${whatsApp}?text=${encodeURIComponent(message)}" target="_blank" rel="noopener noreferrer"` : ' hidden';
   return `<a class="button booking-whatsapp"${attrs}>WhatsApp’tan fiyat ve müsaitlik sor</a>`;
 }
-export const directionsUrl=data=>'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent('Gülplaj Hotel, '+data.address.replace(/\n/g,', '));
+export function directionsUrl(data, mapsUrl) {
+  // Use the listing pin, since the map camera position can differ from the property.
+  const pin = mapsUrl?.match(/^https:\/\/www\.google\.com\/maps\/place\/[^?#]*!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)(?:!|$)/);
+  const destination = pin ? pin[1] + ',' + pin[2] : 'Gülplaj Hotel, ' + data.address.replace(/\n/g,', ');
+  return 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(destination);
+}
+
+export const hotelEmailLink = () => `<a class="hotel-email" href="mailto:${hotelEmail}">${hotelEmail}</a>`;
 const sourceHosts=new Set(['balikesir.ktb.gov.tr','www.kulturportali.gov.tr','www.balikesirulasim.com.tr']);
 const photoCategories={rooms:'Odalar ve balkonlar',bathrooms:'Banyolar',general:'Avlu ve ortak alanlar',exterior:'Dış cephe ve sahil'};
 export const galleryGroups=data=>Object.entries(photoCategories).map(([key,label])=>({key,label,photos:data.gallery.filter(p=>p.category===key)})).filter(group=>group.photos.length);
@@ -95,7 +103,7 @@ export function structuredData(data,page,mapsUrl){
   const url=page?absolute(page.slug+'/'):origin+'/';
   const graph=[{
     '@type':'Hotel','@id':origin+'/#hotel',name:'Gülplaj Hotel',alternateName:'Gülplaj Otel',url:origin+'/',
-    description:data.metaDescription,telephone:phoneHref(data.phone).slice(4),
+    description:data.metaDescription,telephone:phoneHref(data.phone).slice(4),email:hotelEmail,
     ...(data.phone2?{contactPoint:[{'@type':'ContactPoint',contactType:'reservations',telephone:phoneHref(data.phone2).slice(4)}]}:{}),
     address:{'@type':'PostalAddress',streetAddress:data.address.split('\n')[0],addressLocality:'Erdek',addressRegion:'Balıkesir',postalCode:'10500',addressCountry:'TR'},
     image:[...new Set(['heroPhoto','roomPhoto','storyPhoto'].map(key=>absolute(imageFor(data,key).original)))],
@@ -148,7 +156,7 @@ export function renderDetailPage(data,page,pages,mapsUrl,renditions){
   const roomSummary=page.slug==='odalar'?`<section id="room-summary" class="guide-section"><p class="eyebrow">KONAKLAMAYA KISA BİR BAKIŞ</p><h2>Odanız ve konaklama saatleri</h2><dl class="guide-facts"><div><dt>Oda tanıtımı</dt><dd>${e(data.roomTitle)}</dd></div><div><dt>Odaya giriş</dt><dd>${e(data.checkIn)}’ten itibaren</dd></div><div><dt>Odadan çıkış</dt><dd>En geç ${e(data.checkOut)}</dd></div></dl><p>Fotoğraflar farklı oda ve banyo görünümlerini içerir. Seçtiğiniz oda tipinin manzarasını, yatak düzenini ve kişi kapasitesini rezervasyon ekranında kontrol edin.</p></section>`:'';
   const roomExtras=page.slug==='odalar'?`<section id="room-gallery" class="guide-section"><p class="eyebrow">OTELİN GERÇEK FOTOĞRAFLARI</p><h2>Oda ve banyolara yakından bakın.</h2><p class="guide-room-description">${e(data.roomDescription)}</p><div class="guide-gallery" data-photo-gallery>${roomPhotos(data).map(p=>`<figure><a href="../${e(p.original)}" data-photo-open aria-haspopup="dialog">${imageHtml(p,'../',renditions)}</a><figcaption>${e(p.title)}</figcaption></figure>`).join('')}</div><a class="text-link" href="../#galeri">Tüm otel fotoğrafları</a></section>`:'';
   const faq=page.slug==='sik-sorulan-sorular'?`<section id="guest-questions" class="guide-section guide-faq"><h2>Konaklamayla ilgili temel bilgiler</h2>${faqHtml(data)}</section>`:'';
-  const contact=page.slug==='konum-ulasim'?`<section id="contact" class="guide-section guide-contact"><h2>Gülplaj Hotel iletişim bilgileri</h2><address><strong>Gülplaj Hotel</strong><p>${e(data.address).replace(/\n/g,'<br>')}</p><div class="contact-numbers">${phoneLinks(data)}</div></address><a class="button" href="${e(directionsUrl(data))}" target="_blank" rel="noopener noreferrer">Haritada yol tarifi alın ↗</a><p class="guide-note">Harita uygulamasında başlangıç noktanızı ve ulaşım biçiminizi seçin.</p></section>`:'';
+  const contact=page.slug==='konum-ulasim'?`<section id="contact" class="guide-section guide-contact"><h2>Gülplaj Hotel iletişim bilgileri</h2><address><strong>Gülplaj Hotel</strong><p>${e(data.address).replace(/\n/g,'<br>')}</p><div class="contact-numbers">${phoneLinks(data)}</div>${hotelEmailLink()}</address><a class="button" href="${e(directionsUrl(data,mapsUrl))}" target="_blank" rel="noopener noreferrer">Haritada yol tarifi alın ↗</a><p class="guide-note">Harita uygulamasında başlangıç noktanızı ve ulaşım biçiminizi seçin.</p></section>`:'';
   const sources=page.sources?`<section id="official-sources" class="guide-section guide-sources"><h2>Resmî kaynaklar ve güncel bilgiler</h2><ul>${page.sources.map(s=>`<li><a href="${e(s.url)}" target="_blank" rel="noopener noreferrer">${e(s.label)} ↗</a></li>`).join('')}</ul></section>`:'';
   const groups=page.slug==='fotograflar'?galleryGroups(data):[];
   const photoGallery=groups.map(group=>`<section id="photos-${group.key}" class="guide-section"><p class="eyebrow">GÜLPLAJ HOTEL · ${group.photos.length} FOTOĞRAF</p><h2>${e(group.label)}</h2><div class="guide-photo-collection" data-photo-gallery>${group.photos.map(p=>`<figure><a href="../${e(p.original)}" data-photo-open aria-haspopup="dialog" aria-label="${e(p.title)}: fotoğrafı büyüt">${imageHtml(p,'../',renditions,{sizes:'(max-width:600px) 92vw, (max-width:1000px) 44vw, 28vw'})}</a><figcaption><h3>${e(p.title)}</h3><p>${e(p.alt)}</p></figcaption></figure>`).join('')}</div></section>`).join('');
@@ -158,13 +166,13 @@ export function renderDetailPage(data,page,pages,mapsUrl,renditions){
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#143b4a">
 ${metadata(data,page,mapsUrl)}
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"><link rel="stylesheet" href="../booking-section.css?v=phone-4">${metricsHead('../')}${guestAssistantHead('../')}${roomExtras||groups.length?photoViewerScript('../'):''}</head>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"><link rel="stylesheet" href="../booking-section.css?v=phone-5">${metricsHead('../')}${guestAssistantHead('../')}${roomExtras||groups.length?photoViewerScript('../'):''}</head>
 <body class="guide-body${groups.length?' guide-photos-page':''}"><a class="skip-link" href="#icerik">İçeriğe geç</a>
 <header class="guide-header"><a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><nav aria-label="Ana menü">${nav}</nav><a class="button" href="../#rezervasyon">Rezervasyon</a></header>
 <main id="icerik"><nav class="guide-breadcrumb" aria-label="İçerik yolu"><a href="../">Ana sayfa</a><span aria-hidden="true">/</span><span aria-current="page">${e(page.label)}</span></nav>
 <section class="guide-hero"><div><p class="eyebrow">${e(page.eyebrow)}</p><h1>${e(page.heading)}</h1><p class="guide-intro">${e(page.intro)}</p><a class="text-link" href="../#rezervasyon">Tarih ve müsaitliği inceleyin ↗</a></div><figure>${imageHtml(photo,'../',renditions,{hero:true})}<figcaption>Gülplaj Hotel · Erdek</figcaption></figure></section>
 <div class="guide-layout"><article>${contentsNav}${contact}${roomSummary}${roomExtras}${faq}${photoGallery}${sections}${sources}</article><aside class="guide-aside"><p class="eyebrow">KONAKLAMANIZI PLANLAYIN</p><h2>Erdek’te görüşmek üzere.</h2><p>Giriş: <strong>${e(data.checkIn)}</strong><br>Çıkış: <strong>${e(data.checkOut)}</strong></p><p>Müsait odaları, fiyatları ve rezervasyon koşullarını telefonla öğrenebilirsiniz.</p><a class="button" href="../#rezervasyon">Rezervasyon için arayın</a><div class="contact-numbers">${phoneLinks(data)}</div></aside></div>
 <nav class="guide-related" aria-label="Diğer konaklama bilgileri"><h2>Tatilinizin diğer ayrıntıları</h2>${nav}</nav></main>
-<footer class="guide-footer"><a class="wordmark" href="../"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><div><p>${e(data.address).replace(/\n/g,'<br>')}</p><div class="contact-numbers">${phoneLinks(data)}</div></div><a href="../#rezervasyon">Konaklamanızı planlayın ↗</a></footer>
+<footer class="guide-footer"><a class="wordmark" href="../"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><div><p>${e(data.address).replace(/\n/g,'<br>')}</p><div class="contact-numbers">${phoneLinks(data)}</div>${hotelEmailLink()}</div><div><a href="../#rezervasyon">Konaklamanızı planlayın ↗</a><br><a href="../gizlilik/">Gizlilik ve ölçüm</a></div></footer>
 <nav class="mobile-contact-bar" aria-label="Hızlı iletişim"><a href="${e(phoneHref(data.phone))}">Oteli ara</a><a href="../#rezervasyon">Rezervasyon</a></nav>${guestAssistant(data)}${roomExtras||groups.length?photoViewerMarkup:''}</body></html>\n`;
 }
