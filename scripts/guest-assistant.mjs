@@ -5,9 +5,9 @@ export function renderGuestAssistant(data, phoneHref, escapeHtml) {
   const mobile = data.phone2 ? phoneHref(data.phone2).slice(4) : '';
   const canLinkWhatsApp = /^\+905\d{9}$/.test(mobile);
   const topics = [
-    ['Otopark', 'Araçla gelecekseniz otopark seçeneğini ve varsa ücretini gelmeden önce otel ekibiyle teyit edin.'],
+    ['Otopark', 'Otopark misafirlerimiz için ücretsizdir.'],
     ['Çocuk yaşı', 'Rezervasyon için çocukların konaklama tarihindeki yaşlarını ve yetişkin sayısını paylaşın. Çocuk ücreti, ek yatak ve bebek yatağı seçeneklerini otel ekibinden öğrenebilirsiniz.'],
-    ['Plaj', 'Otel Erdek sahilinde denize sıfır konumdadır. Şezlong ve şemsiyelerin kullanım koşullarını resepsiyondan öğrenebilirsiniz.'],
+    ['Plaj', 'Otel Erdek sahilinde denize sıfır konumdadır. Plajdaki şezlong ve şemsiyeler konaklayan misafirlerimize ücretsizdir.'],
     ['Erken giriş', `Standart giriş saati ${escapeHtml(data.checkIn.replace(':', '.'))}, en geç çıkış saati ${escapeHtml(data.checkOut.replace(':', '.'))}. Erken giriş için varış saatinizi paylaşın. Otel ekibi müsaitliğe göre teyit eder.`]
   ];
   const message = encodeURIComponent('Merhaba, Gülplaj Hotel ile ilgili bilgi almak istiyorum.');
