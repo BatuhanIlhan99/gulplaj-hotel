@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="./booking-section.css?v=phone-1">
 
   <script src="./site.js?v=gallery-2" defer></script>
-  <link rel="stylesheet" href="./site-music.css?v=1">
-  <script src="./site-music.js?v=1" defer></script>
+  <link rel="stylesheet" href="./site-music.css?v=2">
+  <script src="./site-music.js?v=2" defer></script>
 
   <script src="./navigation.js" defer></script>
   <script src="./content-model.js?v=phone-1" defer></script>
@@ -56,9 +56,7 @@
         <h1 id="hero-title">Erdek’te denize sıfır,<br><em>kendinize bir mola.</em></h1>
         <p class="hero-description">Erdek sahilinde bir aile oteli.
 Deniz manzaralı odalar, sahil yaşamı ve size kalan zaman.</p>
-        <div class="hero-actions"><a class="button button-light" href="#rezervasyon">Konaklamanı planla</a><a class="hero-explore" href="#erdek">Erdek’i keşfet</a><button class="hero-music" id="music-toggle" type="button" aria-controls="hotel-music" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 18V5l12-2v13M9 18c0 1.1-1.3 2-3 2s-3-.9-3-2 1.3-2 3-2 3 .9 3 2Zm12-2c0 1.1-1.3 2-3 2s-3-.9-3-2 1.3-2 3-2 3 .9 3 2Z"/></svg><span>Müziği aç</span></button></div>
-        <audio id="hotel-music" preload="none" data-src="./assets/laid-back-guitars.mp3"></audio>
-        <p class="hero-music-status" id="music-status" role="status"></p>
+        <div class="hero-actions"><a class="button button-light" href="#rezervasyon">Konaklamanı planla</a><a class="hero-explore" href="#erdek">Erdek’i keşfet</a></div>
       </div>
       <div class="hero-bottom"><span>MARMARA’NIN MAVİSİNE AÇILAN BİR TATİL</span><a href="#otel" aria-label="Otelimizi keşfetmek için aşağı kaydırın">KEŞFET </a></div>
     </section>
@@ -106,5 +104,8 @@ Deniz manzaralı odalar, sahil yaşamı ve size kalan zaman.</p>
 
   <footer class="site-footer"><a class="wordmark" href="#" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><div class="footer-contact"><div class="contact-numbers"><a href="tel:+902668352307">0266 835 23 07</a><a data-phone="phone2" href="tel:+905375274959">0537 527 49 59</a></div><p>Erdek, Balıkesir · Denizin yanı başında.</p></div><nav class="footer-nav" aria-label="Alt menü"><a href="#erdek">Erdek Rehberi</a><a href="#olanaklar">Olanaklar</a><a href="#sorular">Sık Sorulanlar</a><a href="#yorumlar">Misafir Yorumları</a></nav><a href="#" class="back-top">Başa dön </a><div class="footer-bottom"><span>© <span id="year">2026</span> Gülplaj Hotel</span><span class="music-credit">Müzik: <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100181">Laid Back Guitars – Kevin MacLeod</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span><span>Erdek’te görüşmek üzere.</span></div></footer>
 <nav class="mobile-contact-bar" aria-label="Hızlı iletişim"><a href="tel:+902668352307">Oteli ara</a><a href="#rezervasyon">Rezervasyon</a></nav>
+<div class="site-music"><button class="site-music-button" id="music-toggle" type="button" aria-controls="hotel-music" hidden><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 18V5l12-2v13M9 18c0 1.1-1.3 2-3 2s-3-.9-3-2 1.3-2 3-2 3 .9 3 2Zm12-2c0 1.1-1.3 2-3 2s-3-.9-3-2 1.3-2 3-2 3 .9 3 2Z"/></svg><span>Müziği aç</span></button>
+        <audio id="hotel-music" preload="none" data-src="./assets/laid-back-guitars.mp3"></audio>
+        <p class="site-music-status" id="music-status" role="status"></p></div>
 </body>
 </html>
