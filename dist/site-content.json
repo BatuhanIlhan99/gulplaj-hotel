@@ -6,8 +6,8 @@
   "metaDescription": "Erdek’te denize sıfır Gülplaj Hotel’i keşfedin. Deniz manzaralı odalar, gerçek otel fotoğrafları, konum bilgileri ve sitemizden rezervasyon seçenekleri.",
   "aboutText": "Gülplaj Hotel, Erdek sahilinde denize sıfır konumdaki bir aile işletmesi. Deniz manzaralı odalarımız, avlumuz ve restoranımızla konuklarımızı Marmara’nın kıyısında ağırlıyoruz.",
   "aboutSecond": "Sabah sahilde bir yürüyüş, gün içinde Kapıdağ’da bir keşif, dönüşte denize bakan bir masa. Tatilinizi kendi ritminizde yaşayın.",
-  "roomTitle": "Deniz manzaralı çift kişilik oda",
-  "roomDescription": "Pencerenizin ardında Marmara, gününüzde tatilin hafifliği. Erdek’te denizin yakınında dinlenmek için bir yeriniz var.",
+  "roomTitle": "Standart Deniz Manzaralı Çift Kişilik Oda",
+  "roomDescription": "Tüm odalarımız deniz manzaralı ve standart olarak iki kişiliktir. Üçüncü misafir için ek yatakla konaklama sağlıyoruz.",
   "phone": "0266 835 23 07",
   "address": "Sahil Mahallesi, Şehit Mehmet Sokak\n10500 Erdek, Balıkesir",
   "checkIn": "14:00",
@@ -30,6 +30,10 @@
     {
       "question": "Rezervasyonumu nasıl kesinleştirebilirim?",
       "answer": "Rezervasyon bölümündeki otel numaralarından bizi arayın. Tarihlerinizi ve misafir sayınızı paylaşarak müsaitlik, fiyat ve koşulları öğrenebilir, rezervasyonunuzu otelden teyit edebilirsiniz."
+    },
+    {
+      "question": "Bir odada kaç kişi konaklayabilir?",
+      "answer": "Standart deniz manzaralı odalarımız iki kişiliktir. Üçüncü misafir, odaya ek yatak eklenerek konaklayabilir. Rezervasyon sırasında ek yatak ihtiyacınızı belirtin."
     },
     {
       "question": "Odaları ve banyoları nereden görebilirim?",

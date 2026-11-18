@@ -3,17 +3,17 @@
     "slug": "odalar",
     "label": "Odalar",
     "title": "Erdek Deniz Manzaralı Odalar | Gülplaj Hotel",
-    "description": "Gülplaj Hotel’in Erdek’teki odalarını ve gerçek oda fotoğraflarını inceleyin. Oda olanakları, konaklama saatleri ve rezervasyon öncesi bilmeniz gerekenler.",
-    "heading": "Erdek’te, denize yakın bir oda.",
+    "description": "Erdek Gülplaj Hotel’in standart deniz manzaralı çift kişilik odalarını ve gerçek fotoğraflarını inceleyin. Üçüncü misafir için ek yatakla konaklama mümkündür.",
+    "heading": "Erdek’te deniz manzaralı odalar.",
     "eyebrow": "GÜLPLAJ HOTEL · KONAKLAMA",
-    "intro": "Tatilinize karar verirken yalnızca bir oda adı değil, nasıl bir yerde kalacağınızı da görmek istersiniz. Gülplaj Hotel’in oda ve banyo fotoğraflarını inceleyebilir, size uygun konaklama seçeneğini tarihlerinize göre değerlendirebilirsiniz.",
+    "intro": "Gülplaj Hotel’in standart odaları deniz manzaralı ve iki kişiliktir. Üç kişi konaklayacaksanız rezervasyonda ek yatak isteyebilirsiniz.",
     "photoKey": "roomPhoto",
     "sections": [
       {
-        "heading": "Odanızı seçerken",
+        "heading": "Oda rezervasyonu yaparken",
         "paragraphs": [
-          "Deniz manzarası sizin için öncelikliyse rezervasyon sırasında seçtiğiniz odanın özelliklerini kontrol edin. Galeride farklı odaları ve alanları görebilir, manzara ve yerleşim tercihlerinizi otelle paylaşabilirsiniz.",
-          "Giriş ve çıkış tarihlerinizi, yetişkin sayısını ve varsa çocukların yaşlarını telefonla paylaşın. Otel ekibi size uygun oda seçeneklerini ve koşullarını iletir."
+          "Standart odalarımızın deniz manzarasını ve oda içini galeride görebilirsiniz. Üç kişi konaklayacaksanız ek yatak talebinizi rezervasyon sırasında belirtin.",
+          "Giriş ve çıkış tarihlerinizi, yetişkin sayısını ve varsa çocukların yaşlarını telefon veya WhatsApp üzerinden paylaşın. Otel ekibi müsaitlik ve fiyatı iletir."
         ],
         "id": "oda-secimi",
         "links": [
@@ -81,8 +81,8 @@
         "id": "fotograftan-oda-secimine",
         "heading": "Fotoğraflardan oda seçimine",
         "paragraphs": [
-          "Bu sayfada otelin farklı oda ve ortak alan görünümleri bulunur. Her fotoğrafın başlığı ve kısa açıklaması, görüntüdeki alanı tanımanıza yardımcı olur. Aynı yatak düzeni, balkon veya manzara bütün odalarda bulunmayabilir.",
-          "Oda seçmeden önce tarihlerinize açık oda tipinin açıklamasını okuyun. Belirli bir manzara, kat veya yatak düzeni istiyorsanız tercihinizi rezervasyon öncesinde otelle teyit edin."
+          "Oda fotoğrafları standart deniz manzaralı çift kişilik odalarımızı farklı açılardan gösterir. Her fotoğrafın kısa açıklaması, görüntüdeki alanı tanımanıza yardımcı olur.",
+          "Üçüncü misafir için ek yatak isteyebilirsiniz. Belirli bir kat veya yatak düzeni tercihiniz varsa rezervasyon öncesinde otelle görüşün."
         ],
         "links": [
           {
@@ -165,7 +165,7 @@
         "heading": "Birlikte seyahat ettiğiniz kişilere uygun oda seçin",
         "paragraphs": [
           "Rezervasyon için aradığınızda yetişkin sayısını, çocukların yaşlarını ve ihtiyaç duyduğunuz oda sayısını paylaşın.",
-          "Aynı fotoğraftaki yatak düzeninin bütün odalarda bulunacağını varsaymak yerine, seçtiğiniz oda tipinin açıklamasını okuyun. Birden fazla oda istiyorsanız odaların yakınlığı gibi tercihlerinizi önceden iletin; tesisin bu talebi karşılayıp karşılayamayacağını teyit edin."
+          "Gülplaj Hotel’de standart oda iki kişiliktir. Üçüncü misafir ek yatakla konaklayabilir. Birden fazla oda istiyorsanız yan yana oda tercihinizi önceden otel ekibiyle paylaşın."
         ],
         "id": "misafirler-ve-oda",
         "links": [
