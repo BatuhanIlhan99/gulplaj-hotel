@@ -65,7 +65,7 @@ test('Information pages expose working section navigation and contextual next st
       for(const link of section.links||[])assert(html.includes(`href="..${link.target}"`));
     }
     const sources=[...html.matchAll(/<script src="([^"]+)"/g)].map(m=>m[1]);
-    assert(sources.every(src=>/^\.\.\/(report-config|visitor-metrics)\.js\?v=[a-f0-9]+$/.test(src)),'Information pages only add optional measurement scripts; navigation remains in HTML');
+    assert(sources.every(src=>/^\.\.\/(report-config|visitor-metrics|guest-assistant)\.js\?v=[a-f0-9]+$/.test(src)),'Information pages only add optional measurement and assistant scripts; navigation remains in HTML');
   }
 });
 

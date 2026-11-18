@@ -1,4 +1,7 @@
 import {reportConnect,metricsHead} from './report-config.mjs';
+import {guestAssistantHead,renderGuestAssistant} from './guest-assistant.mjs';
+export {guestAssistantHead};
+export const guestAssistant = data => renderGuestAssistant(data,phoneHref,escapeHtml);
 export const origin='https://www.gulplajhotel.com';
 export const homeTitle='Gülplaj Hotel | Erdek’te Denize Sıfır Otel';
 export const policy="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'"+reportConnect+"; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests";
@@ -140,7 +143,7 @@ export function renderDetailPage(data,page,pages,mapsUrl,renditions){
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="${policy}"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#143b4a">
 ${metadata(data,page,mapsUrl)}
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"><link rel="stylesheet" href="../booking-section.css?v=phone-1">${metricsHead('../')}</head>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css?v=seo-1"><link rel="stylesheet" href="../seo-pages.css?v=4"><link rel="stylesheet" href="../booking-section.css?v=phone-1">${metricsHead('../')}${guestAssistantHead('../')}</head>
 <body class="guide-body${groups.length?' guide-photos-page':''}"><a class="skip-link" href="#icerik">İçeriğe geç</a>
 <header class="guide-header"><a class="wordmark" href="../" aria-label="Gülplaj Hotel ana sayfa"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><nav aria-label="Ana menü">${nav}</nav><a class="button" href="../#rezervasyon">Rezervasyon</a></header>
 <main id="icerik"><nav class="guide-breadcrumb" aria-label="İçerik yolu"><a href="../">Ana sayfa</a><span aria-hidden="true">/</span><span aria-current="page">${e(page.label)}</span></nav>
@@ -148,5 +151,5 @@ ${metadata(data,page,mapsUrl)}
 <div class="guide-layout"><article>${contentsNav}${contact}${roomSummary}${roomExtras}${faq}${photoGallery}${sections}${sources}</article><aside class="guide-aside"><p class="eyebrow">KONAKLAMANIZI PLANLAYIN</p><h2>Erdek’te görüşmek üzere.</h2><p>Giriş: <strong>${e(data.checkIn)}</strong><br>Çıkış: <strong>${e(data.checkOut)}</strong></p><p>Müsait odaları, fiyatları ve rezervasyon koşullarını telefonla öğrenebilirsiniz.</p><a class="button" href="../#rezervasyon">Rezervasyon için arayın</a><div class="contact-numbers">${phoneLinks(data)}</div></aside></div>
 <nav class="guide-related" aria-label="Diğer konaklama bilgileri"><h2>Tatilinizin diğer ayrıntıları</h2>${nav}</nav></main>
 <footer class="guide-footer"><a class="wordmark" href="../"><span>GÜLPLAJ</span><small>HOTEL · ERDEK</small></a><div><p>${e(data.address).replace(/\n/g,'<br>')}</p><div class="contact-numbers">${phoneLinks(data)}</div></div><a href="../#rezervasyon">Konaklamanızı planlayın ↗</a></footer>
-<nav class="mobile-contact-bar" aria-label="Hızlı iletişim"><a href="${e(phoneHref(data.phone))}">Oteli ara</a><a href="../#rezervasyon">Rezervasyon</a></nav></body></html>\n`;
+<nav class="mobile-contact-bar" aria-label="Hızlı iletişim"><a href="${e(phoneHref(data.phone))}">Oteli ara</a><a href="../#rezervasyon">Rezervasyon</a></nav>${guestAssistant(data)}</body></html>\n`;
 }

@@ -1,0 +1,34 @@
+export const guestAssistantHead = prefix =>
+  `<link rel="stylesheet" href="${prefix}guest-assistant.css?v=1"><script src="${prefix}guest-assistant.js?v=1" defer></script>`;
+
+export function renderGuestAssistant(data, phoneHref, escapeHtml) {
+  const mobile = data.phone2 ? phoneHref(data.phone2).slice(4) : '';
+  const canLinkWhatsApp = /^\+905\d{9}$/.test(mobile);
+  const topics = [
+    ['Otopark', 'Araçla gelecekseniz otopark seçeneğini ve varsa ücretini gelmeden önce otel ekibiyle teyit edin.'],
+    ['Çocuk yaşı', 'Rezervasyon için çocukların konaklama tarihindeki yaşlarını ve yetişkin sayısını paylaşın. Çocuk ücreti, ek yatak ve bebek yatağı seçeneklerini otel ekibinden öğrenebilirsiniz.'],
+    ['Plaj', 'Otel Erdek sahilinde denize sıfır konumdadır. Şezlong ve şemsiyelerin kullanım koşullarını resepsiyondan öğrenebilirsiniz.'],
+    ['Erken giriş', `Standart giriş saati ${escapeHtml(data.checkIn.replace(':', '.'))}, en geç çıkış saati ${escapeHtml(data.checkOut.replace(':', '.'))}. Erken giriş için varış saatinizi paylaşın. Otel ekibi müsaitliğe göre teyit eder.`]
+  ];
+  const message = encodeURIComponent('Merhaba, Gülplaj Hotel ile ilgili bilgi almak istiyorum.');
+  return `<div class="guest-assistant">
+  <button class="guest-assistant-launch" id="guest-assistant-launch" type="button" aria-haspopup="dialog" aria-controls="guest-assistant-panel" hidden>
+    <span class="guest-assistant-icon" aria-hidden="true"></span>
+    <span>Misafir asistanı<small>${canLinkWhatsApp ? 'WhatsApp · ' : ''}7/24 yanıt</small></span>
+  </button>
+  <dialog class="guest-assistant-panel" id="guest-assistant-panel" aria-labelledby="guest-assistant-title">
+    <div class="guest-assistant-header">
+      <div><p>Gülplaj Hotel</p><h2 id="guest-assistant-title">Misafir asistanı</h2></div>
+      <button class="guest-assistant-close" type="button" aria-label="Asistanı kapat" autofocus>×</button>
+    </div>
+    <div class="guest-assistant-body">
+      <p>Otomatik yanıt için bir konu seçin.</p>
+      ${topics.map(([title, answer]) => `<details class="guest-assistant-topic" name="guest-assistant-topics"><summary>${title}</summary><p>${answer}</p></details>`).join('\n      ')}
+    </div>
+    <div class="guest-assistant-contact">
+      ${canLinkWhatsApp ? `<a class="guest-assistant-whatsapp" href="https://wa.me/${mobile.slice(1)}?text=${message}" target="_blank" rel="noopener noreferrer">WhatsApp’tan otele yaz <span aria-hidden="true">↗</span></a>` : ''}
+      <a class="guest-assistant-call" href="${escapeHtml(phoneHref(data.phone))}">Oteli ara</a>
+    </div>
+  </dialog>
+</div>`;
+}
