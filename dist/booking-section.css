@@ -69,6 +69,23 @@
 .booking-contact-actions .booking-whatsapp:hover { background: #206456; }
 .booking-contact-actions [hidden] { display: none; }
 .booking-contact-page { max-width: 840px; margin: 0 auto; display: grid; gap: 2rem; justify-items: start; }
+.booking-policy-link { color: var(--ink); font-size: .9rem; text-decoration: underline; text-underline-offset: .2em; }
+
+.booking-policies {
+  width: 100%;
+  padding: clamp(1rem, 4vw, 2rem);
+  background: #f7faf8;
+  color: var(--ink);
+  border: 1px solid #dce4df;
+  scroll-margin-top: 1rem;
+}
+
+.booking-policies h2 { margin: 0 0 1rem; font: 400 clamp(1.6rem, 4vw, 2.25rem)/1.15 var(--serif); }
+.booking-policies dl { margin: 0; }
+.booking-policies dl > div { display: grid; gap: .25rem; padding: .85rem 0; }
+.booking-policies dl > div + div { border-top: 1px solid #dce4df; }
+.booking-policies dt { font-weight: 650; }
+.booking-policies dd { margin: 0; line-height: 1.55; }
 
 @media (max-width: 760px) {
   #rezervasyon .reservation-layout { grid-template-columns: 1fr; }
