@@ -49,6 +49,26 @@ test('Visitor ingestion needs explicit consent, hides raw browser IDs and dedupl
     const rows=(await env.DB.prepare('SELECT * FROM events').all()).results;assert.equal(rows.length,1);assert.notEqual(rows[0].visitor_key,event.visitorId);assert(!JSON.stringify(rows).includes(event.visitorId));
   }finally{env.DB.close();}
 });
+test('Contact clicks are private, counted separately, and retain existing traffic',async()=>{
+  const env=await environment();
+  const day=hotelDay(),base={visitorId:crypto.randomUUID(),consent:true,path:'/',referrer:'direct'};
+  const make=kind=>({...base,id:crypto.randomUUID(),kind});
+  try{
+    assert.equal((await call(env,'/v1/events','POST',{...make('phone_click'),consent:false})).status,400);
+    assert.equal((await call(env,'/v1/events','POST',{...make('page_view'),contactTracking:true})).status,200);
+    const phone=make('phone_click');
+    for(const item of [phone,phone,make('whatsapp_click'),make('whatsapp_click')]){
+      assert.equal((await call(env,'/v1/events','POST',item)).status,200);
+    }
+    const path='/v1/report?from='+day+'&to='+day;
+    assert.equal((await call(env,path)).status,401);
+    const session=await (await call(env,'/v1/login','POST',{password:'local-test-password-123'})).json();
+    const report=await (await call(env,path,'GET',null,session.token)).json();
+    assert.equal(report.meta.contact_tracking_since,day);
+    assert.deepEqual(report.traffic,{daily_visitor_sum:1,page_views:1,booking_opens:0,phone_clicks:1,whatsapp_clicks:2});
+    assert.equal(report.daily[0].phone_clicks,1);assert.equal(report.daily[0].whatsapp_clicks,2);
+  }finally{env.DB.close();}
+});
 test('HotelRunner sync is GET-only, idempotent, ignores stale updates and preserves data on invalid batches',async()=>{
   const env=await environment(),originalFetch=globalThis.fetch;env.HOTELRUNNER_TOKEN='test-upstream-token';env.HOTELRUNNER_HR_ID='test-property';let payload={reservations:[raw],pages:1};
   globalThis.fetch=async(url,options)=>{assert.equal(new URL(url).origin,'https://app.hotelrunner.com');assert(!options.method||options.method==='GET');assert.equal(new URL(url).searchParams.get('undelivered'),'false');return new Response(JSON.stringify(payload));};

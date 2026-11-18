@@ -63,11 +63,17 @@ async function route(request,env,ctx){
   }
   if(path==='/v1/events'&&request.method==='POST'){
     await rate(env,'events:'+ip,90,60);const input=await body(request,2048);
-    if(input.consent!==true||!['page_view','booking_open'].includes(input.kind)||!/^[/][a-z/-]*$/.test(input.path)||input.path.length>100||input.path.startsWith('/admin')||!/^[-a-f0-9]{36}$/.test(input.visitorId)||!/^[-a-f0-9]{36}$/.test(input.id))throw new HttpError(400,'Ölçüm verisi geçersiz.');
+    const contactClick=input.kind==='phone_click'||input.kind==='whatsapp_click';
+    if(input.consent!==true||(!contactClick&&!['page_view','booking_open'].includes(input.kind))||!/^[/][a-z/-]*$/.test(input.path)||input.path.length>100||input.path.startsWith('/admin')||!/^[-a-f0-9]{36}$/.test(input.visitorId)||!/^[-a-f0-9]{36}$/.test(input.id))throw new HttpError(400,'Ölçüm verisi geçersiz.');
     const day=hotelDay(),visitor=await hmac(env.REPORT_SECRET,day+':'+input.visitorId);
     const referrer=['direct','google','bing','social','other','internal'].includes(input.referrer)?input.referrer:'other';
-    await env.DB.prepare('INSERT OR IGNORE INTO events(id,day,visitor_key,kind,path,referrer) VALUES(?,?,?,?,?,?)').bind(input.id,day,visitor,input.kind,input.path,referrer).run();
-    await env.DB.prepare('INSERT OR IGNORE INTO report_meta(key,value) VALUES(?,?)').bind('tracking_since',day).run();
+    const insert=contactClick
+      ? 'INSERT OR IGNORE INTO contact_events(id,day,visitor_key,kind,path,referrer) VALUES(?,?,?,?,?,?)'
+      : 'INSERT OR IGNORE INTO events(id,day,visitor_key,kind,path,referrer) VALUES(?,?,?,?,?,?)';
+    const markStart=key=>env.DB.prepare('INSERT OR IGNORE INTO report_meta(key,value) VALUES(?,?)').bind(key,day);
+    const writes=[env.DB.prepare(insert).bind(input.id,day,visitor,input.kind,input.path,referrer),markStart('tracking_since')];
+    if(contactClick||(input.kind==='page_view'&&input.contactTracking===true))writes.push(markStart('contact_tracking_since'));
+    await env.DB.batch(writes);
     return {accepted:true};
   }
   const hash=await authenticated(request,env);
@@ -84,7 +90,11 @@ async function route(request,env,ctx){
   if(path==='/v1/report'&&request.method==='GET'){
     let range;try{range=dateRange(url.searchParams.get('from'),url.searchParams.get('to'));}catch(error){throw new HttpError(400,error.message);}
     const reservations=(await env.DB.prepare('SELECT * FROM reservations WHERE booked_day BETWEEN ? AND ?').bind(range.from,range.to).all()).results;
-    const events=(await env.DB.prepare('SELECT day,visitor_key,kind,path,referrer FROM events WHERE day BETWEEN ? AND ?').bind(range.from,range.to).all()).results;
+    const events=(await env.DB.prepare(`
+      SELECT day,visitor_key,kind,path,referrer FROM events WHERE day BETWEEN ? AND ?
+      UNION ALL
+      SELECT day,visitor_key,kind,path,referrer FROM contact_events WHERE day BETWEEN ? AND ?
+    `).bind(range.from,range.to,range.from,range.to).all()).results;
     const meta=Object.fromEntries((await env.DB.prepare('SELECT key,value FROM report_meta').all()).results.map(r=>[r.key,r.value]));
     meta.traffic_window_start=hotelDay(new Date(Date.now()-89*86400000));
     return {...summarize(reservations,events,{...range,channel:url.searchParams.get('channel')||'all',currency:url.searchParams.get('currency')||'TRY'}),meta,connection:{hotelrunner:Boolean(env.HOTELRUNNER_TOKEN&&env.HOTELRUNNER_HR_ID),websiteChannel:env.WEBSITE_CHANNEL||null},availableChannels:(await env.DB.prepare('SELECT DISTINCT channel,channel_label FROM reservations ORDER BY channel_label').all()).results};
@@ -102,7 +112,7 @@ export default {
   },
   async scheduled(event,env,ctx){
     ctx.waitUntil((async()=>{
-      await env.DB.batch([env.DB.prepare('DELETE FROM sessions WHERE expires_at<?').bind(Date.now()),env.DB.prepare('DELETE FROM rate_limits WHERE expires_at<?').bind(Math.floor(Date.now()/1000)),env.DB.prepare("DELETE FROM events WHERE day <= date('now','+3 hours','-90 days')")]);
+      await env.DB.batch([env.DB.prepare('DELETE FROM sessions WHERE expires_at<?').bind(Date.now()),env.DB.prepare('DELETE FROM rate_limits WHERE expires_at<?').bind(Math.floor(Date.now()/1000)),env.DB.prepare("DELETE FROM events WHERE day <= date('now','+3 hours','-90 days')"),env.DB.prepare("DELETE FROM contact_events WHERE day <= date('now','+3 hours','-90 days')")]);
       if(env.HOTELRUNNER_TOKEN&&env.HOTELRUNNER_HR_ID)try{await syncHotelRunner(env);}catch{/* Do not log credentials, upstream URLs or reservation payloads. */}
     })());
   }

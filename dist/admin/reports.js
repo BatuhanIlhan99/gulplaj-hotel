@@ -4,6 +4,7 @@
   let token='',expiresAt=0,generation=0,lastReport,controller,pendingImport;
   const day=date=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Istanbul',year:'numeric',month:'2-digit',day:'2-digit'}).format(date);
   const today=()=>day(new Date()),formatDay=d=>new Date(d+'T12:00:00Z').toLocaleDateString('tr-TR');
+  const contactStart=meta=>[meta.contact_tracking_since||'9999-12-31',meta.traffic_window_start||'0001-01-01'].sort().at(-1);
   const money=(value,currency)=>new Intl.NumberFormat('tr-TR',{style:'currency',currency}).format(value/100);
   const error=text=>{$('reports-notice').textContent=text;};
   function endpoint(){const url=new URL(config.apiOrigin);if(url.protocol!=='https:'||url.username||url.password||url.pathname!=='/'||url.search||url.hash)throw Error('Rapor sunucusu doğrulanamadı.');return url.origin;}
@@ -32,6 +33,9 @@
     lastReport=report;const t=report.totals,sourceReady=Boolean(report.meta.last_sync||report.meta.last_import);
     const trafficStart=[report.meta.tracking_since||'9999-12-31',report.meta.traffic_window_start||'0001-01-01'].sort().at(-1),tracked=report.range.to>=trafficStart;
     const values={visitors:tracked?report.traffic.daily_visitor_sum:'—',views:tracked?report.traffic.page_views:'—',bookings:sourceReady?t.reservations:'—',gross:sourceReady?money(t.gross_minor,t.currency):'—',paid:sourceReady?money(t.reported_paid_minor,t.currency):'—',canceled:sourceReady?t.canceled:'—',pending:sourceReady?t.pending:'—',bookingOpens:tracked?report.traffic.booking_opens:'—'};
+    const clickStart=contactStart(report.meta),clicksTracked=report.range.to>=clickStart;
+    values.phoneClicks=clicksTracked?report.traffic.phone_clicks:'—';
+    values.whatsappClicks=clicksTracked?report.traffic.whatsapp_clicks:'—';
     for(const [key,value] of Object.entries(values))document.querySelector('[data-report-value="'+key+'"]').textContent=String(value);
     const notices=[];
     if(!sourceReady)notices.push('Rezervasyon kaynağı henüz bağlı değil. Çizgiler sıfır rezervasyon anlamına gelmez.');
@@ -40,6 +44,8 @@
     if(!report.meta.tracking_since)notices.push('Ziyaretçi ölçümünde henüz kayıt yok. Geçmiş ziyaretler sonradan hesaplanamaz.');
     else notices.push('Ziyaretçi ölçümü başlangıcı: '+formatDay(report.meta.tracking_since)+'. Yalnızca ölçüme izin veren tarayıcılar; gün bazında tekilleştirilir.');
     if(report.range.from<trafficStart)notices.push('Ziyaret ölçümü seçilen dönemin tamamını kapsamıyor; saklanan ölçüm aralığı dışındaki günler bilinmiyor. Ölçüm kayıtları 90 gün saklanır.');
+    if(!report.meta.contact_tracking_since)notices.push('Arama ve WhatsApp ölçümü ilk izinli ziyarette başlar.');
+    else if(report.range.from<clickStart)notices.push('Arama ve WhatsApp tıklamaları yalnızca '+formatDay(clickStart)+' tarihinden itibaren raporlanır.');
     if(!report.connection.websiteChannel)notices.push('Web sitesi kanalı henüz doğrulanmadı; kanal filtresinden kaynağı seçin.');
     if(t.other_currency_count)notices.push('Diğer para birimlerinde '+t.other_currency_count+' rezervasyon var. Para tutarları yalnızca '+t.currency+' içindir.');
     if(t.unknown_payment_count)notices.push(t.unknown_payment_count+' rezervasyonda tahsilat bilgisi eksik.');
@@ -48,7 +54,7 @@
     $('reports-sync').title=report.connection.hotelrunner?'Son kayıtları al':'HotelRunner API erişimi ve bağlantısı henüz açık değil';
     const current=$('reports-channel').value;$('reports-channel').replaceChildren();const all=document.createElement('option');all.value='all';all.textContent='Tüm kanallar';$('reports-channel').append(all);
     for(const channel of report.availableChannels){const option=document.createElement('option');option.value=channel.channel;option.textContent=channel.channel_label;$('reports-channel').append(option);}$('reports-channel').value=current||'all';
-    table('reports-daily',report.daily.map(d=>[formatDay(d.day),d.day>=trafficStart?d.visitors:'—',d.day>=trafficStart?d.page_views:'—',sourceReady?d.reservations:'—',sourceReady?d.canceled:'—',sourceReady?money(d.gross_minor,t.currency):'—']));
+    table('reports-daily',report.daily.map(d=>[formatDay(d.day),d.day>=trafficStart?d.visitors:'—',d.day>=trafficStart?d.page_views:'—',d.day>=clickStart?d.phone_clicks:'—',d.day>=clickStart?d.whatsapp_clicks:'—',sourceReady?d.reservations:'—',sourceReady?d.canceled:'—',sourceReady?money(d.gross_minor,t.currency):'—']));
     table('reports-reservations',report.reservations.map(r=>[r.reference,formatDay(r.booked_day),formatDay(r.checkin)+' – '+formatDay(r.checkout),r.channel_label,({reserved:'Onay bekliyor',confirmed:'Onaylandı',canceled:'İptal'})[r.state],money(r.total_minor,r.currency),r.paid_minor===null?'Bilinmiyor':money(r.paid_minor,r.currency)]));
     table('reports-channels',report.channels.map(c=>[c.label,c.reservations,c.canceled,money(c.gross_minor,t.currency)]));
     list('reports-paths',report.paths);list('reports-referrers',report.referrers.map(r=>({...r,label:({direct:'Doğrudan / kaynak yok',google:'Google',bing:'Bing',social:'Sosyal medya',internal:'Site içi',other:'Diğer'})[r.label]||r.label})));
@@ -76,7 +82,8 @@
     if(!lastReport||!token||Date.now()>=expiresAt)return lock('Oturum sona erdi.');
     const safe=value=>'"'+String(value).replace(/^[=+@-]/,"'").replace(/"/g,'""')+'"';
     const trafficStart=[lastReport.meta.tracking_since||'9999-12-31',lastReport.meta.traffic_window_start||'0001-01-01'].sort().at(-1),synced=Boolean(lastReport.meta.last_sync||lastReport.meta.last_import);
-    const rows=[['Tarih','Ziyaretçi-gün','Sayfa görüntüleme','Rezervasyon','İptal','Aktif rezervasyon tutarı ('+lastReport.totals.currency+')'],...lastReport.daily.map(d=>[d.day,d.day>=trafficStart?d.visitors:'Bilinmiyor',d.day>=trafficStart?d.page_views:'Bilinmiyor',synced?d.reservations:'Bilinmiyor',synced?d.canceled:'Bilinmiyor',synced?(d.gross_minor/100).toFixed(2):'Bilinmiyor'])];
+    const clickStart=contactStart(lastReport.meta);
+    const rows=[['Tarih','Ziyaretçi-gün','Sayfa görüntüleme','Arama tıklaması','WhatsApp tıklaması','Rezervasyon','İptal','Aktif rezervasyon tutarı ('+lastReport.totals.currency+')'],...lastReport.daily.map(d=>[d.day,d.day>=trafficStart?d.visitors:'Bilinmiyor',d.day>=trafficStart?d.page_views:'Bilinmiyor',d.day>=clickStart?d.phone_clicks:'Bilinmiyor',d.day>=clickStart?d.whatsapp_clicks:'Bilinmiyor',synced?d.reservations:'Bilinmiyor',synced?d.canceled:'Bilinmiyor',synced?(d.gross_minor/100).toFixed(2):'Bilinmiyor'])];
     const url=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(safe).join(';')).join('\r\n')],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='gulplaj-rapor-'+lastReport.range.from+'-'+lastReport.range.to+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   });
   $('reports-from').value=today();$('reports-to').value=today();

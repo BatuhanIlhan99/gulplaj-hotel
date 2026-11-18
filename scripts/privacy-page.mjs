@@ -19,8 +19,8 @@ export function renderPrivacyPage() {
   <section class="booking-policies" aria-labelledby="olcum">
     <h2 id="olcum">İsteğe bağlı ziyaretçi ölçümü</h2>
     <dl>
-      <div><dt>Ne ölçülüyor?</dt><dd>İzin verirseniz ziyaret edilen sayfanın yolu, genel geliş kaynağı (örneğin arama motoru veya sosyal medya) ve rezervasyon sayfasının açılışı ölçülür. Bu bilgiler site kullanımını anlamak ve sayfaları iyileştirmek için kullanılır.</dd></div>
-      <div><dt>Bilgiler nerede saklanıyor?</dt><dd>Ölçüm tercihiniz ve izin verdiğinizde günlük rastgele tarayıcı kodu cihazınızda saklanır. Cloudflare üzerindeki rapor sunucusu bu kodun günlük türevini kaydeder. Ölçüm kayıtları 90 gün sonra silinir. Tam IP adresi, URL sorgusu, kimlik, kart ve rezervasyon bilgileri ölçüm kayıtlarına eklenmez.</dd></div>
+      <div><dt>Ne ölçülüyor?</dt><dd>İzin verirseniz ziyaret edilen sayfanın yolu, genel geliş kaynağı (örneğin arama motoru veya sosyal medya), rezervasyon sayfasının açılışı ve telefon veya WhatsApp bağlantılarına tıklama ölçülür. Bu bilgiler site kullanımını anlamak ve sayfaları iyileştirmek için kullanılır.</dd></div>
+      <div><dt>Bilgiler nerede saklanıyor?</dt><dd>Ölçüm tercihiniz ve izin verdiğinizde günlük rastgele tarayıcı kodu cihazınızda saklanır. Cloudflare üzerindeki rapor sunucusu bu kodun günlük türevini kaydeder. Ölçüm kayıtları 90 gün sonra silinir. Tam IP adresi, URL sorgusu, telefon numarası, mesaj içeriği, kimlik, kart ve rezervasyon bilgileri ölçüm kayıtlarına eklenmez.</dd></div>
       <div><dt>Tercihinizi nasıl değiştirirsiniz?</dt><dd>Ölçüm tercihlerini açıp “İzin verme” seçeneğini seçerek yeni ölçümü durdurabilirsiniz. Bu işlem cihazınızdaki günlük tarayıcı kodunu da kaldırır.</dd></div>
     </dl>
     <button class="metrics-preferences" id="measurement-preferences" type="button" hidden>Ölçüm tercihleri</button>

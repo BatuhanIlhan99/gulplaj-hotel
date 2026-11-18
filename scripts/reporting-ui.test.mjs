@@ -6,14 +6,25 @@ import vm from 'node:vm';
 function element(){return {textContent:'',value:'',hidden:false,disabled:false,children:[],handlers:{},append(...nodes){this.children.push(...nodes);},replaceChildren(...nodes){this.children=[...nodes];},setAttribute(){},addEventListener(type,fn){this.handlers[type]=fn;}};}
 test('Visitor measurement sends nothing before consent, respects rejection and omits query and personal referrer details',()=>{
   const nodes=[],storage=new Map(),sent=[],events={};
-  const document={body:element(),getElementById:()=>null,referrer:'https://www.google.com/search?q=private+question',createElement(){const node=element();nodes.push(node);return node;}};
+  const document={body:element(),getElementById:()=>null,addEventListener:(name,fn)=>events[name]=fn,referrer:'https://www.google.com/search?q=private+question',createElement(){const node=element();nodes.push(node);return node;}};
   const window={GULPLAJ_REPORT_CONFIG:{enabled:true,apiOrigin:'https://gulplaj-reports.test.workers.dev'},addEventListener:(name,fn)=>events[name]=fn};
   vm.runInNewContext(fs.readFileSync('dist/visitor-metrics.js','utf8'),{window,document,URL,crypto,Date,navigator:{},location:{href:'https://www.gulplajhotel.com/odalar/?email=private@example.com',pathname:'/odalar/',origin:'https://www.gulplajhotel.com'},localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},fetch:(url,options)=>{sent.push({url,options});return Promise.resolve({});}});
+  const click=(href,isTrusted=true)=>events.click({isTrusted,target:{closest:()=>({getAttribute:()=>href})}});
+  click('tel:+905375274959');
   assert.equal(sent.length,0);const accept=nodes.find(n=>n.textContent==='İzin ver'),reject=nodes.find(n=>n.textContent==='İzin verme');
   reject.handlers.click();events['gulplaj:booking-open']();assert.equal(sent.length,0);
   accept.handlers.click();assert.equal(sent.length,1);const payload=JSON.parse(sent[0].options.body);assert.equal(payload.path,'/odalar/');assert.equal(payload.referrer,'google');assert.equal(payload.kind,'page_view');assert(!sent[0].options.body.includes('private'));assert.equal(sent[0].options.credentials,'omit');
   events['gulplaj:booking-open']();assert.equal(JSON.parse(sent[1].options.body).kind,'booking_open');
   reject.handlers.click();events['gulplaj:booking-open']();assert.equal(sent.length,2);assert(!storage.has('gulplaj_daily_visitor'));
+  click('https://wa.me/905375274959');assert.equal(sent.length,2);
+  accept.handlers.click();
+  click('tel:+905375274959');
+  click('https://wa.me/905375274959?text=private-message');
+  click('https://wa.me/905375274959',false);
+  click('https://wa.me.example/905375274959');
+  click('mailto:private@example.com');
+  assert.deepEqual(sent.slice(2).map(s=>JSON.parse(s.options.body).kind),['phone_click','whatsapp_click']);
+  for(const row of sent.slice(2))assert(!/905375274959|private-message/.test(row.options.body));
 });
 
 test('Logout clears report values and late server responses cannot reopen private reports',async()=>{
