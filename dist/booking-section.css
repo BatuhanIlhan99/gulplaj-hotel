@@ -65,7 +65,7 @@
 }
 .booking-contact-actions a { min-height: 48px; white-space: nowrap; }
 .booking-contact-actions a[href^="tel:"] + a[href^="tel:"] { color: var(--ink); background: #fff; border: 1px solid currentColor; }
-.booking-contact-actions .booking-whatsapp { background: #174d43; border-color: #174d43; color: #fff; }
+.booking-contact-actions .booking-whatsapp { background: #174d43; border-color: #174d43; color: #fff; white-space: normal; text-align: center; }
 .booking-contact-actions .booking-whatsapp:hover { background: #206456; }
 .booking-contact-actions [hidden] { display: none; }
 .booking-contact-page { max-width: 840px; margin: 0 auto; display: grid; gap: 2rem; justify-items: start; }
@@ -79,15 +79,17 @@
     gap: .75rem;
     padding: 1rem;
   }
+  .booking-contact-page { grid-template-columns: minmax(0, 1fr); }
+  .booking-contact-page .booking-contact-card { width: 100%; min-width: 0; gap: .75rem; padding: 1rem; }
   .reservation-layout .booking-contact-card h3 { font-size: 1.35rem; }
   .reservation-layout .booking-contact-card p { font-size: .9rem; line-height: 1.45; }
-  .reservation-layout .booking-contact-actions {
+  :is(.reservation-layout, .booking-contact-page) .booking-contact-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: .45rem;
   }
-  .reservation-layout .booking-contact-actions a { margin: 0; padding: .55rem .25rem; font-size: .82rem; }
-  .reservation-layout .booking-whatsapp { grid-column: 1 / -1; }
+  :is(.reservation-layout, .booking-contact-page) .booking-contact-actions a { margin: 0; padding: .55rem .25rem; font-size: .82rem; }
+  :is(.reservation-layout, .booking-contact-page) .booking-whatsapp { grid-column: 1 / -1; }
   .reservation-photo {
     grid-row: 2;
     min-height: clamp(12rem, 57vw, 17rem);
