@@ -1,0 +1,20 @@
+.hero-music {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;
+  min-height: 44px;
+  border: 1px solid #ffffffb3;
+  border-radius: 2rem;
+  background: #143b4a99;
+  color: #fff;
+  font: inherit;
+  font-size: .875rem;
+  cursor: pointer;
+}
+
+.hero-music[hidden], .hero-music-status:empty { display: none; }
+.hero-music:hover { background: #143b4a; }
+.hero-music:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+.hero-music-status { margin-top: .75rem; color: #fff; font-size: .875rem; }
+.music-credit a { text-decoration: underline; text-underline-offset: .15em; }
